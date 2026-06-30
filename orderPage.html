@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+
+        <meta
+            name="description"
+            content="Request a custom dessert order from 740Eatz in Portsmouth, OH. Candy-coated fruit, chocolate-covered strawberries, and cheesecake stuffed strawberries. Pickup Monday, Wednesday, Friday."
+        >
+
+        <meta name="robots" content="index, follow">
+
+        <meta property="og:title" content="Request an Order | 740Eatz Portsmouth, OH">
+
+        <meta property="og:description" content="Submit a custom dessert order request from 740Eatz. Made fresh in Portsmouth, Ohio. Pickup Monday, Wednesday, and Friday.">
+
+        <title>Request an Order | 740Eatz &mdash; Custom Desserts Portsmouth, OH</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Caveat:wght@600;700&display=swap"
+            rel="stylesheet"
+        >
+
+        <link rel="stylesheet" href="css/styleIndex.css">
+
+    </head>
+
+    <body>
+
+
+        <!-- ============================================================
+             HEADER
+        ============================================================ -->
+
+        <header class="siteHeader" id="siteHeader">
+
+            <div class="headerInner">
+
+                <a class="logoLink" href="index.html" aria-label="740Eatz Home">
+
+                    <img
+                        class="headerLogo"
+                        src="graphics/logos/TP740Logo.png"
+                        alt="740Eatz"
+                        width="120"
+                        height="72"
+                    >
+
+                </a>
+
+                <nav class="siteNav" id="siteNav" aria-label="Main navigation">
+
+                    <ul class="navList">
+
+                        <li class="navItem">
+
+                            <a class="navLink" href="index.html">Home</a>
+
+                        </li>
+
+                        <li class="navItem" id="menuDropdownItem">
+
+                            <button
+                                class="navLink navLinkHasDropdown"
+                                id="menuDropdownBtn"
+                                type="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                Menu
+                                <span class="navCaret" aria-hidden="true">&#9660;</span>
+                            </button>
+
+                            <ul class="navSubList" id="menuDropdownList" role="menu">
+                                <li role="none"><a class="navSubLink" href="menu.html#candiedFruit" role="menuitem">Candied Fruit</a></li>
+                                <li role="none"><a class="navSubLink" href="menu.html#chocoStrawberries" role="menuitem">Chocolate Covered Strawberries</a></li>
+                                <li role="none"><a class="navSubLink" href="menu.html#cheesecakeStrawberries" role="menuitem">Cheesecake Stuffed Strawberries</a></li>
+                            </ul>
+
+                        </li>
+
+                        <li class="navItem"><a class="navLink" href="about.html">About</a></li>
+
+                        <li class="navItem"><a class="navLink" href="gallery.html">Gallery</a></li>
+
+                        <li class="navItem"><a class="navLink" href="reviews.html">Reviews</a></li>
+
+                        <li class="navItem"><a class="navLink" href="faq.html">FAQ</a></li>
+
+                        <li class="navItem"><a class="navLink" href="contact.html">Contact</a></li>
+
+                    </ul>
+
+                </nav>
+
+                <a class="btnPrimary headerCta navLinkActive" href="orderPage.html">Request an Order</a>
+
+                <button
+                    class="burgerBtn"
+                    id="burgerBtn"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="siteNav"
+                >
+
+                    <span class="burgerLine"></span>
+
+                    <span class="burgerLine"></span>
+
+                    <span class="burgerLine"></span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ============================================================
+             ORDER PAGE INTRO
+        ============================================================ -->
+
+        <section class="orderPageIntro" id="orderIntro">
+
+            <div class="orderPageIntroInner">
+
+                <a class="orderPageBack" href="menu.html">
+
+                    &larr; Browse the Menu
+
+                </a>
+
+                <div class="orderPageIntroText">
+
+                    <span class="sectionLabel">Request an Order</span>
+
+                    <h1 class="orderPageHeadline">
+
+                        Request Your
+
+                        <span class="accentScript">Order</span>
+
+                    </h1>
+
+                    <p class="orderPageSub">
+
+                        Choose your treat, size, and flavor. We&rsquo;ll contact you to confirm your order and lock in your pickup day.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================================================
+             PRODUCT BUILDER
+        ============================================================ -->
+
+        <section class="orderSection" id="order">
+
+            <div class="sectionInner">
+
+                <div class="builderWrap" id="productBuilder">
+
+                    <!-- Progress Bar -->
+
+                    <div class="builderProgressBar">
+
+                        <div class="builderProgressFill" id="builderProgressFill"></div>
+
+                    </div>
+
+                    <!-- Step Label -->
+
+                    <div class="builderStepLabel" id="builderStepLabel">
+
+                        Step 1 of 6 &mdash; Choose Product
+
+                    </div>
+
+                    <!-- ── Step 1: Choose Product ── -->
+
+                    <div class="builderPanel" id="builderPanel1">
+
+                        <div class="builderChoiceGrid" id="productChoices">
+
+                            <button class="builderChoice" type="button" data-product="candyGrapes">
+
+                                <span class="builderChoiceIcon">&#9670;</span>
+
+                                <span class="builderChoiceName">Candy Grapes &amp; Pineapples</span>
+
+                                <span class="builderChoiceDetail">From $25</span>
+
+                            </button>
+
+                            <button class="builderChoice" type="button" data-product="chocoStrawberries">
+
+                                <span class="builderChoiceIcon">&#9829;</span>
+
+                                <span class="builderChoiceName">Chocolate Covered Strawberries</span>
+
+                                <span class="builderChoiceDetail">Dozen $25</span>
+
+                            </button>
+
+                            <button class="builderChoice" type="button" data-product="customTray">
+
+                                <span class="builderChoiceIcon">&#10022;</span>
+
+                                <span class="builderChoiceName">Custom Candy Tray</span>
+
+                                <span class="builderChoiceDetail">Quote Required</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ── Step 2: Choose Size ── -->
+
+                    <div class="builderPanel builderPanelHidden" id="builderPanel2">
+
+                        <div class="sizeGrid" id="sizeChoices">
+
+                            <!-- Populated by JavaScript based on product selection -->
+
+                        </div>
+
+                    </div>
+
+                    <!-- ── Step 3: Choose Flavor ── -->
+
+                    <div class="builderPanel builderPanelHidden" id="builderPanel3">
+
+                        <div class="flavorChipGrid" id="flavorChipGrid">
+
+                            <button class="flavorChip" type="button" data-flavor="blueRaspberry">Blue Raspberry</button>
+
+                            <button class="flavorChip" type="button" data-flavor="watermelon">Watermelon</button>
+
+                            <button class="flavorChip" type="button" data-flavor="greenApple">Green Apple</button>
+
+                            <button class="flavorChip" type="button" data-flavor="cottonCandy">Cotton Candy</button>
+
+                            <button class="flavorChip" type="button" data-flavor="strawberry">Strawberry</button>
+
+                            <button class="flavorChip" type="button" data-flavor="pineapple">Pineapple</button>
+
+                            <button class="flavorChip" type="button" data-flavor="mixedFlavor">Mixed Flavor</button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ── Step 4: Choose Pickup Date ── -->
+
+                    <div class="builderPanel builderPanelHidden" id="builderPanel4">
+
+                        <div class="builderDateWrap">
+
+                            <label class="formLabel" for="builderPickupDate">Select Pickup Date</label>
+
+                            <input
+                                class="formInput builderDateInput"
+                                type="date"
+                                id="builderPickupDate"
+                                name="pickupDate"
+                            >
+
+                            <p class="builderDateNote">
+
+                                Pickup is available <strong>Monday</strong>, <strong>Wednesday</strong>, and <strong>Friday</strong> only.
+
+                            </p>
+
+                            <div
+                                class="builderDateError"
+                                id="builderDateError"
+                                role="alert"
+                                aria-live="polite"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ── Step 5: Customer Info ── -->
+
+                    <div class="builderPanel builderPanelHidden" id="builderPanel5">
+
+                        <div class="builderInfoFields">
+
+                            <div class="formRow">
+
+                                <div class="formGroup">
+
+                                    <label class="formLabel" for="bFirstName">First Name</label>
+
+                                    <input
+                                        class="formInput"
+                                        type="text"
+                                        id="bFirstName"
+                                        name="firstName"
+                                        placeholder="Your first name"
+                                        autocomplete="given-name"
+                                    >
+
+                                </div>
+
+                                <div class="formGroup">
+
+                                    <label class="formLabel" for="bLastName">Last Name</label>
+
+                                    <input
+                                        class="formInput"
+                                        type="text"
+                                        id="bLastName"
+                                        name="lastName"
+                                        placeholder="Your last name"
+                                        autocomplete="family-name"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            <div class="formRow">
+
+                                <div class="formGroup">
+
+                                    <label class="formLabel" for="bPhone">Phone Number</label>
+
+                                    <input
+                                        class="formInput"
+                                        type="tel"
+                                        id="bPhone"
+                                        name="phoneNumber"
+                                        placeholder="(000) 000-0000"
+                                        autocomplete="tel"
+                                    >
+
+                                </div>
+
+                                <div class="formGroup">
+
+                                    <label class="formLabel" for="bEmail">Email</label>
+
+                                    <input
+                                        class="formInput"
+                                        type="email"
+                                        id="bEmail"
+                                        name="email"
+                                        placeholder="your@email.com"
+                                        autocomplete="email"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            <div class="formGroup">
+
+                                <label class="formLabel" for="bNotes">Notes / Custom Request</label>
+
+                                <textarea
+                                    class="formTextarea"
+                                    id="bNotes"
+                                    name="notes"
+                                    placeholder="Special requests, allergies, flavor combos, or anything else&#8230;"
+                                    rows="3"
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ── Step 6: Order Summary ── -->
+
+                    <div class="builderPanel builderPanelHidden" id="builderPanel6">
+
+                        <div class="orderSummary" id="orderSummary">
+
+                            <div class="summaryRow">
+
+                                <span class="summaryLabel">Product</span>
+
+                                <span class="summaryValue" id="sumProduct">&mdash;</span>
+
+                            </div>
+
+                            <div class="summaryRow">
+
+                                <span class="summaryLabel">Size</span>
+
+                                <span class="summaryValue" id="sumSize">&mdash;</span>
+
+                            </div>
+
+                            <div class="summaryRow">
+
+                                <span class="summaryLabel">Flavor</span>
+
+                                <span class="summaryValue" id="sumFlavor">&mdash;</span>
+
+                            </div>
+
+                            <div class="summaryRow">
+
+                                <span class="summaryLabel">Pickup Date</span>
+
+                                <span class="summaryValue" id="sumDate">&mdash;</span>
+
+                            </div>
+
+                            <div class="summaryRow summaryRowPrice">
+
+                                <span class="summaryLabel">Price</span>
+
+                                <span class="summaryValue summaryValuePrice" id="sumPrice">&mdash;</span>
+
+                            </div>
+
+                            <div class="summaryRow">
+
+                                <span class="summaryLabel">Payment</span>
+
+                                <span class="summaryValue summaryValuePending">Not Paid Yet</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="formDisclaimer">
+
+                            <p>
+
+                                This sends an <strong>order request</strong>. 740Eatz will follow up to confirm payment and pickup details before anything is made.
+
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="btnPrimary btnLarge builderSubmitBtn"
+                            type="button"
+                            id="builderSubmitBtn"
+                        >
+
+                            Send Order Request
+
+                        </button>
+
+                        <div
+                            class="formFeedback"
+                            id="builderFeedback"
+                            role="status"
+                            aria-live="polite"
+                        ></div>
+
+                    </div>
+
+                    <!-- ── Builder Navigation ── -->
+
+                    <div class="builderNavRow" id="builderNavRow">
+
+                        <button
+                            class="btnOutline builderNavBtn"
+                            type="button"
+                            id="builderBackBtn"
+                            style="visibility: hidden;"
+                        >
+
+                            &larr; Back
+
+                        </button>
+
+                        <button
+                            class="btnPrimary builderNavBtn"
+                            type="button"
+                            id="builderNextBtn"
+                            disabled
+                        >
+
+                            Next &rarr;
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================================================
+             FOOTER
+        ============================================================ -->
+
+        <footer class="siteFooter" id="footer">
+
+            <div class="footerWatermark" aria-hidden="true">
+
+                <img
+                    class="footerWatermarkImg"
+                    src="graphics/logos/digitalLogo.jpg"
+                    alt=""
+                >
+
+            </div>
+
+            <div class="footerInner">
+
+                <div class="footerTop">
+
+                    <!-- ── Brand ── -->
+
+                    <div class="footerBrand">
+
+                        <img
+                            class="footerLogo"
+                            src="graphics/logos/TP740Logo.png"
+                            alt="740Eatz"
+                        >
+
+                        <p class="footerTagline">Treats that hit different.</p>
+
+                        <!-- ── Social / Message Icon Links ── -->
+
+                        <div class="footerSocial" role="list">
+
+                            <a
+                                class="footerSocialLink"
+                                role="listitem"
+                                href="https://www.facebook.com/profile.php?id=61558663167143"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Follow 740Eatz on Facebook"
+                            >
+
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                    focusable="false"
+                                >
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                </svg>
+
+                            </a>
+
+                            <a
+                                class="footerSocialLink"
+                                role="listitem"
+                                href="tel:+12202408435"
+                                aria-label="Call or text 740Eatz at (220) 240-8435"
+                            >
+
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                    focusable="false"
+                                >
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.58a16 16 0 0 0 6.06 6.06l.85-.85a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+
+                            </a>
+
+                            <a
+                                class="footerSocialLink"
+                                role="listitem"
+                                href="https://www.tiktok.com/@brigitterheaa"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Follow 740Eatz on TikTok"
+                            >
+
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    stroke="none"
+                                    aria-hidden="true"
+                                    focusable="false"
+                                >
+                                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.74a8.18 8.18 0 0 0 4.78 1.52V6.8a4.85 4.85 0 0 1-1.01-.11z"/>
+                                </svg>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ── Contact ── -->
+
+                    <div class="footerInfo">
+
+                        <h4 class="footerHeading">Contact</h4>
+
+                        <p class="footerText">
+
+                            <a class="footerLink" href="tel:+12202408435">(220) 240-8435</a>
+
+                        </p>
+
+                        <!-- [V2 MESSENGER LINK HOOK] -->
+                        <!-- Replace href below with: https://m.me/[MESSENGER_PAGE_ID] -->
+
+                        <p class="footerText">
+
+                            <a
+                                class="footerLink"
+                                href="https://www.facebook.com/profile.php?id=61558663167143"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+
+                                Message on Facebook
+
+                            </a>
+
+                        </p>
+
+                    </div>
+
+                    <!-- ── Pickup Location ── -->
+
+                    <div class="footerInfo">
+
+                        <h4 class="footerHeading">Pickup Location</h4>
+
+                        <address class="footerAddress">
+
+                            429 2nd Street<br>
+                            Portsmouth, OH 45662
+
+                        </address>
+
+                        <p class="footerTextSm">
+
+                            Pickup details are confirmed after your order is received.
+
+                        </p>
+
+                    </div>
+
+                    <!-- ── Pickup Days ── -->
+
+                    <div class="footerInfo">
+
+                        <h4 class="footerHeading">Pickup Days</h4>
+
+                        <ul class="footerPickupDays">
+
+                            <li>Monday</li>
+
+                            <li>Wednesday</li>
+
+                            <li>Friday</li>
+
+                        </ul>
+
+                        <p class="footerTextSm">
+
+                            Orders are prepared fresh and available by scheduled pickup.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="footerBottom">
+
+                    <p class="footerCopyright">&copy; <span id="copyrightYear"></span> 740Eatz. All rights reserved.</p>
+
+                    <a
+                        class="footerDevCredit"
+                        href="https://nulostudio.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <span class="footerDevText">Developed by</span>
+
+                        <img
+                            class="footerDevLogo"
+                            src="graphics/logos/TPNulo_StudioLogo.png"
+                            alt="Nulo Studio"
+                        >
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+        <script src="js/indexJS.js"></script>
+
+    </body>
+
+</html>
+

@@ -1,0 +1,2740 @@
+/* ============================================================
+   STYLE PAGES — 740EATZ V2
+   Inner page styles for: Menu, Gallery, About, Reviews,
+   FAQ, Contact, Review Funnel, Review Card/Sticker
+============================================================ */
+
+
+/* ============================================================
+   MENU PAGE
+============================================================ */
+
+.menuSection
+{
+
+    background-color: var(--clrBlack);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.menuSection:nth-child(even)
+{
+
+    background-color: var(--clrPanelAlt);
+
+}
+
+/* ── Category Header ── */
+
+.menuCategoryHeader
+{
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 1.5rem;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 2.5rem;
+
+    padding-bottom: 1.5rem;
+
+    border-bottom: 1px solid rgba(255, 20, 157, 0.15);
+
+}
+
+.menuCategoryTitle
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: clamp(2rem, 6vw, 3.5rem);
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.02em;
+
+    line-height: 1;
+
+}
+
+.menuCategoryNote
+{
+
+    font-size: 0.82rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.6;
+
+    max-width: 340px;
+
+}
+
+/* ── Menu Product Grid ── */
+
+.menuProductGrid
+{
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 1.5rem;
+
+}
+
+/* ── Menu Product Card ── */
+
+.menuProductCard
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    background-color: var(--clrPanel);
+
+    border-radius: var(--radiusCard);
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 20, 157, 0.2);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+.menuProductCard:hover
+{
+
+    border-color: var(--clrHotPink);
+
+    box-shadow: var(--glowBox);
+
+    transform: translateY(-3px);
+
+}
+
+.menuProductImgWrap
+{
+
+    position: relative;
+
+    overflow: hidden;
+
+    aspect-ratio: 4 / 3;
+
+    background-color: #080508;
+
+}
+
+.menuProductImg
+{
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition: transform 0.45s ease;
+
+}
+
+.menuProductCard:hover .menuProductImg
+{
+
+    transform: scale(1.05);
+
+}
+
+.menuProductBody
+{
+
+    padding: 1.4rem 1.5rem 1.7rem;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.55rem;
+
+}
+
+.menuProductName
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: 1.5rem;
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.03em;
+
+    line-height: 1.05;
+
+}
+
+.menuProductDesc
+{
+
+    font-size: 0.88rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.7;
+
+    flex: 1;
+
+}
+
+.menuProductPrice
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.9rem;
+
+    font-weight: 700;
+
+    color: var(--clrHotPink);
+
+    text-shadow: 0 0 8px rgba(255, 20, 157, 0.4);
+
+}
+
+/* ── Flavor Tags ── */
+
+.menuFlavorList
+{
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.4rem;
+
+    margin-top: 0.35rem;
+
+}
+
+.menuFlavorTag
+{
+
+    display: inline-block;
+
+    padding: 0.25rem 0.7rem;
+
+    background-color: rgba(255, 20, 157, 0.08);
+
+    border: 1px solid rgba(255, 20, 157, 0.22);
+
+    border-radius: var(--radiusPill);
+
+    font-size: 0.72rem;
+
+    font-weight: 600;
+
+    color: var(--clrSoftText);
+
+    white-space: nowrap;
+
+}
+
+/* ── Chocolate Option Tags ── */
+
+.menuChocoTag
+{
+
+    display: inline-block;
+
+    padding: 0.25rem 0.7rem;
+
+    background-color: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: var(--radiusPill);
+
+    font-size: 0.72rem;
+
+    font-weight: 600;
+
+    color: var(--clrMuted);
+
+    white-space: nowrap;
+
+}
+
+/* ── Menu Card Footer ── */
+
+.menuProductFooter
+{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    gap: 0.85rem;
+
+    margin-top: 0.75rem;
+
+    padding-top: 0.85rem;
+
+    border-top: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+/* ── Featured Menu Item ── */
+
+.menuProductCardFeatured
+{
+
+    border-color: var(--clrBorderPink);
+
+    box-shadow: var(--glowBox);
+
+}
+
+/* ── Menu CTA Banner ── */
+
+.menuCtaBanner
+{
+
+    background-color: var(--clrPanelAlt);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.15);
+
+    border-bottom: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.menuCtaInner
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 1.25rem;
+
+    padding-top: 3.5rem;
+
+    padding-bottom: 3.5rem;
+
+    max-width: 560px;
+
+}
+
+.menuCtaHeadline
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: clamp(2rem, 6vw, 3.5rem);
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.02em;
+
+    line-height: 0.95;
+
+}
+
+.menuCtaNote
+{
+
+    font-size: 0.9rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.7;
+
+}
+
+
+/* ── Menu Tablet ── */
+
+@media (min-width: 640px)
+{
+
+    .menuProductGrid
+    {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+@media (min-width: 1024px)
+{
+
+    .menuProductGrid
+    {
+
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+}
+
+
+/* ============================================================
+   GALLERY PAGE
+============================================================ */
+
+.galleryPageSection
+{
+
+    background-color: var(--clrBlack);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.08);
+
+}
+
+/* ── Filter Bar ── */
+
+.galleryFilterBar
+{
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 0.5rem;
+
+    margin-bottom: 2.5rem;
+
+    padding-bottom: 1.5rem;
+
+    border-bottom: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.galleryFilterBtn
+{
+
+    display: inline-block;
+
+    padding: 0.5rem 1.2rem;
+
+    background-color: transparent;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: var(--radiusPill);
+
+    font-family: var(--fontSans);
+
+    font-size: 0.76rem;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.1em;
+
+    color: var(--clrMuted);
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        background-color 0.2s ease;
+
+}
+
+.galleryFilterBtn:hover
+{
+
+    border-color: rgba(255, 20, 157, 0.5);
+
+    color: var(--clrSoftText);
+
+}
+
+.galleryFilterBtn.filterActive
+{
+
+    border-color: var(--clrHotPink);
+
+    background-color: rgba(255, 20, 157, 0.1);
+
+    color: var(--clrHotPink);
+
+    box-shadow: 0 0 10px rgba(255, 20, 157, 0.2);
+
+}
+
+/* ── Masonry Grid ── */
+
+.galleryMasonry
+{
+
+    columns: 2;
+
+    column-gap: 8px;
+
+}
+
+.galleryMasonryItem
+{
+
+    break-inside: avoid;
+
+    margin-bottom: 8px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    background-color: var(--clrPanel);
+
+}
+
+.galleryMasonryItem.galleryHidden
+{
+
+    display: none;
+
+}
+
+.galleryMasonryImg
+{
+
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    border-radius: 8px;
+
+    transition: transform 0.4s ease, filter 0.3s ease;
+
+}
+
+.galleryMasonryItem:hover .galleryMasonryImg
+{
+
+    transform: scale(1.04);
+
+    filter: brightness(1.08);
+
+}
+
+/* ── Gallery Item Overlay ── */
+
+.galleryMasonryOverlay
+{
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(3, 3, 3, 0);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 8px;
+
+    transition: background 0.3s ease;
+
+}
+
+.galleryMasonryItem:hover .galleryMasonryOverlay
+{
+
+    background: rgba(3, 3, 3, 0.45);
+
+}
+
+.galleryMasonryZoom
+{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 44px;
+
+    height: 44px;
+
+    border: 2px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 1.1rem;
+
+    opacity: 0;
+
+    transform: scale(0.7);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+.galleryMasonryItem:hover .galleryMasonryZoom
+{
+
+    opacity: 1;
+
+    transform: scale(1);
+
+}
+
+/* ── Masonry Breakpoints ── */
+
+@media (min-width: 640px)
+{
+
+    .galleryMasonry
+    {
+
+        columns: 3;
+
+    }
+
+}
+
+@media (min-width: 1024px)
+{
+
+    .galleryMasonry
+    {
+
+        columns: 4;
+
+    }
+
+}
+
+
+/* ── Lightbox ── */
+
+.galleryLightbox
+{
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background-color: rgba(3, 3, 3, 0.96);
+
+    z-index: 500;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 2rem;
+
+}
+
+.galleryLightbox.lightboxOpen
+{
+
+    display: flex;
+
+}
+
+.lightboxImgWrap
+{
+
+    position: relative;
+
+    max-width: 900px;
+
+    width: 100%;
+
+    max-height: 90vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.lightboxImg
+{
+
+    max-width: 100%;
+
+    max-height: 85vh;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+
+}
+
+.lightboxClose
+{
+
+    position: fixed;
+
+    top: 1.5rem;
+
+    right: 1.5rem;
+
+    background: none;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 50%;
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--clrSoftText);
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    transition: border-color 0.2s ease, color 0.2s ease;
+
+    z-index: 501;
+
+}
+
+.lightboxClose:hover
+{
+
+    border-color: var(--clrHotPink);
+
+    color: var(--clrHotPink);
+
+}
+
+.lightboxPrev,
+.lightboxNext
+{
+
+    position: fixed;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background: rgba(3, 3, 3, 0.6);
+
+    border: 1px solid rgba(255, 20, 157, 0.3);
+
+    border-radius: 8px;
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--clrSoftText);
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    z-index: 501;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+
+}
+
+.lightboxPrev
+{
+
+    left: 1rem;
+
+}
+
+.lightboxNext
+{
+
+    right: 1rem;
+
+}
+
+.lightboxPrev:hover,
+.lightboxNext:hover
+{
+
+    background-color: rgba(255, 20, 157, 0.12);
+
+    border-color: var(--clrHotPink);
+
+    color: var(--clrHotPink);
+
+}
+
+
+/* ============================================================
+   ABOUT PAGE
+============================================================ */
+
+.aboutStorySection
+{
+
+    background-color: var(--clrBlack);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.aboutStoryGrid
+{
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 3rem;
+
+    align-items: center;
+
+}
+
+.aboutStoryImg
+{
+
+    width: 100%;
+
+    border-radius: var(--radiusCard);
+
+    border: 1px solid var(--clrBorderPink);
+
+    box-shadow: var(--glowBox);
+
+    object-fit: cover;
+
+    aspect-ratio: 4 / 3;
+
+}
+
+.aboutStoryContent
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.25rem;
+
+}
+
+.aboutStoryLabel
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.22em;
+
+    color: var(--clrHotPink);
+
+    text-shadow: 0 0 10px rgba(255, 20, 157, 0.5);
+
+}
+
+.aboutStoryHeadline
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: clamp(2rem, 6vw, 3.5rem);
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.02em;
+
+    line-height: 1;
+
+}
+
+.aboutStoryText
+{
+
+    font-size: 0.95rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.8;
+
+}
+
+.aboutStoryText + .aboutStoryText
+{
+
+    margin-top: -0.25rem;
+
+}
+
+@media (min-width: 768px)
+{
+
+    .aboutStoryGrid
+    {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+}
+
+
+/* ── About Values ── */
+
+.aboutValuesSection
+{
+
+    background-color: var(--clrPanelAlt);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.aboutValuesGrid
+{
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 1.5rem;
+
+}
+
+.aboutValueCard
+{
+
+    background-color: var(--clrPanel);
+
+    border: 1px solid rgba(255, 20, 157, 0.15);
+
+    border-radius: var(--radiusCard);
+
+    padding: 1.75rem 1.6rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.75rem;
+
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+}
+
+.aboutValueCard:hover
+{
+
+    border-color: rgba(255, 20, 157, 0.4);
+
+    box-shadow: 0 4px 20px rgba(255, 20, 157, 0.08);
+
+}
+
+.aboutValueIcon
+{
+
+    font-size: 1.8rem;
+
+    line-height: 1;
+
+}
+
+.aboutValueTitle
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: 1.3rem;
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.04em;
+
+    line-height: 1.1;
+
+}
+
+.aboutValueDesc
+{
+
+    font-size: 0.88rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.72;
+
+}
+
+@media (min-width: 640px)
+{
+
+    .aboutValuesGrid
+    {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+@media (min-width: 1024px)
+{
+
+    .aboutValuesGrid
+    {
+
+        grid-template-columns: repeat(4, 1fr);
+
+    }
+
+}
+
+
+/* ── Owner Photo Section ── */
+
+.aboutOwnerSection
+{
+
+    background-color: var(--clrBlack);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.aboutOwnerGrid
+{
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 3rem;
+
+    align-items: center;
+
+}
+
+.aboutOwnerImgWrap
+{
+
+    position: relative;
+
+    border-radius: var(--radiusCard);
+
+    overflow: hidden;
+
+    aspect-ratio: 3 / 4;
+
+    max-width: 440px;
+
+    margin: 0 auto;
+
+}
+
+.aboutOwnerImg
+{
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center top;
+
+}
+
+.aboutOwnerGlow
+{
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    right: 0;
+
+    height: 40%;
+
+    background: linear-gradient(to top, var(--clrBlack), transparent);
+
+    pointer-events: none;
+
+}
+
+.aboutOwnerContent
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.1rem;
+
+}
+
+.aboutOwnerName
+{
+
+    font-family: var(--fontScript);
+
+    font-size: clamp(2rem, 5vw, 3rem);
+
+    font-weight: 700;
+
+    color: var(--clrHotPink);
+
+    text-shadow: var(--glowText);
+
+    line-height: 1;
+
+}
+
+.aboutOwnerRole
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.72rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.18em;
+
+    color: var(--clrMuted);
+
+}
+
+.aboutOwnerQuote
+{
+
+    font-size: 1.05rem;
+
+    color: var(--clrSoftText);
+
+    line-height: 1.75;
+
+    font-style: italic;
+
+    border-left: 3px solid var(--clrHotPink);
+
+    padding-left: 1.2rem;
+
+}
+
+.aboutOwnerDesc
+{
+
+    font-size: 0.9rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.8;
+
+}
+
+@media (min-width: 768px)
+{
+
+    .aboutOwnerGrid
+    {
+
+        grid-template-columns: 1fr 1.2fr;
+
+        gap: 4rem;
+
+    }
+
+    .aboutOwnerImgWrap
+    {
+
+        margin: 0;
+
+        max-width: none;
+
+    }
+
+}
+
+
+/* ============================================================
+   REVIEWS PAGE
+============================================================ */
+
+.reviewsPageSection
+{
+
+    background-color: var(--clrBlack);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.reviewsPageGrid
+{
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 1.25rem;
+
+    margin-bottom: 3rem;
+
+}
+
+@media (min-width: 640px)
+{
+
+    .reviewsPageGrid
+    {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+@media (min-width: 1024px)
+{
+
+    .reviewsPageGrid
+    {
+
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+}
+
+/* ── Google Review Card ── */
+
+.googleReviewCard
+{
+
+    background-color: var(--clrPanel);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: var(--radiusCard);
+
+    padding: 1.6rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.85rem;
+
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+}
+
+.googleReviewCard:hover
+{
+
+    border-color: rgba(255, 20, 157, 0.35);
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+}
+
+.googleReviewStars
+{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.15rem;
+
+}
+
+.googleStar
+{
+
+    font-size: 1rem;
+
+    color: var(--clrAmber);
+
+    line-height: 1;
+
+}
+
+.googleReviewText
+{
+
+    font-size: 0.92rem;
+
+    color: var(--clrSoftText);
+
+    line-height: 1.72;
+
+    font-style: italic;
+
+    flex: 1;
+
+}
+
+.googleReviewMeta
+{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.6rem;
+
+}
+
+.googleReviewAvatar
+{
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    background-color: rgba(255, 20, 157, 0.15);
+
+    border: 1px solid rgba(255, 20, 157, 0.3);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family: var(--fontCondensed);
+
+    font-size: 0.9rem;
+
+    color: var(--clrHotPink);
+
+    flex-shrink: 0;
+
+}
+
+.googleReviewAuthor
+{
+
+    font-size: 0.82rem;
+
+    font-weight: 600;
+
+    color: var(--clrSoftText);
+
+}
+
+.googleReviewSource
+{
+
+    font-size: 0.72rem;
+
+    color: var(--clrMuted);
+
+}
+
+/* ── Placeholder ── */
+
+.googleReviewCardPlaceholder
+{
+
+    border-style: dashed;
+
+    border-color: rgba(255, 255, 255, 0.06);
+
+    opacity: 0.55;
+
+}
+
+/* ── Reviews CTA Panel ── */
+
+.reviewsLeavePanel
+{
+
+    background-color: var(--clrPanelAlt);
+
+    border: 1px solid rgba(255, 20, 157, 0.2);
+
+    border-radius: var(--radiusCard);
+
+    padding: 2.5rem 2rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 1.25rem;
+
+    max-width: 540px;
+
+    margin: 0 auto;
+
+}
+
+.reviewsLeaveIcon
+{
+
+    font-size: 2.5rem;
+
+    line-height: 1;
+
+}
+
+.reviewsLeaveHeadline
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.04em;
+
+    line-height: 1;
+
+}
+
+.reviewsLeaveText
+{
+
+    font-size: 0.9rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.72;
+
+    max-width: 380px;
+
+}
+
+
+/* ============================================================
+   FAQ PAGE
+============================================================ */
+
+.faqSection
+{
+
+    background-color: var(--clrBlack);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.faqList
+{
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+
+}
+
+/* ── Accordion Item ── */
+
+.faqItem
+{
+
+    border-bottom: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.faqItem:first-child
+{
+
+    border-top: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.faqQuestion
+{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    padding: 1.4rem 0;
+
+    cursor: pointer;
+
+    background: none;
+
+    border: none;
+
+    width: 100%;
+
+    text-align: left;
+
+    color: var(--clrWhite);
+
+    transition: color 0.2s ease;
+
+}
+
+.faqQuestion:hover
+{
+
+    color: var(--clrHotPink);
+
+}
+
+.faqQuestionText
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: 1.25rem;
+
+    font-weight: 400;
+
+    color: inherit;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.03em;
+
+    line-height: 1.2;
+
+    flex: 1;
+
+}
+
+.faqIcon
+{
+
+    width: 28px;
+
+    height: 28px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid rgba(255, 20, 157, 0.3);
+
+    border-radius: 50%;
+
+    color: var(--clrHotPink);
+
+    font-size: 0.9rem;
+
+    transition:
+        transform 0.3s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+
+}
+
+.faqItem.faqOpen .faqIcon
+{
+
+    transform: rotate(45deg);
+
+    background-color: rgba(255, 20, 157, 0.1);
+
+    border-color: var(--clrHotPink);
+
+}
+
+.faqAnswer
+{
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition: max-height 0.35s ease, padding 0.35s ease;
+
+}
+
+.faqItem.faqOpen .faqAnswer
+{
+
+    max-height: 400px;
+
+}
+
+.faqAnswerInner
+{
+
+    padding-bottom: 1.4rem;
+
+}
+
+.faqAnswerText
+{
+
+    font-size: 0.92rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.8;
+
+}
+
+.faqAnswerText + .faqAnswerText
+{
+
+    margin-top: 0.75rem;
+
+}
+
+.faqAnswerLink
+{
+
+    color: var(--clrHotPink);
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: text-shadow 0.2s ease;
+
+}
+
+.faqAnswerLink:hover
+{
+
+    text-shadow: 0 0 8px rgba(255, 20, 157, 0.6);
+
+}
+
+
+/* ============================================================
+   CONTACT PAGE
+============================================================ */
+
+.contactSection
+{
+
+    background-color: var(--clrBlack);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.contactGrid
+{
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 3.5rem;
+
+    align-items: start;
+
+}
+
+@media (min-width: 768px)
+{
+
+    .contactGrid
+    {
+
+        grid-template-columns: 1fr 1.2fr;
+
+        gap: 4rem;
+
+    }
+
+}
+
+/* ── Contact Info ── */
+
+.contactInfoColumn
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2rem;
+
+}
+
+.contactInfoBlock
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.5rem;
+
+}
+
+.contactInfoLabel
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.2em;
+
+    color: var(--clrHotPink);
+
+    text-shadow: 0 0 8px rgba(255, 20, 157, 0.4);
+
+}
+
+.contactInfoValue
+{
+
+    font-size: 1rem;
+
+    color: var(--clrSoftText);
+
+    line-height: 1.65;
+
+}
+
+.contactInfoLink
+{
+
+    display: inline-block;
+
+    color: var(--clrSoftText);
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+    transition: color 0.2s ease;
+
+}
+
+.contactInfoLink:hover
+{
+
+    color: var(--clrHotPink);
+
+}
+
+.contactHoursGrid
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.3rem;
+
+}
+
+.contactHoursRow
+{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    font-size: 0.88rem;
+
+    color: var(--clrMuted);
+
+}
+
+.contactHoursRow.contactHoursActive
+{
+
+    color: var(--clrSoftText);
+
+}
+
+.contactHoursDot
+{
+
+    width: 6px;
+
+    height: 6px;
+
+    background-color: var(--clrNeonGreen);
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 6px var(--clrNeonGreen);
+
+    flex-shrink: 0;
+
+}
+
+/* ── Map Placeholder ── */
+
+.contactMapPlaceholder
+{
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    max-height: 280px;
+
+    background-color: var(--clrPanel);
+
+    border: 1px solid rgba(255, 20, 157, 0.15);
+
+    border-radius: var(--radiusCard);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 0.75rem;
+
+    overflow: hidden;
+
+    position: relative;
+
+}
+
+.contactMapGrid
+{
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(255, 20, 157, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 20, 157, 0.04) 1px, transparent 1px);
+
+    background-size: 32px 32px;
+
+}
+
+.contactMapPin
+{
+
+    position: relative;
+
+    z-index: 1;
+
+    font-size: 2rem;
+
+    line-height: 1;
+
+}
+
+.contactMapAddress
+{
+
+    position: relative;
+
+    z-index: 1;
+
+    font-family: var(--fontSans);
+
+    font-size: 0.82rem;
+
+    font-weight: 600;
+
+    color: var(--clrSoftText);
+
+    text-align: center;
+
+    line-height: 1.55;
+
+}
+
+.contactMapLink
+{
+
+    position: relative;
+
+    z-index: 1;
+
+    font-size: 0.75rem;
+
+    color: var(--clrHotPink);
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    letter-spacing: 0.06em;
+
+    text-transform: uppercase;
+
+    transition: text-shadow 0.2s ease;
+
+}
+
+.contactMapLink:hover
+{
+
+    text-shadow: 0 0 8px rgba(255, 20, 157, 0.6);
+
+}
+
+/* ── Contact Form Column ── */
+
+.contactFormColumn
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.25rem;
+
+}
+
+.contactFormHeadline
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.03em;
+
+    line-height: 1.05;
+
+    margin-bottom: 0.25rem;
+
+}
+
+.contactForm
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+
+}
+
+
+/* ============================================================
+   REVIEW FUNNEL
+============================================================ */
+
+.funnelPage
+{
+
+    min-height: 100vh;
+
+    background-color: var(--clrBlack);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 2rem 1.5rem;
+
+    padding-top: calc(var(--headerH) + 2rem);
+
+}
+
+.funnelCard
+{
+
+    background-color: var(--clrPanel);
+
+    border: 1px solid var(--clrBorderPink);
+
+    border-radius: 20px;
+
+    padding: 2.5rem 2rem 3rem;
+
+    max-width: 480px;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 1.5rem;
+
+    box-shadow: var(--glowBox), 0 24px 60px rgba(0, 0, 0, 0.6);
+
+}
+
+.funnelLogo
+{
+
+    height: 60px;
+
+    width: auto;
+
+}
+
+.funnelHeadline
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.03em;
+
+    line-height: 1;
+
+}
+
+.funnelSub
+{
+
+    font-size: 0.9rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.7;
+
+    max-width: 340px;
+
+}
+
+/* ── Star Rating ── */
+
+.starRatingRow
+{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 0.5rem;
+
+}
+
+.starBtn
+{
+
+    background: none;
+
+    border: none;
+
+    font-size: 2.5rem;
+
+    line-height: 1;
+
+    color: rgba(255, 255, 255, 0.15);
+
+    cursor: pointer;
+
+    transition: color 0.15s ease, transform 0.15s ease;
+
+    padding: 0.1rem;
+
+}
+
+.starBtn:hover,
+.starBtn.starFilled
+{
+
+    color: var(--clrAmber);
+
+    transform: scale(1.15);
+
+}
+
+.starBtn.starFilled
+{
+
+    text-shadow: 0 0 12px rgba(255, 184, 0, 0.6);
+
+}
+
+/* ── Step Panels ── */
+
+.funnelStep
+{
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 1.25rem;
+
+}
+
+.funnelStepHidden
+{
+
+    display: none;
+
+}
+
+/* ── Redirect Message ── */
+
+.funnelRedirectNote
+{
+
+    font-size: 0.82rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.6;
+
+}
+
+/* ── Internal Feedback Form ── */
+
+.funnelFeedbackForm
+{
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+
+    text-align: left;
+
+}
+
+.funnelFeedbackNote
+{
+
+    font-size: 0.82rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.6;
+
+    text-align: center;
+
+}
+
+
+/* ============================================================
+   REVIEW CARD — PRINTABLE
+============================================================ */
+
+.reviewCardPage
+{
+
+    min-height: 100vh;
+
+    background-color: var(--clrBlack);
+
+    padding: 2rem 1.5rem;
+
+    padding-top: calc(var(--headerH) + 2rem);
+
+}
+
+.reviewCardPageInner
+{
+
+    max-width: 860px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3rem;
+
+}
+
+.reviewCardPageLabel
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.7rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.2em;
+
+    color: var(--clrMuted);
+
+    margin-bottom: 0.5rem;
+
+}
+
+.reviewCardPageHeadline
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: clamp(2rem, 5vw, 3rem);
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.02em;
+
+    line-height: 1;
+
+    margin-bottom: 0.5rem;
+
+}
+
+.reviewCardPageSub
+{
+
+    font-size: 0.9rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.7;
+
+}
+
+/* ── Print Area ── */
+
+.reviewPrintArea
+{
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 2rem;
+
+}
+
+@media (min-width: 640px)
+{
+
+    .reviewPrintArea
+    {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+/* ── Review Card Design ── */
+
+.reviewPrintCard
+{
+
+    background: linear-gradient(
+        135deg,
+        #1a0b14 0%,
+        #0d060b 100%
+    );
+
+    border: 1px solid var(--clrBorderPink);
+
+    border-radius: 16px;
+
+    padding: 2rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 1.25rem;
+
+    box-shadow: var(--glowBox);
+
+    min-height: 320px;
+
+    justify-content: space-between;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.reviewPrintCard::before
+{
+
+    content: '';
+
+    position: absolute;
+
+    top: -60px;
+
+    right: -60px;
+
+    width: 180px;
+
+    height: 180px;
+
+    background: var(--clrHotPink);
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    opacity: 0.08;
+
+    pointer-events: none;
+
+}
+
+.reviewCardLogo
+{
+
+    height: 48px;
+
+    width: auto;
+
+}
+
+.reviewCardHeadline
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: 1.6rem;
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.04em;
+
+    line-height: 1;
+
+}
+
+.reviewCardScript
+{
+
+    font-family: var(--fontScript);
+
+    font-size: 1.4rem;
+
+    font-weight: 700;
+
+    color: var(--clrHotPink);
+
+    text-shadow: var(--glowText);
+
+    line-height: 1;
+
+}
+
+.reviewQrPlaceholder
+{
+
+    width: 100px;
+
+    height: 100px;
+
+    background-color: rgba(255, 255, 255, 0.06);
+
+    border: 2px dashed rgba(255, 20, 157, 0.4);
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 0.65rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.12em;
+
+    color: rgba(255, 20, 157, 0.5);
+
+    text-align: center;
+
+    line-height: 1.4;
+
+    padding: 0.5rem;
+
+}
+
+.reviewCardStars
+{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 0.2rem;
+
+    font-size: 1.1rem;
+
+    color: var(--clrAmber);
+
+    text-shadow: 0 0 8px rgba(255, 184, 0, 0.5);
+
+    letter-spacing: 0.1em;
+
+}
+
+.reviewCardNote
+{
+
+    font-size: 0.72rem;
+
+    color: rgba(255, 255, 255, 0.35);
+
+    line-height: 1.5;
+
+}
+
+
+/* ── Sticker Design (smaller, rounder) ── */
+
+.reviewStickerCard
+{
+
+    background: linear-gradient(
+        135deg,
+        #1a0b14 0%,
+        #0d060b 100%
+    );
+
+    border: 2px solid var(--clrHotPink);
+
+    border-radius: 50%;
+
+    width: 220px;
+
+    height: 220px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 0.5rem;
+
+    margin: 0 auto;
+
+    box-shadow: var(--glowBox);
+
+    padding: 1.5rem;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.reviewStickerCard::before
+{
+
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    background: radial-gradient(circle at center, rgba(255, 20, 157, 0.06), transparent 70%);
+
+    pointer-events: none;
+
+}
+
+.reviewStickerLogo
+{
+
+    height: 32px;
+
+    width: auto;
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+.reviewStickerText
+{
+
+    font-family: var(--fontScript);
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    color: var(--clrHotPink);
+
+    text-shadow: var(--glowText);
+
+    line-height: 1.2;
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+.reviewStickerQr
+{
+
+    width: 60px;
+
+    height: 60px;
+
+    background-color: rgba(255, 255, 255, 0.05);
+
+    border: 1px dashed rgba(255, 20, 157, 0.5);
+
+    border-radius: 6px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 0.5rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+
+    color: rgba(255, 20, 157, 0.4);
+
+    text-align: center;
+
+    padding: 0.3rem;
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+.reviewStickerStars
+{
+
+    font-size: 0.7rem;
+
+    color: var(--clrAmber);
+
+    letter-spacing: 0.1em;
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+
+/* ============================================================
+   PRINT STYLES
+============================================================ */
+
+@media print
+{
+
+    .siteHeader,
+    .siteFooter,
+    .pageIntro,
+    .reviewCardPageLabel,
+    .reviewCardPageHeadline,
+    .reviewCardPageSub,
+    .reviewCardPageNote
+    {
+
+        display: none !important;
+
+    }
+
+    body
+    {
+
+        background: white;
+
+    }
+
+    .reviewPrintCard
+    {
+
+        border: 2px solid #ff149d;
+
+        background: white;
+
+        color: black;
+
+        box-shadow: none;
+
+    }
+
+}

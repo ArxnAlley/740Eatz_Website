@@ -13,10 +13,42 @@
 
         <meta
             name="description"
-            content="740Eatz — Custom dessert trays, candy-coated fruit, chocolate-covered strawberries, and specialty pickup orders. Made fresh to order."
+            content="740Eatz — Premium custom desserts in Portsmouth, OH. Candy-coated fruit, chocolate-covered strawberries, and cheesecake stuffed strawberries. Made fresh to order. Call (220) 240-8435."
         >
 
-        <title>740Eatz | Treats That Hit Different</title>
+        <meta name="robots" content="index, follow">
+
+        <meta name="geo.region" content="US-OH">
+
+        <meta name="geo.placename" content="Portsmouth, Ohio">
+
+        <!-- ── Open Graph ── -->
+
+        <meta property="og:type" content="website">
+
+        <meta property="og:site_name" content="740Eatz">
+
+        <meta property="og:title" content="740Eatz | Custom Desserts in Portsmouth, OH">
+
+        <meta property="og:description" content="Candy-coated fruit, chocolate-covered strawberries, and cheesecake stuffed strawberries. Made fresh to order in Portsmouth, Ohio.">
+
+        <meta property="og:image" content="graphics/images/mainChocoFruit.jpg">
+
+        <meta property="og:locale" content="en_US">
+
+        <!-- ── Twitter Card ── -->
+
+        <meta name="twitter:card" content="summary_large_image">
+
+        <meta name="twitter:title" content="740Eatz | Custom Desserts in Portsmouth, OH">
+
+        <meta name="twitter:description" content="Premium custom desserts made fresh to order in Portsmouth, Ohio.">
+
+        <meta name="twitter:image" content="graphics/images/mainChocoFruit.jpg">
+
+        <title>740Eatz | Custom Desserts Made Fresh in Portsmouth, OH</title>
+
+        <!-- ── Fonts ── -->
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -29,9 +61,50 @@
 
         <link rel="stylesheet" href="css/styleIndex.css">
 
+        <!-- ── Local Business Schema ── -->
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": ["LocalBusiness", "Bakery"],
+            "name": "740Eatz",
+            "description": "Custom desserts made fresh to order in Portsmouth, Ohio. Specializing in candy-coated fruit, chocolate-covered strawberries, and cheesecake stuffed strawberries.",
+            "url": "https://740eatz.com",
+            "telephone": "+12202408435",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "429 2nd St",
+                "addressLocality": "Portsmouth",
+                "addressRegion": "OH",
+                "postalCode": "45662",
+                "addressCountry": "US"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "38.7318",
+                "longitude": "-82.9977"
+            },
+            "sameAs": [
+                "https://www.facebook.com/profile.php?id=61558663167143",
+                "https://www.tiktok.com/@brigitterheaa"
+            ],
+            "priceRange": "$$",
+            "servesCuisine": ["Desserts", "Candy", "Strawberries"],
+            "hasMap": "https://maps.google.com/?q=429+2nd+St+Portsmouth+OH+45662",
+            "openingHoursSpecification": [
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Monday", "Wednesday", "Friday"],
+                    "description": "Pickup available by scheduled order only"
+                }
+            ]
+        }
+        </script>
+
     </head>
 
     <body>
+
 
         <!-- ============================================================
              HEADER
@@ -41,12 +114,14 @@
 
             <div class="headerInner">
 
-                <a class="logoLink" href="#home">
+                <a class="logoLink" href="index.html" aria-label="740Eatz Home">
 
                     <img
                         class="headerLogo"
-                        src="graphics/logos/digitalLogo.jpg"
+                        src="graphics/logos/TP740Logo.png"
                         alt="740Eatz"
+                        width="120"
+                        height="72"
                     >
 
                 </a>
@@ -57,31 +132,101 @@
 
                         <li class="navItem">
 
-                            <a class="navLink" href="#home">Home</a>
+                            <a class="navLink navLinkActive" href="index.html">Home</a>
+
+                        </li>
+
+                        <li class="navItem" id="menuDropdownItem">
+
+                            <button
+                                class="navLink navLinkHasDropdown"
+                                id="menuDropdownBtn"
+                                type="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+
+                                Menu
+
+                                <span class="navCaret" aria-hidden="true">&#9660;</span>
+
+                            </button>
+
+                            <ul class="navSubList" id="menuDropdownList" role="menu">
+
+                                <li role="none">
+
+                                    <a
+                                        class="navSubLink"
+                                        href="menu.html#candiedFruit"
+                                        role="menuitem"
+                                    >
+
+                                        Candied Fruit
+
+                                    </a>
+
+                                </li>
+
+                                <li role="none">
+
+                                    <a
+                                        class="navSubLink"
+                                        href="menu.html#chocoStrawberries"
+                                        role="menuitem"
+                                    >
+
+                                        Chocolate Covered Strawberries
+
+                                    </a>
+
+                                </li>
+
+                                <li role="none">
+
+                                    <a
+                                        class="navSubLink"
+                                        href="menu.html#cheesecakeStrawberries"
+                                        role="menuitem"
+                                    >
+
+                                        Cheesecake Stuffed Strawberries
+
+                                    </a>
+
+                                </li>
+
+                            </ul>
 
                         </li>
 
                         <li class="navItem">
 
-                            <a class="navLink" href="#treats">Treats</a>
+                            <a class="navLink" href="about.html">About</a>
 
                         </li>
 
                         <li class="navItem">
 
-                            <a class="navLink" href="#gallery">Gallery</a>
+                            <a class="navLink" href="gallery.html">Gallery</a>
 
                         </li>
 
                         <li class="navItem">
 
-                            <a class="navLink" href="#howItWorks">How It Works</a>
+                            <a class="navLink" href="reviews.html">Reviews</a>
 
                         </li>
 
                         <li class="navItem">
 
-                            <a class="navLink" href="#order">Order</a>
+                            <a class="navLink" href="faq.html">FAQ</a>
+
+                        </li>
+
+                        <li class="navItem">
+
+                            <a class="navLink" href="contact.html">Contact</a>
 
                         </li>
 
@@ -89,14 +234,9 @@
 
                 </nav>
 
-                <a
-                    class="btnPrimary headerCta"
-                    href="https://facebook.com/740Eatz"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a class="btnPrimary headerCta" href="orderPage.html">
 
-                    Order on Facebook
+                    Request an Order
 
                 </a>
 
@@ -134,7 +274,7 @@
 
                     <p class="heroEyebrow">
 
-                        <span class="heroEyebrowScript">Sweet Boxes</span>
+                        <span class="heroEyebrowScript">Made in Portsmouth, OH</span>
 
                     </p>
 
@@ -148,24 +288,23 @@
 
                     <p class="heroSub">
 
-                        Custom dessert trays, candy-coated fruit, chocolate-covered strawberries, and specialty pickup orders &mdash; made fresh, every single time.
+                        Premium candy-coated fruit, chocolate-covered strawberries, and cheesecake stuffed strawberries &mdash; handcrafted fresh for every order.
 
                     </p>
 
                     <div class="heroCtas">
 
-                        <a
-                            class="btnPrimary btnLarge"
-                            href="https://facebook.com/740Eatz"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <a class="btnPrimary btnLarge" href="orderPage.html">
 
-                            Order on Facebook
+                            Request an Order
 
                         </a>
 
-                        <a class="btnOutline btnLarge" href="#treats">View Treats</a>
+                        <a class="btnOutline btnLarge" href="menu.html">
+
+                            Browse the Menu
+
+                        </a>
 
                     </div>
 
@@ -173,29 +312,29 @@
 
                         <div class="heroProofItem">
 
-                            <span class="heroProofNum">10K+</span>
+                            <span class="heroProofNum">9.7K+</span>
 
                             <span class="heroProofLabel">Followers</span>
 
                         </div>
 
-                        <span class="heroProofDivider"></span>
-
-                        <div class="heroProofItem">
-
-                            <span class="heroProofNum">5&#9733;</span>
-
-                            <span class="heroProofLabel">Reviews</span>
-
-                        </div>
-
-                        <span class="heroProofDivider"></span>
+                        <span class="heroProofDivider" aria-hidden="true"></span>
 
                         <div class="heroProofItem">
 
                             <span class="heroProofNum">100%</span>
 
-                            <span class="heroProofLabel">Homemade</span>
+                            <span class="heroProofLabel">Recommended</span>
+
+                        </div>
+
+                        <span class="heroProofDivider" aria-hidden="true"></span>
+
+                        <div class="heroProofItem">
+
+                            <span class="heroProofNum">Made Fresh</span>
+
+                            <span class="heroProofLabel">Every Order</span>
 
                         </div>
 
@@ -205,14 +344,16 @@
 
                 <div class="heroVisual">
 
-                    <div class="heroGlow"></div>
+                    <div class="heroGlow" aria-hidden="true"></div>
 
                     <div class="heroImgWrap">
 
                         <img
                             class="heroProductImg"
                             src="graphics/images/mainChocoFruit.jpg"
-                            alt="740Eatz signature candy tray"
+                            alt="740Eatz signature chocolate-covered strawberries"
+                            width="480"
+                            height="360"
                         >
 
                     </div>
@@ -229,10 +370,10 @@
 
 
         <!-- ============================================================
-             FEATURED TREATS SECTION
+             FEATURED SHOWCASE SECTION
         ============================================================ -->
 
-        <section class="treatsSection" id="treats">
+        <section class="showcaseSection" id="showcase">
 
             <div class="sectionInner">
 
@@ -242,178 +383,225 @@
 
                 </div>
 
-                <h2 class="sectionHeadline">Our Treats</h2>
+                <h2 class="sectionHeadline">Handcrafted to Order</h2>
 
                 <p class="sectionSub">
 
-                    Made fresh to order. Never pre-made. Always bold.
+                    Every treat is made fresh for your pickup date. No shortcuts. No leftovers.
 
                 </p>
 
-                <div class="treatsGrid">
+                <div class="showcaseLayout">
 
-                    <div class="treatCard">
+                    <!-- ── Feature: Candied Fruit ── -->
 
-                        <div class="treatImgWrap">
+                    <div class="showcaseFeatureCard">
+
+                        <div class="showcaseFeatureImgWrap">
 
                             <img
-                                class="treatImg"
-                                src="graphics/images/classicPlatter.jpg"
-                                alt="Candy Trays"
+                                class="showcaseFeatureImg"
+                                src="graphics/images/fanFavPlatter-BlueRas.jpg"
+                                alt="Candy-coated blue raspberry fruit platter"
                                 loading="lazy"
+                                width="640"
+                                height="360"
                             >
 
-                            <span class="treatIconBadge">&#10022;</span>
+                            <span class="showcaseCategoryBadge">Fan Favorite</span>
 
                         </div>
 
-                        <div class="treatBody">
+                        <div class="showcaseFeatureBody">
 
-                            <div class="treatMeta">
+                            <h3 class="showcaseFeatureName">Candied Fruit</h3>
 
-                                <h3 class="treatName">Candy Trays</h3>
+                            <p class="showcaseFeatureDesc">
 
-                                <span class="treatPrice">Custom</span>
+                                Bold candy-coated grapes and pineapples in your choice of flavor. Bluerazz, watermelon, green apple, cotton candy, or Tutti Frutti &mdash; we coat every piece fresh.
+
+                            </p>
+
+                            <div class="showcaseFeatureFooter">
+
+                                <span class="showcaseFeaturePrice">Small $25 &bull; Large $40 &bull; 3 Flavors $45</span>
+
+                                <a class="btnPrimary" href="menu.html#candiedFruit">View Options</a>
 
                             </div>
-
-                            <p class="treatDesc">Fully custom dessert trays built for events, birthdays, and special occasions.</p>
-
-                            <a class="treatLink" href="#order">Order Now <span class="treatArrow">&#8594;</span></a>
 
                         </div>
 
                     </div>
 
-                    <div class="treatCard">
+                    <!-- ── Side Cards ── -->
 
-                        <div class="treatImgWrap">
+                    <div class="showcaseSideCards">
 
-                            <img
-                                class="treatImg"
-                                src="graphics/images/chocoCoveredStrawberries.jpg"
-                                alt="Chocolate Covered Strawberries"
-                                loading="lazy"
-                            >
+                        <!-- Chocolate Covered Strawberries -->
 
-                            <span class="treatIconBadge">&#9829;</span>
+                        <div class="showcaseSideCard">
 
-                        </div>
+                            <div class="showcaseSideImgWrap">
 
-                        <div class="treatBody">
+                                <img
+                                    class="showcaseSideImg"
+                                    src="graphics/images/chocoCoveredStrawberries.jpg"
+                                    alt="Chocolate covered strawberries"
+                                    loading="lazy"
+                                    width="480"
+                                    height="360"
+                                >
 
-                            <div class="treatMeta">
-
-                                <h3 class="treatName">Chocolate Strawberries</h3>
-
-                                <span class="treatPrice">From $25</span>
+                                <span class="showcaseCategoryBadge">$25 / Dozen</span>
 
                             </div>
 
-                            <p class="treatDesc">Premium strawberries dipped in rich chocolate. Classic, elevated, and always a hit.</p>
+                            <div class="showcaseSideBody">
 
-                            <a class="treatLink" href="#order">Order Now <span class="treatArrow">&#8594;</span></a>
+                                <h3 class="showcaseSideName">Chocolate Covered Strawberries</h3>
+
+                                <p class="showcaseSideDesc">
+
+                                    Fresh strawberries dipped in milk, white, or dark chocolate. Perfect for birthdays, anniversaries, and gifts.
+
+                                </p>
+
+                                <div class="showcaseSideFooter">
+
+                                    <span class="showcaseSidePrice">$25 per dozen</span>
+
+                                    <a class="btnOutline" href="menu.html#chocoStrawberries">View</a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Cheesecake Stuffed Strawberries -->
+
+                        <div class="showcaseSideCard">
+
+                            <div class="showcaseSideImgWrap">
+
+                                <img
+                                    class="showcaseSideImg"
+                                    src="graphics/images/chocoCoveredFruit2.jpg"
+                                    alt="Cheesecake stuffed strawberries"
+                                    loading="lazy"
+                                    width="480"
+                                    height="360"
+                                >
+
+                                <span class="showcaseCategoryBadge">$27</span>
+
+                            </div>
+
+                            <div class="showcaseSideBody">
+
+                                <h3 class="showcaseSideName">Cheesecake Stuffed Strawberries</h3>
+
+                                <p class="showcaseSideDesc">
+
+                                    Fresh strawberries filled with a creamy cheesecake mixture. A premium treat for those who want something extra special.
+
+                                </p>
+
+                                <div class="showcaseSideFooter">
+
+                                    <span class="showcaseSidePrice">$27</span>
+
+                                    <a class="btnOutline" href="menu.html#cheesecakeStrawberries">View</a>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                    <div class="treatCard">
+                </div>
 
-                        <div class="treatImgWrap">
+                <div class="showcaseCta">
 
-                            <img
-                                class="treatImg"
-                                src="graphics/images/coatedCandy.jpg"
-                                alt="Candy Grapes and Pineapples"
-                                loading="lazy"
-                            >
+                    <a class="btnPrimary btnLarge" href="menu.html">Browse Full Menu</a>
 
-                            <span class="treatIconBadge">&#9670;</span>
+                </div>
 
-                        </div>
+            </div>
 
-                        <div class="treatBody">
+        </section>
 
-                            <div class="treatMeta">
 
-                                <h3 class="treatName">Candy Grapes &amp; Pineapples</h3>
+        <!-- ============================================================
+             ORDERING STATUS SECTION
+        ============================================================ -->
 
-                                <span class="treatPrice">From $25</span>
+        <section class="orderStatusSection" id="orderStatus">
 
-                            </div>
+            <div class="sectionInner orderStatusInner">
 
-                            <p class="treatDesc">Crunchy candy-coated fruit in bold flavors. A crowd favorite every single time.</p>
+                <div>
 
-                            <a class="treatLink" href="#order">Order Now <span class="treatArrow">&#8594;</span></a>
+                    <span class="statusBadge">
 
-                        </div>
+                        <span class="statusDot" aria-hidden="true"></span>
 
-                    </div>
+                        Now Accepting Orders
 
-                    <div class="treatCard treatCardFeatured">
+                    </span>
 
-                        <div class="treatImgWrap">
+                    <h2 class="statusHeadline" style="margin-top: 1rem;">
 
-                            <img
-                                class="treatImg"
-                                src="graphics/images/festiveBoat.jpg"
-                                alt="Seasonal Specials"
-                                loading="lazy"
-                            >
+                        We&rsquo;re Open
 
-                            <span class="treatIconBadge treatIconGreen">&#9733;</span>
+                        <span class="accentScript">This Week</span>
 
-                        </div>
+                    </h2>
 
-                        <div class="treatBody">
+                    <p class="statusNote" style="margin-top: 0.75rem;">
 
-                            <div class="treatMeta">
+                        Orders are made fresh and available for scheduled pickup on the days below. Submit your request and we&rsquo;ll confirm your day.
 
-                                <h3 class="treatName">Seasonal Specials</h3>
+                    </p>
 
-                                <span class="treatPriceBadge">Limited Drop</span>
+                    <div style="margin-top: 1.5rem;">
 
-                            </div>
-
-                            <p class="treatDesc">Limited seasonal trays and flavor drops. Availability changes weekly &mdash; ask about current specials.</p>
-
-                            <a class="treatLink" href="#order">Inquire Now <span class="treatArrow">&#8594;</span></a>
-
-                        </div>
+                        <a class="btnPrimary" href="orderPage.html">Request an Order</a>
 
                     </div>
 
-                    <div class="treatCard">
+                </div>
 
-                        <div class="treatImgWrap">
+                <div
+                    class="statusDaysList"
+                    aria-label="Available pickup days"
+                    data-pickup-days="Monday,Wednesday,Friday"
+                >
 
-                            <img
-                                class="treatImg"
-                                src="graphics/images/seaFoodBoil.jpg"
-                                alt="Seafood and Shrimp Boil Drops"
-                                loading="lazy"
-                            >
+                    <div class="statusDayRow statusDayActive">
 
-                            <span class="treatIconBadge">&#9675;</span>
+                        <span class="statusDayName">Monday</span>
 
-                        </div>
+                        <span class="statusDayCheck" aria-label="Available">&#10003;</span>
 
-                        <div class="treatBody">
+                    </div>
 
-                            <div class="treatMeta">
+                    <div class="statusDayRow statusDayActive">
 
-                                <h3 class="treatName">Seafood &amp; Shrimp Boil Drops</h3>
+                        <span class="statusDayName">Wednesday</span>
 
-                                <span class="treatPrice">Inquire</span>
+                        <span class="statusDayCheck" aria-label="Available">&#10003;</span>
 
-                            </div>
+                    </div>
 
-                            <p class="treatDesc">Specialty seafood boil drops on select days. Inquire to check current availability.</p>
+                    <div class="statusDayRow statusDayActive">
 
-                            <a class="treatLink" href="#order">Inquire Now <span class="treatArrow">&#8594;</span></a>
+                        <span class="statusDayName">Friday</span>
 
-                        </div>
+                        <span class="statusDayCheck" aria-label="Available">&#10003;</span>
 
                     </div>
 
@@ -425,196 +613,10 @@
 
 
         <!-- ============================================================
-             STATS STRIP
+             HOW ORDERING WORKS
         ============================================================ -->
 
-        <section class="statsSection">
-
-            <div class="sectionInner statsInner">
-
-                <p class="statsEyebrow">Why everyone loves 740Eatz</p>
-
-                <div class="statsGrid">
-
-                    <div class="statItem">
-
-                        <div class="statNum">10K+</div>
-
-                        <div class="statLabel">Followers</div>
-
-                    </div>
-
-                    <div class="statItem">
-
-                        <div class="statNum">100%</div>
-
-                        <div class="statLabel">Recommended</div>
-
-                    </div>
-
-                    <div class="statItem">
-
-                        <div class="statNum">5&#9733;</div>
-
-                        <div class="statLabel">Reviews</div>
-
-                    </div>
-
-                    <div class="statItem">
-
-                        <div class="statNum">Fresh</div>
-
-                        <div class="statLabel">Made to Order</div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ============================================================
-             GALLERY SECTION
-        ============================================================ -->
-
-        <section class="gallerySection" id="gallery">
-
-            <div class="sectionInner">
-
-                <div class="sectionLabelWrap">
-
-                    <span class="sectionLabel">The Spread</span>
-
-                </div>
-
-                <h2 class="sectionHeadline">Fresh From the Kitchen</h2>
-
-                <div class="galleryGrid">
-
-                    <div class="galleryItem galleryItemWide">
-
-                        <img
-                            class="galleryImg"
-                            src="graphics/images/blue-pink-platter.jpg"
-                            alt="Blue and pink specialty candy platter"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="galleryItem">
-
-                        <img
-                            class="galleryImg"
-                            src="graphics/images/sprinkledPlatter.jpg"
-                            alt="Sprinkled candy platter"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="galleryItem">
-
-                        <img
-                            class="galleryImg"
-                            src="graphics/images/theBoat.jpg"
-                            alt="Candy boat display"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="galleryItem">
-
-                        <img
-                            class="galleryImg"
-                            src="graphics/images/chocoCoveredFruit.jpg"
-                            alt="Chocolate covered fruit"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="galleryItem galleryItemTall">
-
-                        <img
-                            class="galleryImg"
-                            src="graphics/images/fanFavPlatter-BlueRas.jpg"
-                            alt="Fan favorite blue raspberry platter"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="galleryItem">
-
-                        <img
-                            class="galleryImg"
-                            src="graphics/images/platter2.jpg"
-                            alt="Specialty candy platter"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="galleryItem">
-
-                        <img
-                            class="galleryImg"
-                            src="graphics/images/smallBatch.jpg"
-                            alt="Small batch treats"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="galleryItem galleryItemWide">
-
-                        <img
-                            class="galleryImg"
-                            src="graphics/images/BluevsRedBoat.jpg"
-                            alt="Blue and red flavor display"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="galleryItem">
-
-                        <img
-                            class="galleryImg"
-                            src="graphics/images/coatedCandy2.jpg"
-                            alt="Coated candy treats"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                    <div class="galleryItem">
-
-                        <img
-                            class="galleryImg"
-                            src="graphics/images/seaFoodBoil2.jpg"
-                            alt="Seafood boil spread"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ============================================================
-             HOW IT WORKS
-        ============================================================ -->
-
-        <section class="howSection" id="howItWorks">
+        <section class="howOrderSection" id="howItWorks">
 
             <div class="sectionInner">
 
@@ -626,61 +628,99 @@
 
                 <h2 class="sectionHeadline">How It Works</h2>
 
-                <div class="howGrid">
+                <p class="sectionSub">
 
-                    <div class="howStep">
+                    Simple. Personal. Pickup ready.
 
-                        <div class="howNum">01</div>
+                </p>
 
-                        <h3 class="howTitle">Message on Facebook</h3>
+                <div class="howOrderSteps">
 
-                        <p class="howDesc">
+                    <div class="howOrderStep">
 
-                            Reach out to 740Eatz on Facebook to start your order. Tell us what you want, when you need it, and how many people you&rsquo;re feeding.
+                        <div class="howOrderNumWrap" aria-hidden="true">
 
-                        </p>
+                            <span class="howOrderNum">01</span>
 
-                    </div>
+                        </div>
 
-                    <div class="howStep">
+                        <div class="howOrderContent">
 
-                        <div class="howNum">02</div>
+                            <h3 class="howOrderTitle">Browse the Menu</h3>
 
-                        <h3 class="howTitle">Choose Your Treats</h3>
+                            <p class="howOrderDesc">
 
-                        <p class="howDesc">
+                                Explore our three signature categories. Find your treat, check the flavors, and decide on your size.
 
-                            Pick your product, flavor, size, and preferred pickup date. Custom requests and special flavor combos are always welcome.
+                            </p>
 
-                        </p>
-
-                    </div>
-
-                    <div class="howStep">
-
-                        <div class="howNum">03</div>
-
-                        <h3 class="howTitle">Confirm &amp; Pay</h3>
-
-                        <p class="howDesc">
-
-                            We lock in your order, take payment, and confirm your pickup time before anything is made. No surprises.
-
-                        </p>
+                        </div>
 
                     </div>
 
-                    <div class="howStep">
+                    <div class="howOrderStep">
 
-                        <div class="howNum">04</div>
+                        <div class="howOrderNumWrap" aria-hidden="true">
 
-                        <h3 class="howTitle">Pickup &amp; Enjoy</h3>
+                            <span class="howOrderNum">02</span>
 
-                        <p class="howDesc">
+                        </div>
 
-                            Grab your fresh made-to-order treats and enjoy. Tag us on Instagram &mdash; we love to see your spread.
+                        <div class="howOrderContent">
 
-                        </p>
+                            <h3 class="howOrderTitle">Submit Your Request</h3>
+
+                            <p class="howOrderDesc">
+
+                                Fill out the order request form with your product, flavor, and preferred pickup day. No payment needed upfront.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="howOrderStep">
+
+                        <div class="howOrderNumWrap" aria-hidden="true">
+
+                            <span class="howOrderNum">03</span>
+
+                        </div>
+
+                        <div class="howOrderContent">
+
+                            <h3 class="howOrderTitle">We&rsquo;ll Contact You</h3>
+
+                            <p class="howOrderDesc">
+
+                                We&rsquo;ll reach out to confirm your order, answer any questions, and lock in your pickup date.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="howOrderStep">
+
+                        <div class="howOrderNumWrap" aria-hidden="true">
+
+                            <span class="howOrderNum">04</span>
+
+                        </div>
+
+                        <div class="howOrderContent">
+
+                            <h3 class="howOrderTitle">Pickup &amp; Enjoy</h3>
+
+                            <p class="howOrderDesc">
+
+                                Swing by 429 2nd St, Portsmouth, OH on your scheduled day and pick up your fresh made-to-order treats.
+
+                            </p>
+
+                        </div>
 
                     </div>
 
@@ -692,7 +732,7 @@
 
 
         <!-- ============================================================
-             REVIEWS
+             REVIEWS PREVIEW
         ============================================================ -->
 
         <section class="reviewsSection" id="reviews">
@@ -701,17 +741,23 @@
 
                 <div class="sectionLabelWrap">
 
-                    <span class="sectionLabel">What People Say</span>
+                    <span class="sectionLabel">Customer Love</span>
 
                 </div>
 
-                <h2 class="sectionHeadline">Real Reviews</h2>
+                <h2 class="sectionHeadline">What Customers Are Saying</h2>
+
+                <p class="reviewsTrustLine">
+
+                    9.7K+ Facebook Followers &bull; 100% Recommended &bull; Portsmouth&rsquo;s Favorite Desserts
+
+                </p>
 
                 <div class="reviewsGrid">
 
                     <div class="reviewCard">
 
-                        <div class="reviewStars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="reviewStars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 
                         <p class="reviewText">
 
@@ -719,13 +765,13 @@
 
                         </p>
 
-                        <div class="reviewAuthor">&mdash; Jasmine T.</div>
+                        <div class="reviewAuthor">&mdash; Jasmine T. &middot; via Facebook</div>
 
                     </div>
 
                     <div class="reviewCard">
 
-                        <div class="reviewStars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="reviewStars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 
                         <p class="reviewText">
 
@@ -733,23 +779,35 @@
 
                         </p>
 
-                        <div class="reviewAuthor">&mdash; Marcus R.</div>
+                        <div class="reviewAuthor">&mdash; Marcus R. &middot; via Facebook</div>
 
                     </div>
 
-                    <div class="reviewCard">
+                    <div class="reviewCard reviewCardPlaceholder">
 
-                        <div class="reviewStars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="reviewStars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 
                         <p class="reviewText">
 
-                            &ldquo;The seafood boil drop was SO good. First time ordering but definitely not the last. Fresh, flavorful, confirmed on time. 10 out of 10.&rdquo;
+                            &ldquo;More customer reviews coming soon. 740Eatz has a 100% recommendation rate from every customer who&rsquo;s ordered.&rdquo;
 
                         </p>
 
-                        <div class="reviewAuthor">&mdash; Keisha B.</div>
+                        <div class="reviewAuthor">More Reviews Coming &middot; <em>placeholder</em></div>
 
                     </div>
+
+                </div>
+
+                <div class="reviewsCtaRow">
+
+                    <a class="btnOutline" href="review-funnel.html">Leave a Review</a>
+
+                    <p class="reviewsCtaNote">
+
+                        Enjoyed your order? Your review helps the community discover 740Eatz.
+
+                    </p>
 
                 </div>
 
@@ -759,311 +817,43 @@
 
 
         <!-- ============================================================
-             SPECIALS CTA BANNER
+             READY TO ORDER — CTA BANNER
         ============================================================ -->
 
-        <section class="specialsSection" id="specials">
+        <section class="readyConversionSection" id="readyToOrder">
 
-            <div class="specialsBg" aria-hidden="true">
+            <div class="dropsBg" aria-hidden="true">
 
                 <img
-                    class="specialsBgImg"
-                    src="graphics/images/fanFav-BlueRas.jpg"
+                    class="dropsBgImg"
+                    src="graphics/images/blue-pink-platter.jpg"
                     alt=""
                     loading="lazy"
                 >
 
-                <div class="specialsOverlay"></div>
+                <div class="dropsOverlay"></div>
 
             </div>
 
-            <div class="sectionInner specialsInner">
+            <div class="sectionInner dropsInner">
 
-                <span class="specialsEyebrow">Limited Drops</span>
+                <span class="dropsEyebrow">Ready to Order?</span>
 
-                <h2 class="specialsHeadline">
+                <h2 class="dropsHeadline">
 
-                    Don&rsquo;t Miss
+                    Fresh. Made.
 
-                    <span class="accentScript">Out</span>
+                    <span class="accentScript">For You.</span>
 
                 </h2>
 
-                <p class="specialsText">
+                <p class="dropsText">
 
-                    Seasonal specials and seafood drops sell out fast. Lock in your date before they&rsquo;re gone.
-
-                </p>
-
-                <a class="btnPrimary btnLarge" href="#order">Reserve Your Date</a>
-
-            </div>
-
-        </section>
-
-
-        <!-- ============================================================
-             ORDER INQUIRY FORM
-        ============================================================ -->
-
-        <section class="orderSection" id="order">
-
-            <div class="sectionInner">
-
-                <div class="sectionLabelWrap">
-
-                    <span class="sectionLabel">Place an Inquiry</span>
-
-                </div>
-
-                <h2 class="sectionHeadline">Start Your Order</h2>
-
-                <p class="sectionSub">
-
-                    Fill out the form and 740Eatz will follow up to confirm availability, collect payment, and lock in your pickup details.
+                    Submit your order request and we&rsquo;ll reach out to confirm your treats, flavor, and pickup day.
 
                 </p>
 
-                <div class="orderPricing">
-
-                    <div class="orderPricingItem">
-
-                        <span class="orderPricingName">Large Grapes &amp; Pineapples</span>
-
-                        <span class="orderPricingAmount">$40</span>
-
-                    </div>
-
-                    <div class="orderPricingItem">
-
-                        <span class="orderPricingName">Small Grapes &amp; Pineapples</span>
-
-                        <span class="orderPricingAmount">$25</span>
-
-                    </div>
-
-                    <div class="orderPricingItem">
-
-                        <span class="orderPricingName">Dozen Strawberries</span>
-
-                        <span class="orderPricingAmount">$25</span>
-
-                    </div>
-
-                    <div class="orderPricingItem">
-
-                        <span class="orderPricingName">Seafood &amp; Shrimp Boil Specials</span>
-
-                        <span class="orderPricingAmount orderPricingVaries">Varies</span>
-
-                    </div>
-
-                </div>
-
-                <form class="orderForm" id="orderForm" novalidate>
-
-                    <div class="formRow">
-
-                        <div class="formGroup">
-
-                            <label class="formLabel" for="firstName">First Name</label>
-
-                            <input
-                                class="formInput"
-                                type="text"
-                                id="firstName"
-                                name="firstName"
-                                placeholder="Your first name"
-                                autocomplete="given-name"
-                                required
-                            >
-
-                        </div>
-
-                        <div class="formGroup">
-
-                            <label class="formLabel" for="lastName">Last Name</label>
-
-                            <input
-                                class="formInput"
-                                type="text"
-                                id="lastName"
-                                name="lastName"
-                                placeholder="Your last name"
-                                autocomplete="family-name"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
-
-                    <div class="formRow">
-
-                        <div class="formGroup">
-
-                            <label class="formLabel" for="phoneNumber">Phone Number</label>
-
-                            <input
-                                class="formInput"
-                                type="tel"
-                                id="phoneNumber"
-                                name="phoneNumber"
-                                placeholder="(000) 000-0000"
-                                autocomplete="tel"
-                                required
-                            >
-
-                        </div>
-
-                        <div class="formGroup">
-
-                            <label class="formLabel" for="email">Email</label>
-
-                            <input
-                                class="formInput"
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="your@email.com"
-                                autocomplete="email"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
-
-                    <div class="formGroup">
-
-                        <label class="formLabel" for="productType">Product Type</label>
-
-                        <select
-                            class="formSelect"
-                            id="productType"
-                            name="productType"
-                            required
-                        >
-
-                            <option value="">&#8212; Select a treat &#8212;</option>
-
-                            <option value="largeGrapesPineapples">Large Grapes &amp; Pineapples &#8212; $40</option>
-
-                            <option value="smallGrapesPineapples">Small Grapes &amp; Pineapples &#8212; $25</option>
-
-                            <option value="dozenStrawberries">Dozen Strawberries &#8212; $25</option>
-
-                            <option value="seafoodBoil">Seafood / Shrimp Boil Special</option>
-
-                            <option value="customTray">Custom Tray / Other</option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="formRow">
-
-                        <div class="formGroup">
-
-                            <label class="formLabel" for="sizeQuantity">Size / Quantity</label>
-
-                            <input
-                                class="formInput"
-                                type="text"
-                                id="sizeQuantity"
-                                name="sizeQuantity"
-                                placeholder="e.g. 2 large trays, 1 dozen"
-                            >
-
-                        </div>
-
-                        <div class="formGroup">
-
-                            <label class="formLabel" for="flavorSelect">Flavor</label>
-
-                            <select
-                                class="formSelect"
-                                id="flavorSelect"
-                                name="flavor"
-                            >
-
-                                <option value="">&#8212; Select a flavor &#8212;</option>
-
-                                <option value="strawberry">Strawberry</option>
-
-                                <option value="blueRaspberry">Blue Raspberry</option>
-
-                                <option value="greenApple">Green Apple</option>
-
-                                <option value="watermelon">Watermelon</option>
-
-                                <option value="pineapple">Pineapple</option>
-
-                                <option value="cottonCandy">Cotton Candy</option>
-
-                                <option value="mixed">Mixed Flavor</option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-                    <div class="formGroup">
-
-                        <label class="formLabel" for="pickupDate">Requested Pickup Date</label>
-
-                        <input
-                            class="formInput"
-                            type="date"
-                            id="pickupDate"
-                            name="pickupDate"
-                        >
-
-                    </div>
-
-                    <div class="formGroup">
-
-                        <label class="formLabel" for="notes">Notes / Custom Request</label>
-
-                        <textarea
-                            class="formTextarea"
-                            id="notes"
-                            name="notes"
-                            placeholder="Special requests, flavor combos, allergies, or anything else we should know&#8230;"
-                            rows="4"
-                        ></textarea>
-
-                    </div>
-
-                    <div class="formDisclaimer">
-
-                        <p>
-
-                            This is an <strong>order inquiry</strong>, not a confirmed order. 740Eatz will follow up to confirm availability, collect payment, and finalize your pickup before anything is made.
-
-                        </p>
-
-                    </div>
-
-                    <button
-                        class="btnPrimary btnLarge formSubmitBtn"
-                        type="submit"
-                        id="formSubmitBtn"
-                    >
-
-                        Send My Inquiry
-
-                    </button>
-
-                    <div
-                        class="formFeedback"
-                        id="formFeedback"
-                        role="status"
-                        aria-live="polite"
-                    ></div>
-
-                </form>
+                <a class="btnPrimary btnLarge" href="orderPage.html">Request an Order</a>
 
             </div>
 
@@ -1082,6 +872,7 @@
                     class="footerWatermarkImg"
                     src="graphics/logos/digitalLogo.jpg"
                     alt=""
+                    loading="lazy"
                 >
 
             </div>
@@ -1090,45 +881,183 @@
 
                 <div class="footerTop">
 
+                    <!-- ── Brand ── -->
+
                     <div class="footerBrand">
 
                         <img
                             class="footerLogo"
-                            src="graphics/logos/MasterLogo.png"
+                            src="graphics/logos/TP740Logo.png"
                             alt="740Eatz"
+                            width="120"
+                            height="59"
                         >
 
                         <p class="footerTagline">Treats that hit different.</p>
 
+                        <div class="footerSocial" role="list">
+
+                            <a
+                                class="footerSocialLink"
+                                role="listitem"
+                                href="https://www.facebook.com/profile.php?id=61558663167143"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Follow 740Eatz on Facebook"
+                            >
+
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                    focusable="false"
+                                >
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                </svg>
+
+                            </a>
+
+                            <a
+                                class="footerSocialLink"
+                                role="listitem"
+                                href="tel:+12202408435"
+                                aria-label="Call 740Eatz at (220) 240-8435"
+                            >
+
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                    focusable="false"
+                                >
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.58a16 16 0 0 0 6.06 6.06l.85-.85a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+
+                            </a>
+
+                            <a
+                                class="footerSocialLink"
+                                role="listitem"
+                                href="https://www.tiktok.com/@brigitterheaa"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Follow 740Eatz on TikTok"
+                            >
+
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    stroke="none"
+                                    aria-hidden="true"
+                                    focusable="false"
+                                >
+                                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.74a8.18 8.18 0 0 0 4.78 1.52V6.8a4.85 4.85 0 0 1-1.01-.11z"/>
+                                </svg>
+
+                            </a>
+
+                        </div>
+
                     </div>
+
+                    <!-- ── Quick Links ── -->
+
+                    <div class="footerInfo">
+
+                        <h4 class="footerHeading">Explore</h4>
+
+                        <nav aria-label="Footer navigation">
+
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.3rem;">
+
+                                <li><a class="footerLink footerText" href="menu.html">Menu</a></li>
+
+                                <li><a class="footerLink footerText" href="gallery.html">Gallery</a></li>
+
+                                <li><a class="footerLink footerText" href="about.html">About</a></li>
+
+                                <li><a class="footerLink footerText" href="faq.html">FAQ</a></li>
+
+                                <li><a class="footerLink footerText" href="contact.html">Contact</a></li>
+
+                            </ul>
+
+                        </nav>
+
+                    </div>
+
+                    <!-- ── Contact ── -->
 
                     <div class="footerInfo">
 
                         <h4 class="footerHeading">Contact</h4>
 
-                        <p class="footerText">Call &sol; Text: (740) 000-0000</p>
+                        <p class="footerText">
 
-                        <p class="footerText">Orders via Facebook Messenger</p>
+                            <a class="footerLink" href="tel:+12202408435">(220) 240-8435</a>
+
+                        </p>
+
+                        <p class="footerText">
+
+                            <a
+                                class="footerLink"
+                                href="https://www.facebook.com/profile.php?id=61558663167143"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+
+                                Message on Facebook
+
+                            </a>
+
+                        </p>
+
+                        <address class="footerAddress" style="margin-top: 0.6rem;">
+
+                            429 2nd Street<br>
+
+                            Portsmouth, OH 45662
+
+                        </address>
 
                     </div>
 
-                    <div class="footerInfo">
-
-                        <h4 class="footerHeading">Hours</h4>
-
-                        <p class="footerText">Pickup by appointment</p>
-
-                        <p class="footerText">Limited drops weekly</p>
-
-                    </div>
+                    <!-- ── Pickup Days ── -->
 
                     <div class="footerInfo">
 
-                        <h4 class="footerHeading">Follow Us</h4>
+                        <h4 class="footerHeading">Pickup Days</h4>
 
-                        <p class="footerText">Facebook: @740Eatz</p>
+                        <ul class="footerPickupDays">
 
-                        <p class="footerText">Instagram: @740Eatz</p>
+                            <li>Monday</li>
+
+                            <li>Wednesday</li>
+
+                            <li>Friday</li>
+
+                        </ul>
+
+                        <p class="footerTextSm">
+
+                            Fresh made to order. Pickup confirmed after your request is received.
+
+                        </p>
 
                     </div>
 
@@ -1136,7 +1065,7 @@
 
                 <div class="footerBottom">
 
-                    <p class="footerCopyright">&copy; 2025 740Eatz. All rights reserved.</p>
+                    <p class="footerCopyright">&copy; <span id="copyrightYear"></span> 740Eatz. All rights reserved.</p>
 
                     <a
                         class="footerDevCredit"
@@ -1145,12 +1074,15 @@
                         rel="noopener noreferrer"
                     >
 
-                        Developed by
+                        <span class="footerDevText">Developed by</span>
 
                         <img
                             class="footerDevLogo"
                             src="graphics/logos/TPNulo_StudioLogo.png"
                             alt="Nulo Studio"
+                            width="120"
+                            height="55"
+                            loading="lazy"
                         >
 
                     </a>
