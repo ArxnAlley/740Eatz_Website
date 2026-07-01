@@ -886,7 +886,9 @@ h4
 
     color: var(--clrHotPink);
 
-    text-shadow: var(--glowText);
+    text-shadow:
+        0 0 5px rgba(255, 20, 157, 0.45),
+        0 0 14px rgba(255, 20, 157, 0.22);
 
 }
 
@@ -3544,6 +3546,482 @@ h4
     opacity: 0.6;
 
     transition: opacity 0.2s ease;
+
+}
+
+
+/* ============================================================
+   NAV ENTRANCE ANIMATIONS
+============================================================ */
+
+@keyframes navSlideFromLeft
+{
+
+    from
+    {
+
+        opacity: 0;
+
+        transform: translateX(-14px);
+
+    }
+
+    to
+    {
+
+        opacity: 1;
+
+        transform: translateX(0);
+
+    }
+
+}
+
+@keyframes navDropFromTop
+{
+
+    from
+    {
+
+        opacity: 0;
+
+        transform: translateY(-8px);
+
+    }
+
+    to
+    {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+@keyframes navSlideFromRight
+{
+
+    from
+    {
+
+        opacity: 0;
+
+        transform: translateX(14px);
+
+    }
+
+    to
+    {
+
+        opacity: 1;
+
+        transform: translateX(0);
+
+    }
+
+}
+
+.logoLink
+{
+
+    animation: navSlideFromLeft 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+}
+
+@media (min-width: 1024px)
+{
+
+    .navList .navItem
+    {
+
+        animation: navDropFromTop 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+    }
+
+    .navList .navItem:nth-child(1) { animation-delay: 0.06s; }
+
+    .navList .navItem:nth-child(2) { animation-delay: 0.10s; }
+
+    .navList .navItem:nth-child(3) { animation-delay: 0.14s; }
+
+    .navList .navItem:nth-child(4) { animation-delay: 0.18s; }
+
+    .navList .navItem:nth-child(5) { animation-delay: 0.22s; }
+
+    .navList .navItem:nth-child(6) { animation-delay: 0.26s; }
+
+    .navList .navItem:nth-child(7) { animation-delay: 0.30s; }
+
+}
+
+.headerCta
+{
+
+    animation: navSlideFromRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+
+}
+
+
+/* ============================================================
+   HERO ENTRANCE ANIMATIONS
+============================================================ */
+
+@keyframes heroFadeUp
+{
+
+    from
+    {
+
+        opacity: 0;
+
+        transform: translateY(18px);
+
+    }
+
+    to
+    {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+@keyframes heroFadeScale
+{
+
+    from
+    {
+
+        opacity: 0;
+
+        transform: scale(0.97);
+
+    }
+
+    to
+    {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+.heroEyebrow
+{
+
+    animation: heroFadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+
+}
+
+.heroHeadline
+{
+
+    animation: heroFadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+
+}
+
+.heroVisual
+{
+
+    animation: heroFadeScale 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+
+}
+
+.heroSub
+{
+
+    animation: heroFadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+
+}
+
+.heroCtas
+{
+
+    animation: heroFadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+
+}
+
+.heroProof
+{
+
+    animation: heroFadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.58s both;
+
+}
+
+
+/* ============================================================
+   VIEWPORT REVEAL — INTERSECTION OBSERVER UTILITY
+============================================================ */
+
+.revealOnScroll
+{
+
+    opacity: 0;
+
+    transform: translateY(22px);
+
+    transition:
+        opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+.revealOnScroll.revealed
+{
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* ============================================================
+   HOME FAQ — CTA NOTE
+============================================================ */
+
+.homeFaqCtaNote
+{
+
+    font-size: 0.88rem;
+
+    color: var(--clrMuted);
+
+    margin-bottom: 0.6rem;
+
+    text-align: center;
+
+}
+
+
+/* ============================================================
+   ORDER SUMMARY — CLICKABLE ROWS
+============================================================ */
+
+.summaryRowClickable
+{
+
+    cursor: pointer;
+
+    border-radius: 6px;
+
+    transition: background-color 0.15s ease;
+
+}
+
+.summaryRowClickable:hover
+{
+
+    background-color: rgba(255, 20, 157, 0.07);
+
+}
+
+.summaryRowClickable .summaryLabel::after
+{
+
+    content: " ✎";
+
+    font-size: 0.6em;
+
+    color: rgba(255, 20, 157, 0.45);
+
+    margin-left: 0.3em;
+
+    vertical-align: middle;
+
+}
+
+
+/* ============================================================
+   HOME CONTACT — ENHANCED ELEMENTS
+============================================================ */
+
+.homeContactGrid
+{
+
+    grid-template-columns: 1fr;
+
+    max-width: 760px;
+
+}
+
+@media (min-width: 640px)
+{
+
+    .homeContactGrid
+    {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+@media (min-width: 1024px)
+{
+
+    .homeContactGrid
+    {
+
+        grid-template-columns: repeat(4, 1fr);
+
+    }
+
+}
+
+.homeContactSub
+{
+
+    font-size: 0.78rem;
+
+    color: var(--clrMuted);
+
+    margin-top: 0.1rem;
+
+    font-style: italic;
+
+}
+
+.homeContactMapLink
+{
+
+    display: inline-block;
+
+    font-size: 0.83rem;
+
+    color: var(--clrHotPink);
+
+    text-decoration: none;
+
+    margin-top: 0.4rem;
+
+    transition: opacity 0.18s ease;
+
+}
+
+.homeContactMapLink:hover
+{
+
+    opacity: 0.75;
+
+}
+
+.homeContactLinkLarge
+{
+
+    font-size: 1.1rem;
+
+    font-weight: 600;
+
+    color: var(--clrSoftText);
+
+}
+
+.homeContactDays
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.2rem;
+
+    margin-top: 0.2rem;
+
+}
+
+.homeContactDay
+{
+
+    font-size: 0.88rem;
+
+    color: var(--clrSoftText);
+
+    font-weight: 500;
+
+}
+
+.homeContactMap
+{
+
+    margin-top: 2.5rem;
+
+    border-radius: var(--radiusCard);
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 20, 157, 0.12);
+
+}
+
+.homeContactMapIframe
+{
+
+    display: block;
+
+    width: 100%;
+
+    height: 280px;
+
+    border: none;
+
+}
+
+@media (min-width: 768px)
+{
+
+    .homeContactMapIframe
+    {
+
+        height: 340px;
+
+    }
+
+}
+
+
+/* ── Reduced-motion override ── */
+
+@media (prefers-reduced-motion: reduce)
+{
+
+    .logoLink,
+    .navList .navItem,
+    .headerCta,
+    .heroEyebrow,
+    .heroHeadline,
+    .heroVisual,
+    .heroSub,
+    .heroCtas,
+    .heroProof
+    {
+
+        animation: none !important;
+
+        opacity: 1 !important;
+
+        transform: none !important;
+
+    }
+
+    .revealOnScroll
+    {
+
+        opacity: 1 !important;
+
+        transform: none !important;
+
+        transition: none !important;
+
+    }
 
 }
 

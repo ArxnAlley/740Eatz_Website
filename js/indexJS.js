@@ -7,6 +7,8 @@
    - Burger menu toggle
    - Menu dropdown (desktop + mobile)
    - Order builder (orderPage.html)
+   - Stats counter animation
+   - Viewport reveal animation
    - Copyright year (dynamic)
 
    V2 Architecture Hooks:
@@ -48,11 +50,11 @@ if ( copyrightYearEl )
    DOM REFERENCES
 ============================================================ */
 
-const siteHeader      = document.getElementById("siteHeader");
+const siteHeader       = document.getElementById("siteHeader");
 
-const burgerBtn       = document.getElementById("burgerBtn");
+const burgerBtn        = document.getElementById("burgerBtn");
 
-const siteNav         = document.getElementById("siteNav");
+const siteNav          = document.getElementById("siteNav");
 
 const menuDropdownBtn  = document.getElementById("menuDropdownBtn");
 
@@ -137,8 +139,6 @@ if ( burgerBtn )
 
 }
 
-/* Close nav when clicking a non-dropdown navLink */
-
 document.querySelectorAll(".navLink:not(.navLinkHasDropdown)").forEach(function ( link )
 {
 
@@ -150,8 +150,6 @@ document.querySelectorAll(".navLink:not(.navLinkHasDropdown)").forEach(function 
     });
 
 });
-
-/* Close nav when clicking the backdrop */
 
 if ( siteNav )
 {
@@ -169,8 +167,6 @@ if ( siteNav )
     });
 
 }
-
-/* Close nav on Escape */
 
 document.addEventListener("keydown", function ( event )
 {
@@ -248,8 +244,6 @@ if ( menuDropdownBtn )
 
 }
 
-/* Close dropdown when clicking outside */
-
 document.addEventListener("click", function ( event )
 {
 
@@ -263,8 +257,6 @@ document.addEventListener("click", function ( event )
     }
 
 });
-
-/* Close dropdown sub-nav links on mobile */
 
 document.querySelectorAll(".navSubLink").forEach(function ( link )
 {
@@ -322,20 +314,156 @@ function clearFeedback ( el )
 
 
 /* ============================================================
+   STATS COUNTER — HERO
+============================================================ */
+
+function animateCounter ( el, targetVal, formatter, duration )
+{
+
+    const startTime = performance.now();
+
+    function tick ( now )
+    {
+
+        const elapsed  = now - startTime;
+
+        const progress = Math.min( elapsed / duration, 1 );
+
+        /* Ease out cubic */
+
+        const eased   = 1 - Math.pow( 1 - progress, 3 );
+
+        const current = Math.floor( eased * targetVal );
+
+        el.textContent = formatter( current );
+
+        if ( progress < 1 )
+        {
+
+            requestAnimationFrame(tick);
+
+        }
+        else
+        {
+
+            el.textContent = formatter(targetVal);
+
+        }
+
+    }
+
+    requestAnimationFrame(tick);
+
+}
+
+const statFollowers   = document.getElementById("statFollowers");
+
+const statRecommended = document.getElementById("statRecommended");
+
+if ( statFollowers )
+{
+
+    animateCounter(
+
+        statFollowers,
+
+        9700,
+
+        function ( n )
+        {
+
+            if ( n >= 9700 ) { return "9.7K+"; }
+
+            const k = n / 1000;
+
+            return ( Math.floor(k * 10) / 10 ).toFixed(1) + "K+";
+
+        },
+
+        1800
+
+    );
+
+}
+
+if ( statRecommended )
+{
+
+    animateCounter(
+
+        statRecommended,
+
+        100,
+
+        function ( n ) { return n + "%"; },
+
+        1200
+
+    );
+
+}
+
+
+/* ============================================================
+   VIEWPORT REVEAL — INTERSECTION OBSERVER
+============================================================ */
+
+const revealEls = document.querySelectorAll(".revealOnScroll");
+
+if ( revealEls.length > 0 && "IntersectionObserver" in window )
+{
+
+    const revealObserver = new IntersectionObserver(
+
+        function ( entries )
+        {
+
+            entries.forEach(function ( entry )
+            {
+
+                if ( entry.isIntersecting )
+                {
+
+                    entry.target.classList.add("revealed");
+
+                    revealObserver.unobserve( entry.target );
+
+                }
+
+            });
+
+        },
+
+        { threshold: 0.08, rootMargin: "0px 0px -32px 0px" }
+
+    );
+
+    revealEls.forEach(function ( el )
+    {
+
+        revealObserver.observe(el);
+
+    });
+
+}
+
+
+/* ============================================================
    ORDER BUILDER — STATE
 ============================================================ */
 
-const builderState = {
+const builderState =
+{
 
-    step:    1,
+    step:      1,
 
-    product: null,
+    product:   null,
 
-    size:    null,
+    size:      null,
 
-    flavor:  null,
+    flavor:    null,
 
-    date:    null,
+    date:      null,
 
     firstName: "",
 
@@ -351,32 +479,12 @@ const builderState = {
 
 const TOTAL_STEPS = 6;
 
+let autoAdvanceLocked = false;
+
 
 /* ============================================================
    ORDER BUILDER — PRICING
 ============================================================ */
-
-const PRODUCT_PRICES =
-{
-
-    candyGrapes:
-    {
-        small:       25,
-        large:       40,
-        threeFlavor: 45
-    },
-
-    chocoStrawberries:
-    {
-        dozen: 25
-    },
-
-    customTray:
-    {
-        custom: null
-    }
-
-};
 
 function getPriceDisplay ( product, size )
 {
@@ -392,9 +500,11 @@ function getPriceDisplay ( product, size )
 
     }
 
-    if ( product === "chocoStrawberries" ) { return "$25 (dozen)"; }
+    if ( product === "chocoStrawberries" )        { return "$25 (dozen)"; }
 
-    if ( product === "customTray" ) { return "Custom Quote"; }
+    if ( product === "cheesecakeStrawberries" )   { return "$27"; }
+
+    if ( product === "customTray" )               { return "Custom Quote"; }
 
     return "TBD";
 
@@ -428,7 +538,16 @@ function updateProgress ()
 
     progressFill.style.width = pct + "%";
 
-    const stepNames = ["", "Choose Product", "Choose Size", "Choose Flavor", "Pick Pickup Date", "Your Info", "Review Order"];
+    const stepNames =
+    [
+        "",
+        "Choose Product",
+        "Choose Size",
+        "Choose Flavor",
+        "Pick Pickup Date",
+        "Your Info",
+        "Review Order"
+    ];
 
     stepLabel.textContent = "Step " + builderState.step + " of " + TOTAL_STEPS + " — " + stepNames[ builderState.step ];
 
@@ -458,16 +577,12 @@ function showPanel ( step )
 
     }
 
-    /* Back button visibility */
-
     if ( backBtn )
     {
 
         backBtn.style.visibility = step === 1 ? "hidden" : "visible";
 
     }
-
-    /* Show/hide nav row on summary step */
 
     const navRow = document.getElementById("builderNavRow");
 
@@ -479,6 +594,32 @@ function showPanel ( step )
     }
 
     updateProgress();
+
+    /* Auto-advance step 3 for products that don't require a flavor selection */
+
+    if ( step === 3 &&
+         !autoAdvanceLocked &&
+         builderState.product &&
+         ( builderState.product === "chocoStrawberries"      ||
+           builderState.product === "cheesecakeStrawberries" ||
+           builderState.product === "customTray" ) )
+    {
+
+        setTimeout(function ()
+        {
+
+            if ( builderState.step === 3 )
+            {
+
+                builderState.step++;
+
+                showPanel( builderState.step );
+
+            }
+
+        }, 320);
+
+    }
 
 }
 
@@ -492,7 +633,9 @@ function validateStep ( step )
     if ( step === 3 )
     {
 
-        if ( builderState.product === "chocoStrawberries" || builderState.product === "customTray" )
+        if ( builderState.product === "chocoStrawberries"      ||
+             builderState.product === "customTray"              ||
+             builderState.product === "cheesecakeStrawberries" )
         {
             return true;
         }
@@ -519,13 +662,19 @@ function validateStep ( step )
     if ( step === 5 )
     {
 
-        const firstName = getVal("bFirstName");
+        const firstName  = getVal("bFirstName");
 
-        const phone     = getVal("bPhone");
+        const lastName   = getVal("bLastName");
 
-        const email     = getVal("bEmail");
+        const phone      = getVal("bPhone");
 
-        return firstName && phone && email && email.includes("@");
+        const email      = getVal("bEmail");
+
+        const phoneClean = phone.replace(/\D/g, "");
+
+        const emailValid = email.includes("@") && email.includes(".");
+
+        return firstName && lastName && phoneClean.length >= 10 && emailValid;
 
     }
 
@@ -541,6 +690,11 @@ function updateNextBtn ()
     nextBtn.disabled = !validateStep( builderState.step );
 
 }
+
+
+/* ============================================================
+   ORDER BUILDER — INTERACTIONS
+============================================================ */
 
 if ( builderWrap )
 {
@@ -567,11 +721,33 @@ if ( builderWrap )
 
             updateNextBtn();
 
+            /* Auto-advance to size step */
+
+            if ( !autoAdvanceLocked )
+            {
+
+                setTimeout(function ()
+                {
+
+                    if ( validateStep(1) && builderState.step === 1 )
+                    {
+
+                        builderState.step++;
+
+                        showPanel( builderState.step );
+
+                    }
+
+                }, 350);
+
+            }
+
         });
 
     });
 
-    /* ── Size Options ── */
+
+    /* ── Size Grid Population ── */
 
     function populateSizeGrid ()
     {
@@ -587,48 +763,9 @@ if ( builderWrap )
 
             const sizes =
             [
-                { value: "small",       label: "Small",              price: "$25" },
-                { value: "large",       label: "Large",              price: "$40" },
-                { value: "threeFlavor", label: "Large — 3 Flavors",  price: "$45" }
-            ];
-
-            sizes.forEach(function ( s )
-            {
-
-                const opt = document.createElement("button");
-
-                opt.type            = "button";
-
-                opt.className       = "sizeOption";
-
-                opt.dataset.size    = s.value;
-
-                opt.innerHTML       = "<span class='sizeOptionName'>" + s.label + "</span><span class='sizeOptionPrice'>" + s.price + "</span>";
-
-                opt.addEventListener("click", function ()
-                {
-
-                    grid.querySelectorAll(".sizeOption").forEach(function ( b ) { b.classList.remove("isSelected"); });
-
-                    opt.classList.add("isSelected");
-
-                    builderState.size = s.value;
-
-                    updateNextBtn();
-
-                });
-
-                grid.appendChild(opt);
-
-            });
-
-        }
-        else if ( builderState.product === "chocoStrawberries" )
-        {
-
-            const sizes =
-            [
-                { value: "dozen", label: "Dozen", price: "$25" }
+                { value: "small",       label: "Small Tray",  price: "$25" },
+                { value: "large",       label: "Large Tray",  price: "$40" },
+                { value: "threeFlavor", label: "Trio Tray",   price: "$45" }
             ];
 
             sizes.forEach(function ( s )
@@ -655,15 +792,76 @@ if ( builderWrap )
 
                     updateNextBtn();
 
+                    /* Auto-advance to flavor step */
+
+                    if ( !autoAdvanceLocked )
+                    {
+
+                        setTimeout(function ()
+                        {
+
+                            if ( validateStep(2) && builderState.step === 2 )
+                            {
+
+                                builderState.step++;
+
+                                showPanel( builderState.step );
+
+                            }
+
+                        }, 350);
+
+                    }
+
                 });
 
                 grid.appendChild(opt);
 
-                /* Auto-select since there's only one option */
-
-                opt.click();
-
             });
+
+        }
+        else if ( builderState.product === "chocoStrawberries" )
+        {
+
+            const opt = document.createElement("button");
+
+            opt.type         = "button";
+
+            opt.className    = "sizeOption isSelected";
+
+            opt.dataset.size = "dozen";
+
+            opt.innerHTML    = "<span class='sizeOptionName'>Dozen</span><span class='sizeOptionPrice'>$25</span>";
+
+            opt.addEventListener("click", function () {});
+
+            grid.appendChild(opt);
+
+            builderState.size = "dozen";
+
+            updateNextBtn();
+
+        }
+        else if ( builderState.product === "cheesecakeStrawberries" )
+        {
+
+            const opt = document.createElement("button");
+
+            opt.type         = "button";
+
+            opt.className    = "sizeOption isSelected";
+
+            opt.dataset.size = "perOrder";
+
+            opt.innerHTML    = "<span class='sizeOptionName'>Per Order</span><span class='sizeOptionPrice'>$27</span>";
+
+            opt.addEventListener("click", function () {});
+
+            grid.appendChild(opt);
+
+            builderState.size = "perOrder";
+
+            updateNextBtn();
 
         }
         else if ( builderState.product === "customTray" )
@@ -671,13 +869,15 @@ if ( builderWrap )
 
             const opt = document.createElement("button");
 
-            opt.type      = "button";
+            opt.type         = "button";
 
-            opt.className = "sizeOption isSelected";
+            opt.className    = "sizeOption isSelected";
 
-            opt.innerHTML = "<span class='sizeOptionName'>Custom</span><span class='sizeOptionPrice'>Quote Required</span>";
+            opt.dataset.size = "custom";
 
-            opt.addEventListener("click", function () {} );
+            opt.innerHTML    = "<span class='sizeOptionName'>Custom</span><span class='sizeOptionPrice'>Quote Required</span>";
+
+            opt.addEventListener("click", function () {});
 
             grid.appendChild(opt);
 
@@ -688,6 +888,7 @@ if ( builderWrap )
         }
 
     }
+
 
     /* ── Flavor Chips ── */
 
@@ -709,14 +910,13 @@ if ( builderWrap )
 
     });
 
+
     /* ── Pickup Date Validation ── */
 
     const dateInput = document.getElementById("builderPickupDate");
 
     if ( dateInput )
     {
-
-        /* Set minimum date to tomorrow */
 
         const tomorrow = new Date();
 
@@ -764,6 +964,7 @@ if ( builderWrap )
 
     }
 
+
     /* ── Customer Info Fields ── */
 
     ["bFirstName", "bLastName", "bPhone", "bEmail"].forEach(function ( id )
@@ -779,6 +980,40 @@ if ( builderWrap )
         }
 
     });
+
+
+    /* ── Clickable Summary Row Navigation ── */
+
+    function initSummaryNavigation ()
+    {
+
+        document.querySelectorAll(".summaryRowClickable").forEach(function ( row )
+        {
+
+            row.addEventListener("click", function ()
+            {
+
+                const targetStep = parseInt( row.getAttribute("data-step"), 10 );
+
+                if ( targetStep && targetStep >= 1 && targetStep < TOTAL_STEPS )
+                {
+
+                    builderState.step = targetStep;
+
+                    showPanel( targetStep );
+
+                    updateNextBtn();
+
+                    builderWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+
+                }
+
+            });
+
+        });
+
+    }
+
 
     /* ── Next Button ── */
 
@@ -815,6 +1050,7 @@ if ( builderWrap )
 
     }
 
+
     /* ── Back Button ── */
 
     if ( backBtn )
@@ -838,16 +1074,18 @@ if ( builderWrap )
 
     }
 
-    /* ── Populate Summary ── */
+
+    /* ── Label Helpers ── */
 
     function getProductLabel ( product )
     {
 
         const labels =
         {
-            candyGrapes:       "Candied Fruit",
-            chocoStrawberries: "Chocolate Covered Strawberries",
-            customTray:        "Custom Candy Tray"
+            candyGrapes:            "Candied Fruit",
+            chocoStrawberries:      "Chocolate Covered Strawberries",
+            cheesecakeStrawberries: "Cheesecake Stuffed Strawberries",
+            customTray:             "Custom Candy Tray"
         };
 
         return labels[ product ] || product;
@@ -860,13 +1098,20 @@ if ( builderWrap )
         if ( product === "candyGrapes" )
         {
 
-            const labels = { small: "Small", large: "Large", threeFlavor: "Large — 3 Flavors" };
+            const labels =
+            {
+                small:       "Small Tray",
+                large:       "Large Tray",
+                threeFlavor: "Trio Tray"
+            };
 
             return labels[ size ] || size;
 
         }
 
-        if ( product === "chocoStrawberries" ) { return "Dozen"; }
+        if ( product === "chocoStrawberries" )        { return "Dozen"; }
+
+        if ( product === "cheesecakeStrawberries" )   { return "Per Order"; }
 
         return "Custom";
 
@@ -893,14 +1138,19 @@ if ( builderWrap )
 
     }
 
+
+    /* ── Populate Summary ── */
+
     function populateSummary ()
     {
 
         const setVal = function ( id, value )
         {
+
             const el = document.getElementById(id);
 
             if ( el ) { el.textContent = value; }
+
         };
 
         setVal( "sumProduct", getProductLabel( builderState.product ) );
@@ -913,7 +1163,95 @@ if ( builderWrap )
 
         setVal( "sumPrice",   getPriceDisplay( builderState.product, builderState.size ) );
 
+        setVal( "sumNotes",   builderState.notes || "None" );
+
+        initSummaryNavigation();
+
     }
+
+
+    /* ── URL Deep-Link Initialization ── */
+
+    function initFromUrlParams ()
+    {
+
+        const params       = new URLSearchParams( window.location.search );
+
+        const productParam = params.get("product");
+
+        const sizeParam    = params.get("size");
+
+        if ( !productParam ) { return; }
+
+        const productBtn = document.querySelector('[data-product="' + productParam + '"]');
+
+        if ( !productBtn ) { return; }
+
+        autoAdvanceLocked = true;
+
+        /* Select product without auto-advance */
+
+        document.querySelectorAll(".builderChoice").forEach(function ( b ) { b.classList.remove("isSelected"); });
+
+        productBtn.classList.add("isSelected");
+
+        builderState.product = productParam;
+
+        builderState.size    = null;
+
+        builderState.flavor  = null;
+
+        populateSizeGrid();
+
+        if ( sizeParam )
+        {
+
+            /* Allow DOM to paint size grid before selecting */
+
+            setTimeout(function ()
+            {
+
+                const sizeBtn = document.querySelector('[data-size="' + sizeParam + '"]');
+
+                if ( sizeBtn )
+                {
+
+                    document.querySelectorAll(".sizeOption").forEach(function ( b ) { b.classList.remove("isSelected"); });
+
+                    sizeBtn.classList.add("isSelected");
+
+                    builderState.size = sizeParam;
+
+                }
+
+                /* Jump to flavor step if size was selected, else size step */
+
+                builderState.step = ( sizeParam && builderState.size ) ? 3 : 2;
+
+                showPanel( builderState.step );
+
+                updateNextBtn();
+
+                autoAdvanceLocked = false;
+
+            }, 60);
+
+        }
+        else
+        {
+
+            builderState.step = 2;
+
+            showPanel( builderState.step );
+
+            updateNextBtn();
+
+            autoAdvanceLocked = false;
+
+        }
+
+    }
+
 
     /* ── Submit Order Request ── */
 
@@ -935,29 +1273,29 @@ if ( builderWrap )
             const payload =
             {
 
-                action:     "orderRequest",
+                action:      "orderRequest",
 
-                source:     "740Eatz Website V2",
+                source:      "740Eatz Website V2",
 
-                product:    getProductLabel( builderState.product ),
+                product:     getProductLabel( builderState.product ),
 
-                size:       getSizeLabel( builderState.product, builderState.size ),
+                size:        getSizeLabel( builderState.product, builderState.size ),
 
-                flavor:     getFlavorLabel( builderState.flavor ),
+                flavor:      getFlavorLabel( builderState.flavor ),
 
-                pickupDate: builderState.date,
+                pickupDate:  builderState.date,
 
-                firstName:  builderState.firstName,
+                firstName:   builderState.firstName,
 
-                lastName:   builderState.lastName,
+                lastName:    builderState.lastName,
 
-                phone:      builderState.phone,
+                phone:       builderState.phone,
 
-                email:      builderState.email,
+                email:       builderState.email,
 
-                notes:      builderState.notes,
+                notes:       builderState.notes,
 
-                price:      getPriceDisplay( builderState.product, builderState.size ),
+                price:       getPriceDisplay( builderState.product, builderState.size ),
 
                 submittedAt: new Date().toISOString()
 
@@ -994,7 +1332,7 @@ if ( builderWrap )
                     showFeedback(
                         builderFeedback,
                         "success",
-                        "Your order request has been sent! 740Eatz will contact you to confirm your order, flavor, and pickup details."
+                        "Your order request has been sent! We will contact you to confirm your order and pickup details."
                     );
 
                     builderSubmitBtn.textContent = "Request Sent!";
@@ -1014,7 +1352,7 @@ if ( builderWrap )
                 showFeedback(
                     builderFeedback,
                     "error",
-                    "Something went wrong. Please try again or contact 740Eatz at (220) 240-8435."
+                    "Something went wrong. Please try again or contact us at (220) 240-8435."
                 );
 
                 builderSubmitBtn.disabled    = false;
@@ -1027,10 +1365,13 @@ if ( builderWrap )
 
     }
 
-    /* Initialize */
+
+    /* ── Initialize Builder ── */
 
     showPanel(1);
 
     updateNextBtn();
+
+    initFromUrlParams();
 
 }

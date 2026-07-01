@@ -215,6 +215,16 @@
 
                             </button>
 
+                            <button class="builderChoice" type="button" data-product="cheesecakeStrawberries">
+
+                                <span class="builderChoiceIcon">&#10038;</span>
+
+                                <span class="builderChoiceName">Cheesecake Stuffed Strawberries</span>
+
+                                <span class="builderChoiceDetail">$27 per order</span>
+
+                            </button>
+
                             <button class="builderChoice" type="button" data-product="customTray">
 
                                 <span class="builderChoiceIcon">&#10022;</span>
@@ -395,7 +405,7 @@
 
                         <div class="orderSummary" id="orderSummary">
 
-                            <div class="summaryRow">
+                            <div class="summaryRow summaryRowClickable" data-step="1" title="Click to change product">
 
                                 <span class="summaryLabel">Product</span>
 
@@ -403,7 +413,7 @@
 
                             </div>
 
-                            <div class="summaryRow">
+                            <div class="summaryRow summaryRowClickable" data-step="2" title="Click to change size">
 
                                 <span class="summaryLabel">Size</span>
 
@@ -411,7 +421,7 @@
 
                             </div>
 
-                            <div class="summaryRow">
+                            <div class="summaryRow summaryRowClickable" data-step="3" title="Click to change flavor">
 
                                 <span class="summaryLabel">Flavor</span>
 
@@ -419,11 +429,19 @@
 
                             </div>
 
-                            <div class="summaryRow">
+                            <div class="summaryRow summaryRowClickable" data-step="4" title="Click to change pickup date">
 
                                 <span class="summaryLabel">Pickup Date</span>
 
                                 <span class="summaryValue" id="sumDate">&mdash;</span>
+
+                            </div>
+
+                            <div class="summaryRow summaryRowClickable" data-step="5" title="Click to edit notes">
+
+                                <span class="summaryLabel">Notes</span>
+
+                                <span class="summaryValue" id="sumNotes">&mdash;</span>
 
                             </div>
 
