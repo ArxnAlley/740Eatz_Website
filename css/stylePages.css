@@ -3037,3 +3037,17 @@
     }
 
 }
+
+
+/* ============================================================
+   MENU — CARD-SPECIFIC IMAGE POSITION OVERRIDES
+============================================================ */
+
+/* ── Custom Occasion Tray: left + upward crop to show full "BE MINE" lettering ── */
+
+#cheesecakeStrawberries .menuProductCard:last-child .menuProductImg
+{
+
+    object-position: 48% 35%;
+
+}

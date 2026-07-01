@@ -5416,3 +5416,199 @@ h4
     }
 
 }
+
+
+/* ============================================================
+   MOBILE HERO — TWO-ZONE REDESIGN
+   Applies to: max-width 1023px (tablet + mobile)
+   Desktop hero (1024px+) is completely untouched.
+============================================================ */
+
+/* ── On desktop, heroTopBand is a transparent layout pass-through ── */
+
+.heroTopBand
+{
+
+    display: contents;
+
+}
+
+@media (max-width: 1023px)
+{
+
+    /* ── Disable flex centering; section height driven by content ── */
+
+    .heroSection
+    {
+
+        display: block;
+
+        min-height: 0;
+
+        padding-top: 0;
+
+    }
+
+    /* ── Remove container padding so image band reaches full width ── */
+
+    .heroInner
+    {
+
+        padding: 0;
+
+        gap: 0;
+
+    }
+
+    /* ── Zone 1: fixed-height image band for eyebrow + headline ── */
+
+    .heroTopBand
+    {
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        align-items: center;
+
+        text-align: center;
+
+        height: 340px;
+
+        padding: var(--headerH) 1.5rem 2rem;
+
+        overflow: hidden;
+
+        background-image:
+            radial-gradient(
+                ellipse at center,
+                rgba(3, 3, 3, 0.72) 0%,
+                rgba(3, 3, 3, 0.90) 100%
+            ),
+            url('../graphics/images/bgPlatter.jpg');
+
+        background-size: auto, cover;
+
+        background-position: center, center;
+
+        background-repeat: no-repeat, no-repeat;
+
+    }
+
+    /* ── Remove headline bottom margin inside band ── */
+
+    .heroTopBand .heroHeadline
+    {
+
+        margin-bottom: 0;
+
+    }
+
+    /* ── Zone 2: solid black — CTAs + trust indicators ── */
+
+    .heroSub
+    {
+
+        display: none;
+
+    }
+
+    .heroCtas
+    {
+
+        justify-content: center;
+
+        padding: 2.5rem 1.5rem 0;
+
+        margin-bottom: 1.5rem;
+
+    }
+
+    .heroProof
+    {
+
+        justify-content: center;
+
+        padding: 0 1.5rem 3rem;
+
+    }
+
+    /* ── Hide the desktop split-layout product image ── */
+
+    .heroVisual
+    {
+
+        display: none;
+
+    }
+
+}
+
+/* ── Tablet: slightly taller image band ── */
+
+@media (min-width: 640px) and (max-width: 1023px)
+{
+
+    .heroTopBand
+    {
+
+        height: 400px;
+
+    }
+
+}
+
+
+/* ============================================================
+   GALLERY INTRO — MOBILE BRIDGE SECTION
+   Hidden on desktop. No border, no supporting copy.
+============================================================ */
+
+.galleryIntroSection
+{
+
+    background-color: var(--clrBlack);
+
+}
+
+.galleryIntroSection .sectionInner
+{
+
+    padding-bottom: 1.5rem;
+
+}
+
+@media (min-width: 1024px)
+{
+
+    .galleryIntroSection
+    {
+
+        display: none;
+
+    }
+
+}
+
+/* ── Remove mini gallery separator on mobile ── */
+
+@media (max-width: 1023px)
+{
+
+    .miniGallerySection
+    {
+
+        border-top: none;
+
+    }
+
+    .miniGallerySection .sectionInner
+    {
+
+        padding-top: 0;
+
+    }
+
+}
