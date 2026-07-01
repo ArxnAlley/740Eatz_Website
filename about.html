@@ -70,16 +70,18 @@
 
                         <li class="navItem"><a class="navLink" href="index.html">Home</a></li>
 
-                        <li class="navItem" id="menuDropdownItem">
+                        <li class="navItem navItemHasDropdown" id="menuDropdownItem">
 
-                            <button class="navLink navLinkHasDropdown" id="menuDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false">
-                                Menu <span class="navCaret" aria-hidden="true">&#9660;</span>
-                            </button>
+                            <div class="navItemInner">
+                                <a class="navLink" href="menu.html">Menu</a>
+                                <button class="navChevronBtn" id="menuDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Menu categories"><span class="navCaret" aria-hidden="true">&#9660;</span></button>
+                            </div>
 
                             <ul class="navSubList" id="menuDropdownList" role="menu">
                                 <li role="none"><a class="navSubLink" href="menu.html#candiedFruit" role="menuitem">Candied Fruit</a></li>
                                 <li role="none"><a class="navSubLink" href="menu.html#chocoStrawberries" role="menuitem">Chocolate Covered Strawberries</a></li>
                                 <li role="none"><a class="navSubLink" href="menu.html#cheesecakeStrawberries" role="menuitem">Cheesecake Stuffed Strawberries</a></li>
+                                <li role="none"><a class="navSubLink navSubLinkAll" href="menu.html" role="menuitem">View Full Menu &rarr;</a></li>
                             </ul>
 
                         </li>
@@ -459,7 +461,7 @@
 
                             <li>Monday</li>
 
-                            <li>Wednesday</li>
+                            <li>Tuesday</li>
 
                             <li>Friday</li>
 

@@ -2698,6 +2698,305 @@
 
 
 /* ============================================================
+   LEGAL PAGES — Privacy Policy, Terms, Cookies, Accessibility
+============================================================ */
+
+.legalSection
+{
+
+    background-color: var(--clrBlack);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.legalContent
+{
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+
+}
+
+.legalDate
+{
+
+    font-size: 0.78rem;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.15em;
+
+    color: var(--clrMuted);
+
+    margin-bottom: 2.5rem;
+
+}
+
+.legalBlock
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.85rem;
+
+    padding-top: 2.5rem;
+
+    padding-bottom: 2.5rem;
+
+    border-bottom: 1px solid rgba(255, 20, 157, 0.08);
+
+}
+
+.legalBlock:first-of-type
+{
+
+    padding-top: 0;
+
+}
+
+.legalBlock:last-child
+{
+
+    border-bottom: none;
+
+    padding-bottom: 0;
+
+}
+
+.legalHeading
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: clamp(1.25rem, 3vw, 1.65rem);
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.04em;
+
+    line-height: 1.1;
+
+}
+
+.legalText
+{
+
+    font-size: 0.92rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.82;
+
+}
+
+.legalText a
+{
+
+    color: var(--clrHotPink);
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: text-shadow 0.2s ease;
+
+}
+
+.legalText a:hover
+{
+
+    text-shadow: 0 0 8px rgba(255, 20, 157, 0.5);
+
+}
+
+.legalList
+{
+
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.55rem;
+
+    padding-left: 0.5rem;
+
+}
+
+.legalList li
+{
+
+    font-size: 0.92rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.72;
+
+    padding-left: 1.4rem;
+
+    position: relative;
+
+}
+
+.legalList li::before
+{
+
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0.65em;
+
+    width: 5px;
+
+    height: 5px;
+
+    background-color: var(--clrHotPink);
+
+    border-radius: 50%;
+
+    opacity: 0.65;
+
+}
+
+
+/* ============================================================
+   404 PAGE
+============================================================ */
+
+.notFoundPage
+{
+
+    min-height: 100vh;
+
+    background-color: var(--clrBlack);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 2rem 1.5rem;
+
+    padding-top: calc(var(--headerH) + 3rem);
+
+    padding-bottom: 6rem;
+
+}
+
+.notFoundInner
+{
+
+    max-width: 560px;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 1.5rem;
+
+}
+
+.notFoundCode
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: clamp(5rem, 22vw, 10rem);
+
+    font-weight: 400;
+
+    color: var(--clrHotPink);
+
+    text-shadow: var(--glowText);
+
+    line-height: 0.9;
+
+    letter-spacing: 0.05em;
+
+    opacity: 0.55;
+
+}
+
+.notFoundHeadline
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: clamp(1.7rem, 5vw, 2.8rem);
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.03em;
+
+    line-height: 1.1;
+
+}
+
+.notFoundSub
+{
+
+    font-size: 0.95rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.78;
+
+    max-width: 400px;
+
+}
+
+.notFoundActions
+{
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 0.85rem;
+
+    margin-top: 0.5rem;
+
+}
+
+
+/* ============================================================
    PRINT STYLES
 ============================================================ */
 

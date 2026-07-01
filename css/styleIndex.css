@@ -4138,3 +4138,803 @@ h4
     }
 
 }
+
+
+/* ============================================================
+   NAV — SPLIT ITEM (link + chevron toggle)
+============================================================ */
+
+.navItemInner
+{
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+.navChevronBtn
+{
+
+    background: none;
+
+    border: none;
+
+    cursor: pointer;
+
+    color: var(--clrWhite);
+
+    padding: 0.1rem 0.3rem;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    line-height: 1;
+
+    transition: color 0.2s ease;
+
+    flex-shrink: 0;
+
+}
+
+.navChevronBtn:hover
+{
+
+    color: var(--clrHotPink);
+
+}
+
+/* ── View Full Menu entry ── */
+
+.navSubLinkAll
+{
+
+    border-top: 1px solid rgba(255, 20, 157, 0.12);
+
+    margin-top: 0.25rem;
+
+    padding-top: 0.75rem;
+
+    color: var(--clrHotPink);
+
+    font-weight: 700;
+
+    letter-spacing: 0.06em;
+
+}
+
+.navSubLinkAll:hover
+{
+
+    color: var(--clrWhite);
+
+}
+
+@media (min-width: 920px)
+{
+
+    .navChevronBtn
+    {
+
+        color: var(--clrSoftText);
+
+        font-size: 0.65rem;
+
+        padding: 0.5rem 0.2rem;
+
+    }
+
+    .navChevronBtn:hover
+    {
+
+        color: var(--clrHotPink);
+
+    }
+
+}
+
+
+/* ============================================================
+   MINI GALLERY — HOMEPAGE VISUAL STRIP
+============================================================ */
+
+.miniGallerySection
+{
+
+    background-color: var(--clrBlack);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.06);
+
+    padding: 0;
+
+}
+
+.miniGalleryGrid
+{
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 3px;
+
+}
+
+.miniGalleryItem
+{
+
+    overflow: hidden;
+
+    aspect-ratio: 1;
+
+    cursor: pointer;
+
+    display: block;
+
+    text-decoration: none;
+
+}
+
+.miniGalleryImg
+{
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.45s ease;
+
+}
+
+.miniGalleryItem:hover .miniGalleryImg
+{
+
+    transform: scale(1.06);
+
+}
+
+.miniGalleryViewAll
+{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 1rem 1.5rem;
+
+    background-color: rgba(255, 20, 157, 0.04);
+
+    font-family: var(--fontSans);
+
+    font-size: 0.75rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.14em;
+
+    color: var(--clrHotPink);
+
+    text-decoration: none;
+
+    border-top: 1px solid rgba(255, 20, 157, 0.1);
+
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+}
+
+.miniGalleryViewAll:hover
+{
+
+    background-color: rgba(255, 20, 157, 0.09);
+
+    color: var(--clrWhite);
+
+}
+
+@media (min-width: 640px)
+{
+
+    .miniGalleryGrid
+    {
+
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+    .miniGalleryItem
+    {
+
+        aspect-ratio: 1;
+
+    }
+
+}
+
+
+/* ============================================================
+   FEATURED MENU — HOMEPAGE
+============================================================ */
+
+.featuredMenuSection
+{
+
+    background-color: var(--clrPanelAlt);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.12);
+
+}
+
+.featuredMenuGrid
+{
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 1.25rem;
+
+    margin-bottom: 2.5rem;
+
+}
+
+.featuredMenuCard
+{
+
+    background-color: var(--clrPanel);
+
+    border: 1px solid rgba(255, 20, 157, 0.2);
+
+    border-radius: var(--radiusCard);
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    text-decoration: none;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+.featuredMenuCard:hover
+{
+
+    border-color: var(--clrHotPink);
+
+    box-shadow: var(--glowBox);
+
+    transform: translateY(-2px);
+
+}
+
+.featuredMenuImgWrap
+{
+
+    position: relative;
+
+    overflow: hidden;
+
+    aspect-ratio: 4 / 3;
+
+}
+
+.featuredMenuImg
+{
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.45s ease;
+
+}
+
+.featuredMenuCard:hover .featuredMenuImg
+{
+
+    transform: scale(1.05);
+
+}
+
+.featuredMenuBadge
+{
+
+    position: absolute;
+
+    top: 0.75rem;
+
+    left: 0.75rem;
+
+    background-color: var(--clrHotPink);
+
+    color: var(--clrBlack);
+
+    font-family: var(--fontSans);
+
+    font-size: 0.62rem;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.1em;
+
+    padding: 0.28rem 0.7rem;
+
+    border-radius: var(--radiusPill);
+
+    line-height: 1.4;
+
+}
+
+.featuredMenuBody
+{
+
+    padding: 1.1rem 1.25rem 1.25rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.4rem;
+
+    flex: 1;
+
+}
+
+.featuredMenuName
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: 1.2rem;
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.04em;
+
+    line-height: 1.1;
+
+}
+
+.featuredMenuDesc
+{
+
+    font-size: 0.81rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.65;
+
+    flex: 1;
+
+}
+
+.featuredMenuFooter
+{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 0.75rem;
+
+    margin-top: 0.7rem;
+
+    padding-top: 0.7rem;
+
+    border-top: 1px solid rgba(255, 20, 157, 0.1);
+
+}
+
+.featuredMenuPrice
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: 1.1rem;
+
+    color: var(--clrHotPink);
+
+    text-shadow: 0 0 8px rgba(255, 20, 157, 0.4);
+
+    letter-spacing: 0.02em;
+
+}
+
+.featuredMenuCta
+{
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+@media (min-width: 640px)
+{
+
+    .featuredMenuGrid
+    {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+@media (min-width: 1024px)
+{
+
+    .featuredMenuGrid
+    {
+
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+}
+
+
+/* ============================================================
+   PICKUP SCHEDULE — REDESIGNED HOMEPAGE SECTION
+============================================================ */
+
+.pickupScheduleSection
+{
+
+    background-color: var(--clrBlack);
+
+    background-image: radial-gradient(rgba(255, 20, 157, 0.06) 1px, transparent 1px);
+
+    background-size: 24px 24px;
+
+    border-top: 1px solid rgba(255, 20, 157, 0.12);
+
+}
+
+.pickupScheduleInner
+{
+
+    text-align: center;
+
+}
+
+.pickupDaysGrid
+{
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1rem;
+
+    margin: 2rem auto;
+
+    max-width: 480px;
+
+}
+
+.pickupDayCard
+{
+
+    background-color: var(--clrPanel);
+
+    border: 1px solid rgba(255, 20, 157, 0.25);
+
+    border-radius: var(--radiusCard);
+
+    padding: 1.6rem 0.75rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 0.5rem;
+
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+}
+
+.pickupDayCard:hover
+{
+
+    border-color: var(--clrHotPink);
+
+    box-shadow: 0 0 18px rgba(255, 20, 157, 0.15);
+
+}
+
+.pickupDayAbbr
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: 2rem;
+
+    color: var(--clrHotPink);
+
+    text-shadow: 0 0 12px rgba(255, 20, 157, 0.5);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.06em;
+
+    line-height: 1;
+
+}
+
+.pickupDayFull
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.1em;
+
+    color: var(--clrMuted);
+
+}
+
+.pickupCapacityNote
+{
+
+    font-size: 0.86rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.72;
+
+    max-width: 420px;
+
+    margin: 0 auto 2rem;
+
+}
+
+/* [DASHBOARD HOOK] — pickupDayCard will receive data-capacity-remaining attribute
+   when the order management system is connected. JS can then display capacity here. */
+
+
+/* ============================================================
+   HOMEPAGE FAQ — MINI STRIP
+============================================================ */
+
+.homeFaqSection
+{
+
+    background-color: var(--clrPanelAlt);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.12);
+
+}
+
+.homeFaqList
+{
+
+    max-width: 680px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+
+}
+
+.homeFaqItem
+{
+
+    border-bottom: 1px solid rgba(255, 20, 157, 0.08);
+
+    padding: 1.2rem 0;
+
+}
+
+.homeFaqItem:last-child
+{
+
+    border-bottom: none;
+
+}
+
+.homeFaqQ
+{
+
+    font-family: var(--fontCondensed);
+
+    font-size: 1.1rem;
+
+    font-weight: 400;
+
+    color: var(--clrWhite);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.03em;
+
+    line-height: 1.2;
+
+    margin-bottom: 0.4rem;
+
+}
+
+.homeFaqA
+{
+
+    font-size: 0.86rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.72;
+
+}
+
+.homeFaqCta
+{
+
+    max-width: 680px;
+
+    margin: 2rem auto 0;
+
+    text-align: center;
+
+}
+
+
+/* ============================================================
+   HOMEPAGE CONTACT STRIP
+============================================================ */
+
+.homeContactSection
+{
+
+    background-color: var(--clrBlack);
+
+    border-top: 1px solid rgba(255, 20, 157, 0.12);
+
+}
+
+.homeContactGrid
+{
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 1.75rem;
+
+    max-width: 680px;
+
+    margin: 0 auto 2.5rem;
+
+    text-align: center;
+
+}
+
+.homeContactItem
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 0.35rem;
+
+}
+
+.homeContactLabel
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.66rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.16em;
+
+    color: var(--clrHotPink);
+
+    text-shadow: 0 0 8px rgba(255, 20, 157, 0.4);
+
+}
+
+.homeContactValue
+{
+
+    font-size: 0.95rem;
+
+    color: var(--clrSoftText);
+
+    line-height: 1.55;
+
+    font-style: normal;
+
+}
+
+.homeContactLink
+{
+
+    color: var(--clrSoftText);
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+
+}
+
+.homeContactLink:hover
+{
+
+    color: var(--clrHotPink);
+
+}
+
+.homeContactCta
+{
+
+    max-width: 680px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+}
+
+@media (min-width: 640px)
+{
+
+    .homeContactGrid
+    {
+
+        grid-template-columns: repeat(3, 1fr);
+
+        text-align: left;
+
+    }
+
+    .homeContactItem
+    {
+
+        align-items: flex-start;
+
+    }
+
+}

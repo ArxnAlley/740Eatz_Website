@@ -128,21 +128,12 @@
 
                         </li>
 
-                        <li class="navItem" id="menuDropdownItem">
+                        <li class="navItem navItemHasDropdown" id="menuDropdownItem">
 
-                            <button
-                                class="navLink navLinkHasDropdown navLinkActive"
-                                id="menuDropdownBtn"
-                                type="button"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-
-                                Menu
-
-                                <span class="navCaret" aria-hidden="true">&#9660;</span>
-
-                            </button>
+                            <div class="navItemInner">
+                                <a class="navLink navLinkActive" href="menu.html">Menu</a>
+                                <button class="navChevronBtn" id="menuDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Menu categories"><span class="navCaret" aria-hidden="true">&#9660;</span></button>
+                            </div>
 
                             <ul class="navSubList" id="menuDropdownList" role="menu">
 
@@ -163,6 +154,8 @@
                                     <a class="navSubLink" href="#cheesecakeStrawberries" role="menuitem">Cheesecake Stuffed Strawberries</a>
 
                                 </li>
+
+                                <li role="none"><a class="navSubLink navSubLinkAll" href="menu.html" role="menuitem">View Full Menu &rarr;</a></li>
 
                             </ul>
 
@@ -277,7 +270,7 @@
 
                     <p class="menuCategoryNote">
 
-                        Bold candy coating on fresh fruit. Pick your flavor and size. Available for pickup Monday, Wednesday, and Friday.
+                        Bold candy coating on fresh fruit. Pick your flavor and size. Submit your request anytime &mdash; pickup is Monday, Tuesday, and Friday.
 
                     </p>
 
@@ -756,7 +749,7 @@
 
                 <p class="menuCtaNote">
 
-                    Submit your order request and we&rsquo;ll reach out to confirm your treats, flavor, and pickup day. Pickup available Monday, Wednesday, and Friday.
+                    Submit your request at any time. Bridget reviews each order personally and reaches out to confirm. Pickup is available Monday, Tuesday, and Friday.
 
                 </p>
 
@@ -891,7 +884,7 @@
 
                             <li>Monday</li>
 
-                            <li>Wednesday</li>
+                            <li>Tuesday</li>
 
                             <li>Friday</li>
 

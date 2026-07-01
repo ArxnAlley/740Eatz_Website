@@ -62,16 +62,18 @@
 
                         <li class="navItem"><a class="navLink" href="index.html">Home</a></li>
 
-                        <li class="navItem" id="menuDropdownItem">
+                        <li class="navItem navItemHasDropdown" id="menuDropdownItem">
 
-                            <button class="navLink navLinkHasDropdown" id="menuDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false">
-                                Menu <span class="navCaret" aria-hidden="true">&#9660;</span>
-                            </button>
+                            <div class="navItemInner">
+                                <a class="navLink" href="menu.html">Menu</a>
+                                <button class="navChevronBtn" id="menuDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Menu categories"><span class="navCaret" aria-hidden="true">&#9660;</span></button>
+                            </div>
 
                             <ul class="navSubList" id="menuDropdownList" role="menu">
                                 <li role="none"><a class="navSubLink" href="menu.html#candiedFruit" role="menuitem">Candied Fruit</a></li>
                                 <li role="none"><a class="navSubLink" href="menu.html#chocoStrawberries" role="menuitem">Chocolate Covered Strawberries</a></li>
                                 <li role="none"><a class="navSubLink" href="menu.html#cheesecakeStrawberries" role="menuitem">Cheesecake Stuffed Strawberries</a></li>
+                                <li role="none"><a class="navSubLink navSubLinkAll" href="menu.html" role="menuitem">View Full Menu &rarr;</a></li>
                             </ul>
 
                         </li>
@@ -201,6 +203,12 @@
 
                             </address>
 
+                            <p class="footerTextSm" style="margin-top: 0.4rem;">
+
+                                Pickup is under the green awning. There is a patio with tables and chairs.
+
+                            </p>
+
                         </div>
 
                         <div class="contactInfoBlock">
@@ -219,21 +227,21 @@
 
                                 </div>
 
-                                <div class="contactHoursRow">
-
-                                    <span>Tuesday</span>
-
-                                    <span style="color: var(--clrMuted); font-size: 0.78rem;">Closed</span>
-
-                                </div>
-
                                 <div class="contactHoursRow contactHoursActive">
 
                                     <span class="contactHoursDot" aria-hidden="true"></span>
 
-                                    <span>Wednesday</span>
+                                    <span>Tuesday</span>
 
                                     <span style="color: var(--clrNeonGreen); font-size: 0.78rem; font-weight: 600;">Open</span>
+
+                                </div>
+
+                                <div class="contactHoursRow">
+
+                                    <span>Wednesday</span>
+
+                                    <span style="color: var(--clrMuted); font-size: 0.78rem;">Closed</span>
 
                                 </div>
 
@@ -269,7 +277,13 @@
 
                         <!-- ── Map Placeholder ── -->
 
-                        <div class="contactMapPlaceholder" role="img" aria-label="740Eatz location map placeholder">
+                        <a
+                            class="contactMapPlaceholder"
+                            href="https://www.google.com/maps/search/429+2nd+St+Portsmouth+OH+45662"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Open Google Maps for 740Eatz at 429 2nd St, Portsmouth, OH"
+                        >
 
                             <div class="contactMapGrid" aria-hidden="true"></div>
 
@@ -283,18 +297,13 @@
 
                             </address>
 
-                            <a
-                                class="contactMapLink"
-                                href="https://www.google.com/maps/search/429+2nd+St+Portsmouth+OH+45662"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
+                            <span class="contactMapLink" aria-hidden="true">
 
-                                Get Directions &rarr;
+                                Open in Google Maps &rarr;
 
-                            </a>
+                            </span>
 
-                        </div>
+                        </a>
 
                     </div>
 
@@ -507,7 +516,7 @@
 
                         <ul class="footerPickupDays">
                             <li>Monday</li>
-                            <li>Wednesday</li>
+                            <li>Tuesday</li>
                             <li>Friday</li>
                         </ul>
 

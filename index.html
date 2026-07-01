@@ -94,7 +94,7 @@
             "openingHoursSpecification": [
                 {
                     "@type": "OpeningHoursSpecification",
-                    "dayOfWeek": ["Monday", "Wednesday", "Friday"],
+                    "dayOfWeek": ["Monday", "Tuesday", "Friday"],
                     "description": "Pickup available by scheduled order only"
                 }
             ]
@@ -136,21 +136,12 @@
 
                         </li>
 
-                        <li class="navItem" id="menuDropdownItem">
+                        <li class="navItem navItemHasDropdown" id="menuDropdownItem">
 
-                            <button
-                                class="navLink navLinkHasDropdown"
-                                id="menuDropdownBtn"
-                                type="button"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-
-                                Menu
-
-                                <span class="navCaret" aria-hidden="true">&#9660;</span>
-
-                            </button>
+                            <div class="navItemInner">
+                                <a class="navLink" href="menu.html">Menu</a>
+                                <button class="navChevronBtn" id="menuDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Menu categories"><span class="navCaret" aria-hidden="true">&#9660;</span></button>
+                            </div>
 
                             <ul class="navSubList" id="menuDropdownList" role="menu">
 
@@ -191,6 +182,20 @@
                                     >
 
                                         Cheesecake Stuffed Strawberries
+
+                                    </a>
+
+                                </li>
+
+                                <li role="none">
+
+                                    <a
+                                        class="navSubLink navSubLinkAll"
+                                        href="menu.html"
+                                        role="menuitem"
+                                    >
+
+                                        View Full Menu &rarr;
 
                                     </a>
 
@@ -370,240 +375,44 @@
 
 
         <!-- ============================================================
-             FEATURED SHOWCASE SECTION
+             MINI GALLERY
         ============================================================ -->
 
-        <section class="showcaseSection" id="showcase">
+        <section class="miniGallerySection" id="miniGallery">
 
             <div class="sectionInner">
 
-                <div class="sectionLabelWrap">
+                <div class="miniGalleryGrid">
 
-                    <span class="sectionLabel">What We Make</span>
+                    <a class="miniGalleryItem" href="gallery.html">
+                        <img class="miniGalleryImg" src="graphics/images/mainChocoFruit.jpg" alt="Chocolate-covered fruit" loading="lazy" width="400" height="300">
+                    </a>
 
-                </div>
+                    <a class="miniGalleryItem" href="gallery.html">
+                        <img class="miniGalleryImg" src="graphics/images/fanFavPlatter-BlueRas.jpg" alt="Candied fruit blue raspberry platter" loading="lazy" width="400" height="300">
+                    </a>
 
-                <h2 class="sectionHeadline">Handcrafted to Order</h2>
+                    <a class="miniGalleryItem" href="gallery.html">
+                        <img class="miniGalleryImg" src="graphics/images/chocoCoveredStrawberries.jpg" alt="Chocolate covered strawberries" loading="lazy" width="400" height="300">
+                    </a>
 
-                <p class="sectionSub">
+                    <a class="miniGalleryItem" href="gallery.html">
+                        <img class="miniGalleryImg" src="graphics/images/blue-pink-platter.jpg" alt="Blue and pink candy fruit platter" loading="lazy" width="400" height="300">
+                    </a>
 
-                    Every treat is made fresh for your pickup date. No shortcuts. No leftovers.
+                    <a class="miniGalleryItem" href="gallery.html">
+                        <img class="miniGalleryImg" src="graphics/images/coatedCandy.jpg" alt="Candy-coated fruit" loading="lazy" width="400" height="300">
+                    </a>
 
-                </p>
-
-                <div class="showcaseLayout">
-
-                    <!-- ── Feature: Candied Fruit ── -->
-
-                    <div class="showcaseFeatureCard">
-
-                        <div class="showcaseFeatureImgWrap">
-
-                            <img
-                                class="showcaseFeatureImg"
-                                src="graphics/images/fanFavPlatter-BlueRas.jpg"
-                                alt="Candy-coated blue raspberry fruit platter"
-                                loading="lazy"
-                                width="640"
-                                height="360"
-                            >
-
-                            <span class="showcaseCategoryBadge">Fan Favorite</span>
-
-                        </div>
-
-                        <div class="showcaseFeatureBody">
-
-                            <h3 class="showcaseFeatureName">Candied Fruit</h3>
-
-                            <p class="showcaseFeatureDesc">
-
-                                Bold candy-coated grapes and pineapples in your choice of flavor. Bluerazz, watermelon, green apple, cotton candy, or Tutti Frutti &mdash; we coat every piece fresh.
-
-                            </p>
-
-                            <div class="showcaseFeatureFooter">
-
-                                <span class="showcaseFeaturePrice">Small $25 &bull; Large $40 &bull; 3 Flavors $45</span>
-
-                                <a class="btnPrimary" href="menu.html#candiedFruit">View Options</a>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- ── Side Cards ── -->
-
-                    <div class="showcaseSideCards">
-
-                        <!-- Chocolate Covered Strawberries -->
-
-                        <div class="showcaseSideCard">
-
-                            <div class="showcaseSideImgWrap">
-
-                                <img
-                                    class="showcaseSideImg"
-                                    src="graphics/images/chocoCoveredStrawberries.jpg"
-                                    alt="Chocolate covered strawberries"
-                                    loading="lazy"
-                                    width="480"
-                                    height="360"
-                                >
-
-                                <span class="showcaseCategoryBadge">$25 / Dozen</span>
-
-                            </div>
-
-                            <div class="showcaseSideBody">
-
-                                <h3 class="showcaseSideName">Chocolate Covered Strawberries</h3>
-
-                                <p class="showcaseSideDesc">
-
-                                    Fresh strawberries dipped in milk, white, or dark chocolate. Perfect for birthdays, anniversaries, and gifts.
-
-                                </p>
-
-                                <div class="showcaseSideFooter">
-
-                                    <span class="showcaseSidePrice">$25 per dozen</span>
-
-                                    <a class="btnOutline" href="menu.html#chocoStrawberries">View</a>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <!-- Cheesecake Stuffed Strawberries -->
-
-                        <div class="showcaseSideCard">
-
-                            <div class="showcaseSideImgWrap">
-
-                                <img
-                                    class="showcaseSideImg"
-                                    src="graphics/images/chocoCoveredFruit2.jpg"
-                                    alt="Cheesecake stuffed strawberries"
-                                    loading="lazy"
-                                    width="480"
-                                    height="360"
-                                >
-
-                                <span class="showcaseCategoryBadge">$27</span>
-
-                            </div>
-
-                            <div class="showcaseSideBody">
-
-                                <h3 class="showcaseSideName">Cheesecake Stuffed Strawberries</h3>
-
-                                <p class="showcaseSideDesc">
-
-                                    Fresh strawberries filled with a creamy cheesecake mixture. A premium treat for those who want something extra special.
-
-                                </p>
-
-                                <div class="showcaseSideFooter">
-
-                                    <span class="showcaseSidePrice">$27</span>
-
-                                    <a class="btnOutline" href="menu.html#cheesecakeStrawberries">View</a>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                    <a class="miniGalleryItem" href="gallery.html">
+                        <img class="miniGalleryImg" src="graphics/images/BluevsRedBoat.jpg" alt="Blue and red candy boat" loading="lazy" width="400" height="300">
+                    </a>
 
                 </div>
 
-                <div class="showcaseCta">
+                <div class="miniGalleryViewAll">
 
-                    <a class="btnPrimary btnLarge" href="menu.html">Browse Full Menu</a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ============================================================
-             ORDERING STATUS SECTION
-        ============================================================ -->
-
-        <section class="orderStatusSection" id="orderStatus">
-
-            <div class="sectionInner orderStatusInner">
-
-                <div>
-
-                    <span class="statusBadge">
-
-                        <span class="statusDot" aria-hidden="true"></span>
-
-                        Now Accepting Orders
-
-                    </span>
-
-                    <h2 class="statusHeadline" style="margin-top: 1rem;">
-
-                        We&rsquo;re Open
-
-                        <span class="accentScript">This Week</span>
-
-                    </h2>
-
-                    <p class="statusNote" style="margin-top: 0.75rem;">
-
-                        Orders are made fresh and available for scheduled pickup on the days below. Submit your request and we&rsquo;ll confirm your day.
-
-                    </p>
-
-                    <div style="margin-top: 1.5rem;">
-
-                        <a class="btnPrimary" href="orderPage.html">Request an Order</a>
-
-                    </div>
-
-                </div>
-
-                <div
-                    class="statusDaysList"
-                    aria-label="Available pickup days"
-                    data-pickup-days="Monday,Wednesday,Friday"
-                >
-
-                    <div class="statusDayRow statusDayActive">
-
-                        <span class="statusDayName">Monday</span>
-
-                        <span class="statusDayCheck" aria-label="Available">&#10003;</span>
-
-                    </div>
-
-                    <div class="statusDayRow statusDayActive">
-
-                        <span class="statusDayName">Wednesday</span>
-
-                        <span class="statusDayCheck" aria-label="Available">&#10003;</span>
-
-                    </div>
-
-                    <div class="statusDayRow statusDayActive">
-
-                        <span class="statusDayName">Friday</span>
-
-                        <span class="statusDayCheck" aria-label="Available">&#10003;</span>
-
-                    </div>
+                    <a class="btnOutline" href="gallery.html">View All Photos &rarr;</a>
 
                 </div>
 
@@ -646,11 +455,11 @@
 
                         <div class="howOrderContent">
 
-                            <h3 class="howOrderTitle">Browse the Menu</h3>
+                            <h3 class="howOrderTitle">Submit a Request</h3>
 
                             <p class="howOrderDesc">
 
-                                Explore our three signature categories. Find your treat, check the flavors, and decide on your size.
+                                Fill out our simple order request form anytime. Choose your product, flavor, size, and preferred pickup day.
 
                             </p>
 
@@ -668,11 +477,11 @@
 
                         <div class="howOrderContent">
 
-                            <h3 class="howOrderTitle">Submit Your Request</h3>
+                            <h3 class="howOrderTitle">Bridget Reviews Your Order</h3>
 
                             <p class="howOrderDesc">
 
-                                Fill out the order request form with your product, flavor, and preferred pickup day. No payment needed upfront.
+                                Bridget personally reviews every request and reaches out to confirm the details before anything is made.
 
                             </p>
 
@@ -690,11 +499,11 @@
 
                         <div class="howOrderContent">
 
-                            <h3 class="howOrderTitle">We&rsquo;ll Contact You</h3>
+                            <h3 class="howOrderTitle">Order Confirmed</h3>
 
                             <p class="howOrderDesc">
 
-                                We&rsquo;ll reach out to confirm your order, answer any questions, and lock in your pickup date.
+                                Once confirmed, your treats are made fresh for your pickup date. No shortcuts. No leftovers.
 
                             </p>
 
@@ -712,17 +521,334 @@
 
                         <div class="howOrderContent">
 
-                            <h3 class="howOrderTitle">Pickup &amp; Enjoy</h3>
+                            <h3 class="howOrderTitle">Pickup Scheduled</h3>
 
                             <p class="howOrderDesc">
 
-                                Swing by 429 2nd St, Portsmouth, OH on your scheduled day and pick up your fresh made-to-order treats.
+                                Swing by 429 2nd St, Portsmouth, OH on your scheduled Monday, Tuesday, or Friday. Look for the green awning.
 
                             </p>
 
                         </div>
 
                     </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================================================
+             FEATURED MENU
+        ============================================================ -->
+
+        <section class="featuredMenuSection" id="featuredMenu">
+
+            <div class="sectionInner">
+
+                <div class="sectionLabelWrap">
+
+                    <span class="sectionLabel">Our Specialties</span>
+
+                </div>
+
+                <h2 class="sectionHeadline">Featured Menu</h2>
+
+                <p class="sectionSub">
+
+                    Handcrafted fresh for every order. Browse our most popular items below.
+
+                </p>
+
+                <div class="featuredMenuGrid">
+
+                    <!-- Large Tray -->
+
+                    <a class="featuredMenuCard" href="menu.html#candiedFruit">
+
+                        <div class="featuredMenuImgWrap">
+
+                            <img
+                                class="featuredMenuImg"
+                                src="graphics/images/fanFavPlatter-BlueRas.jpg"
+                                alt="Large candied fruit tray"
+                                loading="lazy"
+                                width="400"
+                                height="260"
+                            >
+
+                            <span class="featuredMenuBadge">Best Value</span>
+
+                        </div>
+
+                        <div class="featuredMenuBody">
+
+                            <h3 class="featuredMenuName">Large Tray</h3>
+
+                            <p class="featuredMenuDesc">
+
+                                A generous tray of candy-coated fruit in your choice of flavor. Perfect for parties, gifts, and events.
+
+                            </p>
+
+                            <div class="featuredMenuFooter">
+
+                                <span class="featuredMenuPrice">$40</span>
+
+                                <span class="featuredMenuCta">View &rarr;</span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                    <!-- Small Tray -->
+
+                    <a class="featuredMenuCard" href="menu.html#candiedFruit">
+
+                        <div class="featuredMenuImgWrap">
+
+                            <img
+                                class="featuredMenuImg"
+                                src="graphics/images/coatedCandy.jpg"
+                                alt="Small candied fruit tray"
+                                loading="lazy"
+                                width="400"
+                                height="260"
+                            >
+
+                        </div>
+
+                        <div class="featuredMenuBody">
+
+                            <h3 class="featuredMenuName">Small Tray</h3>
+
+                            <p class="featuredMenuDesc">
+
+                                Candy-coated grapes and pineapple in one bold flavor. A great treat for smaller gatherings or personal orders.
+
+                            </p>
+
+                            <div class="featuredMenuFooter">
+
+                                <span class="featuredMenuPrice">$25</span>
+
+                                <span class="featuredMenuCta">View &rarr;</span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                    <!-- Trio Tray -->
+
+                    <a class="featuredMenuCard" href="menu.html#candiedFruit">
+
+                        <div class="featuredMenuImgWrap">
+
+                            <img
+                                class="featuredMenuImg"
+                                src="graphics/images/blue-pink-platter.jpg"
+                                alt="Trio candied fruit tray with three flavors"
+                                loading="lazy"
+                                width="400"
+                                height="260"
+                            >
+
+                            <span class="featuredMenuBadge">Fan Favorite</span>
+
+                        </div>
+
+                        <div class="featuredMenuBody">
+
+                            <h3 class="featuredMenuName">Trio Tray</h3>
+
+                            <p class="featuredMenuDesc">
+
+                                Can&rsquo;t pick just one? Get three flavors in a single large tray. The ultimate crowd-pleaser.
+
+                            </p>
+
+                            <div class="featuredMenuFooter">
+
+                                <span class="featuredMenuPrice">$45</span>
+
+                                <span class="featuredMenuCta">View &rarr;</span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                    <!-- Chocolate Covered Strawberries -->
+
+                    <a class="featuredMenuCard" href="menu.html#chocoStrawberries">
+
+                        <div class="featuredMenuImgWrap">
+
+                            <img
+                                class="featuredMenuImg"
+                                src="graphics/images/chocoCoveredStrawberries.jpg"
+                                alt="Chocolate covered strawberries"
+                                loading="lazy"
+                                width="400"
+                                height="260"
+                            >
+
+                        </div>
+
+                        <div class="featuredMenuBody">
+
+                            <h3 class="featuredMenuName">Chocolate Covered Strawberries</h3>
+
+                            <p class="featuredMenuDesc">
+
+                                Fresh strawberries dipped in milk, white, or dark chocolate. Perfect for birthdays, anniversaries, and gifts.
+
+                            </p>
+
+                            <div class="featuredMenuFooter">
+
+                                <span class="featuredMenuPrice">$25 / dozen</span>
+
+                                <span class="featuredMenuCta">View &rarr;</span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                    <!-- Cheesecake Stuffed Strawberries -->
+
+                    <a class="featuredMenuCard" href="menu.html#cheesecakeStrawberries">
+
+                        <div class="featuredMenuImgWrap">
+
+                            <img
+                                class="featuredMenuImg"
+                                src="graphics/images/chocoCoveredFruit2.jpg"
+                                alt="Cheesecake stuffed strawberries"
+                                loading="lazy"
+                                width="400"
+                                height="260"
+                            >
+
+                        </div>
+
+                        <div class="featuredMenuBody">
+
+                            <h3 class="featuredMenuName">Cheesecake Stuffed Strawberries</h3>
+
+                            <p class="featuredMenuDesc">
+
+                                Fresh strawberries filled with a creamy cheesecake mixture. A premium treat for those who want something extra special.
+
+                            </p>
+
+                            <div class="featuredMenuFooter">
+
+                                <span class="featuredMenuPrice">$27</span>
+
+                                <span class="featuredMenuCta">View &rarr;</span>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <div class="showcaseCta">
+
+                    <a class="btnPrimary btnLarge" href="menu.html">View Full Menu &rarr;</a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================================================
+             WEEKLY PICKUP SCHEDULE
+        ============================================================ -->
+
+        <!-- [DASHBOARD HOOK] data-pickup-days: source of truth for pickup day display -->
+        <!-- [DASHBOARD HOOK] pickupCapacityNote: update text via dashboard to reflect current capacity -->
+
+        <section class="pickupScheduleSection" id="pickupSchedule">
+
+            <div class="sectionInner">
+
+                <div class="sectionLabelWrap">
+
+                    <span class="sectionLabel">When We&rsquo;re Available</span>
+
+                </div>
+
+                <h2 class="sectionHeadline">Weekly Pickup Schedule</h2>
+
+                <p class="sectionSub">
+
+                    Customers may submit an order request at any time. Pickup days are Monday, Tuesday, and Friday.
+
+                </p>
+
+                <div
+                    class="pickupScheduleInner"
+                    data-pickup-days="Monday,Tuesday,Friday"
+                >
+
+                    <!-- [DASHBOARD HOOK] pickupDaysGrid: render day cards dynamically from data-pickup-days -->
+
+                    <div class="pickupDaysGrid">
+
+                        <div class="pickupDayCard">
+
+                            <span class="pickupDayAbbr" aria-hidden="true">MON</span>
+
+                            <span class="pickupDayFull">Monday</span>
+
+                        </div>
+
+                        <div class="pickupDayCard">
+
+                            <span class="pickupDayAbbr" aria-hidden="true">TUE</span>
+
+                            <span class="pickupDayFull">Tuesday</span>
+
+                        </div>
+
+                        <div class="pickupDayCard">
+
+                            <span class="pickupDayAbbr" aria-hidden="true">FRI</span>
+
+                            <span class="pickupDayFull">Friday</span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- [DASHBOARD HOOK] pickupCapacityNote: capacity per day can be surfaced here -->
+
+                    <p class="pickupCapacityNote">
+
+                        ~10&ndash;15 orders per pickup day. Submit your request anytime and Bridget will confirm your date.
+
+                    </p>
+
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+
+                    <a class="btnPrimary" href="orderPage.html">Request an Order</a>
 
                 </div>
 
@@ -817,6 +943,139 @@
 
 
         <!-- ============================================================
+             HOME FAQ
+        ============================================================ -->
+
+        <section class="homeFaqSection" id="homeFaq">
+
+            <div class="sectionInner">
+
+                <div class="sectionLabelWrap">
+
+                    <span class="sectionLabel">Common Questions</span>
+
+                </div>
+
+                <h2 class="sectionHeadline">Quick Answers</h2>
+
+                <ul class="homeFaqList" role="list">
+
+                    <li class="homeFaqItem">
+
+                        <h3 class="homeFaqQ">How do I place an order?</h3>
+
+                        <p class="homeFaqA">
+
+                            Click &ldquo;Request an Order&rdquo; and fill out our simple form. Choose your product, flavor, size, and preferred pickup day. Bridget will reach out to confirm before anything is made.
+
+                        </p>
+
+                    </li>
+
+                    <li class="homeFaqItem">
+
+                        <h3 class="homeFaqQ">When can I pick up my order?</h3>
+
+                        <p class="homeFaqA">
+
+                            Pickup is available Monday, Tuesday, and Friday at 429 2nd St, Portsmouth, OH. Look for the green awning. You can submit your request at any time &mdash; Bridget will confirm your pickup date.
+
+                        </p>
+
+                    </li>
+
+                    <li class="homeFaqItem">
+
+                        <h3 class="homeFaqQ">Do I pay upfront?</h3>
+
+                        <p class="homeFaqA">
+
+                            No upfront payment is required to submit a request. Payment details are handled when Bridget confirms your order.
+
+                        </p>
+
+                    </li>
+
+                </ul>
+
+                <div class="homeFaqCta">
+
+                    <a class="btnOutline" href="faq.html">See All FAQs &rarr;</a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================================================
+             HOME CONTACT STRIP
+        ============================================================ -->
+
+        <section class="homeContactSection" id="homeContact">
+
+            <div class="sectionInner">
+
+                <div class="sectionLabelWrap">
+
+                    <span class="sectionLabel">Find Us</span>
+
+                </div>
+
+                <h2 class="sectionHeadline">Get in Touch</h2>
+
+                <div class="homeContactGrid">
+
+                    <div class="homeContactItem">
+
+                        <span class="homeContactLabel">Phone</span>
+
+                        <a class="homeContactLink" href="tel:+12202408435">(220) 240-8435</a>
+
+                    </div>
+
+                    <div class="homeContactItem">
+
+                        <span class="homeContactLabel">Pickup Location</span>
+
+                        <span class="homeContactValue">429 2nd St, Portsmouth, OH</span>
+
+                        <span class="homeContactValue" style="font-size: 0.8rem; opacity: 0.75;">Pickup under the green awning</span>
+
+                    </div>
+
+                    <div class="homeContactItem">
+
+                        <span class="homeContactLabel">Social</span>
+
+                        <a
+                            class="homeContactLink"
+                            href="https://www.facebook.com/profile.php?id=61558663167143"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+
+                            Message on Facebook
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+
+                    <a class="btnPrimary" href="contact.html">Get in Touch &rarr;</a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================================================
              READY TO ORDER — CTA BANNER
         ============================================================ -->
 
@@ -849,7 +1108,7 @@
 
                 <p class="dropsText">
 
-                    Submit your order request and we&rsquo;ll reach out to confirm your treats, flavor, and pickup day.
+                    Submit your order request at any time and Bridget will reach out to confirm your treats, flavor, and pickup day.
 
                 </p>
 
@@ -1047,7 +1306,7 @@
 
                             <li>Monday</li>
 
-                            <li>Wednesday</li>
+                            <li>Tuesday</li>
 
                             <li>Friday</li>
 
@@ -1055,7 +1314,7 @@
 
                         <p class="footerTextSm">
 
-                            Fresh made to order. Pickup confirmed after your request is received.
+                            Submit requests anytime. Pickup confirmed after your order is reviewed.
 
                         </p>
 

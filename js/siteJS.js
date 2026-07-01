@@ -22,6 +22,13 @@ const CONTACT_ENDPOINT  = "https://YOUR_ENDPOINT_HERE/contact";
 
 const FEEDBACK_ENDPOINT = "https://YOUR_ENDPOINT_HERE/feedback";
 
+/*
+    Replace with the actual Google review short link once confirmed.
+    Example: https://g.page/r/CdXXXXXXXXXX/review
+*/
+
+const GOOGLE_REVIEW_URL = "https://g.page/r/REPLACE_WITH_ACTUAL_GOOGLE_REVIEW_LINK";
+
 
 /* ============================================================
    COPYRIGHT YEAR — DYNAMIC
@@ -699,8 +706,6 @@ const starBtns      = document.querySelectorAll(".starBtn");
 
 const step1         = document.getElementById("funnelStep1");
 
-const step2Positive = document.getElementById("funnelStep2Positive");
-
 const step2Negative = document.getElementById("funnelStep2Negative");
 
 const step3         = document.getElementById("funnelStep3");
@@ -753,21 +758,23 @@ if ( starBtns.length > 0 )
 
             highlightStars( selectedRating );
 
-            /* Short delay before transitioning */
-
             setTimeout(function ()
             {
-
-                if ( step1 ) { step1.classList.add("funnelStepHidden"); }
 
                 if ( selectedRating >= 4 )
                 {
 
-                    if ( step2Positive ) { step2Positive.classList.remove("funnelStepHidden"); }
+                    /* 4-5 stars: immediate redirect to Google Reviews */
+
+                    window.location.href = GOOGLE_REVIEW_URL;
 
                 }
                 else
                 {
+
+                    /* 1-3 stars: show internal feedback form */
+
+                    if ( step1 ) { step1.classList.add("funnelStepHidden"); }
 
                     if ( step2Negative ) { step2Negative.classList.remove("funnelStepHidden"); }
 

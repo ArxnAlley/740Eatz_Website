@@ -79,7 +79,7 @@
                     "name": "What days do you take orders?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Pickup is available Monday, Wednesday, and Friday. Orders should be placed at least 48 hours before your desired pickup day."
+                        "text": "Pickup is available Monday, Tuesday, and Friday. You may submit an order request at any time. Orders are prepared for your scheduled pickup day."
                     }
                 }
             ]
@@ -111,16 +111,18 @@
 
                         <li class="navItem"><a class="navLink" href="index.html">Home</a></li>
 
-                        <li class="navItem" id="menuDropdownItem">
+                        <li class="navItem navItemHasDropdown" id="menuDropdownItem">
 
-                            <button class="navLink navLinkHasDropdown" id="menuDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false">
-                                Menu <span class="navCaret" aria-hidden="true">&#9660;</span>
-                            </button>
+                            <div class="navItemInner">
+                                <a class="navLink" href="menu.html">Menu</a>
+                                <button class="navChevronBtn" id="menuDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Menu categories"><span class="navCaret" aria-hidden="true">&#9660;</span></button>
+                            </div>
 
                             <ul class="navSubList" id="menuDropdownList" role="menu">
                                 <li role="none"><a class="navSubLink" href="menu.html#candiedFruit" role="menuitem">Candied Fruit</a></li>
                                 <li role="none"><a class="navSubLink" href="menu.html#chocoStrawberries" role="menuitem">Chocolate Covered Strawberries</a></li>
                                 <li role="none"><a class="navSubLink" href="menu.html#cheesecakeStrawberries" role="menuitem">Cheesecake Stuffed Strawberries</a></li>
+                                <li role="none"><a class="navSubLink navSubLinkAll" href="menu.html" role="menuitem">View Full Menu &rarr;</a></li>
                             </ul>
 
                         </li>
@@ -367,13 +369,13 @@
 
                                 <p class="faqAnswerText">
 
-                                    Pickup is currently available on <strong>Monday, Wednesday, and Friday</strong>. Please place your order at least 48 hours before your preferred pickup day.
+                                    You may submit a request at any time. Orders are prepared for pickup on <strong>Monday, Tuesday, and Friday</strong>. Submitting early is recommended &mdash; we typically accept around 10&ndash;15 orders per pickup day.
 
                                 </p>
 
                                 <p class="faqAnswerText">
 
-                                    If you need a specific day not listed, reach out through our <a class="faqAnswerLink" href="contact.html">contact form</a> and we&rsquo;ll do our best to accommodate.
+                                    If you need a different day, reach out through our <a class="faqAnswerLink" href="contact.html">contact form</a> and we&rsquo;ll do our best to accommodate.
 
                                 </p>
 
@@ -469,7 +471,7 @@
 
                                 <p class="faqAnswerText">
 
-                                    Currently we are pickup only at 429 2nd St, Portsmouth, OH 45662. Pickup is scheduled on Monday, Wednesday, and Friday after your order is confirmed.
+                                    Currently we are pickup only at 429 2nd St, Portsmouth, OH 45662. Pickup is under the green awning &mdash; there is a patio with tables and chairs. Pickup days are Monday, Tuesday, and Friday after your order is confirmed.
 
                                 </p>
 
@@ -571,7 +573,7 @@
 
                         <ul class="footerPickupDays">
                             <li>Monday</li>
-                            <li>Wednesday</li>
+                            <li>Tuesday</li>
                             <li>Friday</li>
                         </ul>
 

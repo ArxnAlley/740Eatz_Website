@@ -58,16 +58,18 @@
 
                         <li class="navItem"><a class="navLink" href="index.html">Home</a></li>
 
-                        <li class="navItem" id="menuDropdownItem">
+                        <li class="navItem navItemHasDropdown" id="menuDropdownItem">
 
-                            <button class="navLink navLinkHasDropdown" id="menuDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false">
-                                Menu <span class="navCaret" aria-hidden="true">&#9660;</span>
-                            </button>
+                            <div class="navItemInner">
+                                <a class="navLink" href="menu.html">Menu</a>
+                                <button class="navChevronBtn" id="menuDropdownBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Menu categories"><span class="navCaret" aria-hidden="true">&#9660;</span></button>
+                            </div>
 
                             <ul class="navSubList" id="menuDropdownList" role="menu">
                                 <li role="none"><a class="navSubLink" href="menu.html#candiedFruit" role="menuitem">Candied Fruit</a></li>
                                 <li role="none"><a class="navSubLink" href="menu.html#chocoStrawberries" role="menuitem">Chocolate Covered Strawberries</a></li>
                                 <li role="none"><a class="navSubLink" href="menu.html#cheesecakeStrawberries" role="menuitem">Cheesecake Stuffed Strawberries</a></li>
+                                <li role="none"><a class="navSubLink navSubLinkAll" href="menu.html" role="menuitem">View Full Menu &rarr;</a></li>
                             </ul>
 
                         </li>
@@ -170,40 +172,6 @@
                         >&#9733;</button>
 
                     </div>
-
-                </div>
-
-                <!-- ── Step 2a: 4-5 Stars → Google ── -->
-
-                <div class="funnelStep funnelStepHidden" id="funnelStep2Positive">
-
-                    <p class="funnelHeadline" style="font-size: 2rem;">&#127881;</p>
-
-                    <h2 class="funnelHeadline">Amazing! Thank you!</h2>
-
-                    <p class="funnelSub">
-
-                        We&rsquo;re so glad you loved your order. Would you take 60 seconds to share your experience on Google? It means the world to a small local business.
-
-                    </p>
-
-                    <a
-                        class="btnPrimary btnLarge"
-                        href="https://www.google.com/maps/search/740Eatz+Portsmouth+OH"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        id="googleReviewBtn"
-                    >
-
-                        Leave a Google Review
-
-                    </a>
-
-                    <p class="funnelRedirectNote">
-
-                        You&rsquo;ll be taken to Google to share your review. Thank you for supporting 740Eatz!
-
-                    </p>
 
                 </div>
 

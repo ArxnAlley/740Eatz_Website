@@ -512,7 +512,7 @@ function validateStep ( step )
 
         const day = selected.getDay();
 
-        return day === 1 || day === 3 || day === 5;
+        return day === 1 || day === 2 || day === 5;
 
     }
 
@@ -733,7 +733,7 @@ if ( builderWrap )
 
             const day = selected.getDay();
 
-            const validDays = [1, 3, 5];
+            const validDays = [1, 2, 5];
 
             if ( !validDays.includes(day) )
             {
@@ -742,7 +742,7 @@ if ( builderWrap )
 
                 if ( errorEl )
                 {
-                    errorEl.textContent = "Please select a Monday, Wednesday, or Friday.";
+                    errorEl.textContent = "Please select a Monday, Tuesday, or Friday.";
                 }
 
             }
