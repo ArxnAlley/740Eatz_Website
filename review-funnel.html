@@ -33,9 +33,23 @@
 
         <link rel="stylesheet" href="css/stylePages.css">
 
+        <!-- ── Favicon ── -->
+
+        <link rel="shortcut icon" href="graphics/favicons/favicon.ico">
+
+        <link rel="icon" href="graphics/favicons/favicon.svg" type="image/svg+xml">
+
+        <link rel="icon" type="image/png" sizes="96x96" href="graphics/favicons/favicon-96x96.png">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="graphics/favicons/apple-touch-icon.png">
+
+        <link rel="manifest" href="graphics/favicons/site.webmanifest">
+
     </head>
 
     <body>
+
+        <a class="skipToMain" href="#mainContent">Skip to main content</a>
 
 
         <!-- ============================================================
@@ -48,7 +62,7 @@
 
                 <a class="logoLink" href="index.html" aria-label="740Eatz Home">
 
-                    <img class="headerLogo" src="graphics/logos/TP740Logo.png" alt="740Eatz" width="120" height="72">
+                    <img class="headerLogo" src="graphics/logos/TP740Logo.png" alt="740Eatz" width="120" height="72" decoding="async">
 
                 </a>
 
@@ -105,7 +119,7 @@
              REVIEW FUNNEL
         ============================================================ -->
 
-        <main class="funnelPage" id="reviewFunnel">
+        <main class="funnelPage" id="mainContent">
 
             <div class="funnelCard">
 
@@ -115,6 +129,7 @@
                     alt="740Eatz"
                     width="120"
                     height="60"
+                    decoding="async"
                 >
 
                 <!-- ── Step 1: Star Rating ── -->
@@ -232,6 +247,7 @@
                                 name="feedback"
                                 placeholder="Tell us what happened and how we can improve&#8230;"
                                 rows="4"
+                                required
                             ></textarea>
 
                         </div>
@@ -244,9 +260,8 @@
                         ></div>
 
                         <button
-                            class="btnPrimary"
+                            class="btnPrimary funnelSubmitBtn"
                             type="submit"
-                            style="width: 100%;"
                             id="funnelSubmitBtn"
                         >
 
@@ -268,7 +283,7 @@
 
                 <div class="funnelStep funnelStepHidden" id="funnelStep3">
 
-                    <p style="font-size: 2rem;" aria-hidden="true">&#9829;</p>
+                    <p class="funnelThankYouIcon" aria-hidden="true">&#9829;</p>
 
                     <h2 class="funnelHeadline">Thank You!</h2>
 

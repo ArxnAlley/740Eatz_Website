@@ -18,9 +18,35 @@
 
         <meta name="robots" content="index, follow">
 
+        <meta name="theme-color" content="#ff149d">
+
+        <meta name="author" content="740Eatz">
+
+        <!-- ── Open Graph ── -->
+
+        <meta property="og:type" content="website">
+
+        <meta property="og:site_name" content="740Eatz">
+
+        <meta property="og:url" content="https://740eatz.com/orderPage.html">
+
+        <meta property="og:locale" content="en_US">
+
         <meta property="og:title" content="Request an Order | 740Eatz Portsmouth, OH">
 
         <meta property="og:description" content="Submit a custom dessert order request from 740Eatz. Made fresh in Portsmouth, Ohio. Pickup Monday, Tuesday, and Friday.">
+
+        <meta property="og:image" content="https://740eatz.com/graphics/images/mainChocoFruit.jpg">
+
+        <!-- ── Twitter Card ── -->
+
+        <meta name="twitter:card" content="summary_large_image">
+
+        <meta name="twitter:title" content="Request an Order | 740Eatz Portsmouth, OH">
+
+        <meta name="twitter:description" content="Submit a custom dessert order request from 740Eatz. Made fresh in Portsmouth, Ohio. Pickup Monday, Tuesday, and Friday.">
+
+        <meta name="twitter:image" content="https://740eatz.com/graphics/images/mainChocoFruit.jpg">
 
         <title>Request an Order | 740Eatz &mdash; Custom Desserts Portsmouth, OH</title>
 
@@ -35,9 +61,69 @@
 
         <link rel="stylesheet" href="css/styleIndex.css">
 
+        <!-- ── Favicon ── -->
+
+        <link rel="shortcut icon" href="graphics/favicons/favicon.ico">
+
+        <link rel="icon" href="graphics/favicons/favicon.svg" type="image/svg+xml">
+
+        <link rel="icon" type="image/png" sizes="96x96" href="graphics/favicons/favicon-96x96.png">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="graphics/favicons/apple-touch-icon.png">
+
+        <link rel="manifest" href="graphics/favicons/site.webmanifest">
+
+        <link rel="canonical" href="https://740eatz.com/orderPage.html">
+
+        <!-- ── Page Schema ── -->
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "url": "https://740eatz.com/orderPage.html",
+            "name": "Request an Order | 740Eatz — Custom Desserts Portsmouth, OH",
+            "description": "Request a custom dessert order from 740Eatz in Portsmouth, OH. Candy-coated fruit, chocolate-covered strawberries, and cheesecake stuffed strawberries. Pickup Monday, Tuesday, Friday.",
+            "inLanguage": "en-US",
+            "isPartOf": {
+                "@type": "WebSite",
+                "name": "740Eatz",
+                "url": "https://740eatz.com"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "740Eatz",
+                "url": "https://740eatz.com"
+            }
+        }
+        </script>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://740eatz.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Request an Order",
+                    "item": "https://740eatz.com/orderPage.html"
+                }
+            ]
+        }
+        </script>
+
     </head>
 
     <body>
+
+        <a class="skipToMain" href="#mainContent">Skip to main content</a>
 
 
         <!-- ============================================================
@@ -56,6 +142,7 @@
                         alt="740Eatz"
                         width="120"
                         height="72"
+                        decoding="async"
                     >
 
                 </a>
@@ -128,7 +215,7 @@
              ORDER PAGE INTRO
         ============================================================ -->
 
-        <section class="orderPageIntro" id="orderIntro">
+        <section class="orderPageIntro" id="mainContent">
 
             <div class="orderPageIntroInner">
 
@@ -288,6 +375,7 @@
                                 type="date"
                                 id="builderPickupDate"
                                 name="pickupDate"
+                                required
                             >
 
                             <p class="builderDateNote">
@@ -326,6 +414,7 @@
                                         name="firstName"
                                         placeholder="Your first name"
                                         autocomplete="given-name"
+                                        required
                                     >
 
                                 </div>
@@ -360,6 +449,8 @@
                                         name="phoneNumber"
                                         placeholder="(000) 000-0000"
                                         autocomplete="tel"
+                                        inputmode="tel"
+                                        required
                                     >
 
                                 </div>
@@ -375,6 +466,7 @@
                                         name="email"
                                         placeholder="your@email.com"
                                         autocomplete="email"
+                                        inputmode="email"
                                     >
 
                                 </div>
@@ -539,6 +631,7 @@
                     class="footerWatermarkImg"
                     src="graphics/logos/digitalLogo.jpg"
                     alt=""
+                    decoding="async"
                 >
 
             </div>
@@ -555,6 +648,7 @@
                             class="footerLogo"
                             src="graphics/logos/TP740Logo.png"
                             alt="740Eatz"
+                            decoding="async"
                         >
 
                         <p class="footerTagline">Treats that hit different.</p>
@@ -719,6 +813,24 @@
 
                 </div>
 
+                <!-- ── Legal Navigation ── -->
+
+                <nav class="footerLegal" aria-label="Legal">
+
+                    <ul class="footerLegalNav">
+
+                        <li><a class="footerLegalLink" href="privacyPolicy.html">Privacy Policy</a></li>
+
+                        <li><a class="footerLegalLink" href="termsOfService.html">Terms of Service</a></li>
+
+                        <li><a class="footerLegalLink" href="cookiePolicy.html">Cookie Policy</a></li>
+
+                        <li><a class="footerLegalLink" href="accessibilityStatement.html">Accessibility</a></li>
+
+                    </ul>
+
+                </nav>
+
                 <div class="footerBottom">
 
                     <p class="footerCopyright">&copy; <span id="copyrightYear"></span> 740Eatz. All rights reserved.</p>
@@ -736,6 +848,7 @@
                             class="footerDevLogo"
                             src="graphics/logos/TPNulo_StudioLogo.png"
                             alt="Nulo Studio"
+                            decoding="async"
                         >
 
                     </a>

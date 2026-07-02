@@ -3040,6 +3040,53 @@
 
 
 /* ============================================================
+   ABOUT — INLINE STYLE REPLACEMENTS
+============================================================ */
+
+.aboutOwnerCtaRow
+{
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.85rem;
+
+    margin-top: 1rem;
+
+}
+
+
+/* ============================================================
+   FAQ — INLINE STYLE REPLACEMENTS
+============================================================ */
+
+.faqCtaWrap
+{
+
+    max-width: 540px;
+
+    margin: 3rem auto 0;
+
+    text-align: center;
+
+}
+
+.faqCtaRow
+{
+
+    display: flex;
+
+    gap: 0.85rem;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+}
+
+
+/* ============================================================
    MENU — CARD-SPECIFIC IMAGE POSITION OVERRIDES
 ============================================================ */
 
@@ -3049,5 +3096,188 @@
 {
 
     object-position: 48% 35%;
+
+}
+
+
+/* ============================================================
+   CONTACT — INLINE STYLE REPLACEMENTS
+============================================================ */
+
+.contactPhoneLink
+{
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+
+}
+
+.contactInfoNote
+{
+
+    margin-top: 0.3rem;
+
+}
+
+.contactMapNote
+{
+
+    margin-top: 0.4rem;
+
+}
+
+.contactInfoAddress
+{
+
+    font-style: normal;
+
+}
+
+.contactHoursOpen
+{
+
+    color: var(--clrNeonGreen);
+
+    font-size: 0.78rem;
+
+    font-weight: 600;
+
+}
+
+.contactHoursClosed
+{
+
+    color: var(--clrMuted);
+
+    font-size: 0.78rem;
+
+}
+
+.contactFormSub
+{
+
+    text-align: left;
+
+    margin: 0 0 1.5rem;
+
+    max-width: none;
+
+}
+
+
+/* ============================================================
+   GALLERY — INLINE STYLE REPLACEMENTS
+============================================================ */
+
+.galleryCtaWrap
+{
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 3rem;
+
+}
+
+
+/* ============================================================
+   REVIEW FUNNEL — INLINE STYLE REPLACEMENTS
+============================================================ */
+
+.funnelSubmitBtn
+{
+
+    width: 100%;
+
+}
+
+.funnelThankYouIcon
+{
+
+    font-size: 2rem;
+
+}
+
+
+/* ============================================================
+   REVIEW CARD — INLINE STYLE REPLACEMENTS
+============================================================ */
+
+.reviewCardSectionLabel
+{
+
+    display: block;
+
+    margin-bottom: 1.5rem;
+
+    text-align: left;
+
+}
+
+.reviewCardStickerRow
+{
+
+    display: flex;
+
+    gap: 2rem;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+}
+
+.reviewCardUsageColumn
+{
+
+    flex: 1;
+
+    min-width: 240px;
+
+}
+
+.reviewCardUsageLabel
+{
+
+    display: block;
+
+    margin-bottom: 0.75rem;
+
+}
+
+.reviewCardUsageList
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.65rem;
+
+}
+
+.reviewCardUsageItem
+{
+
+    font-size: 0.88rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.6;
+
+    display: flex;
+
+    gap: 0.65rem;
+
+}
+
+.reviewCardUsageNum
+{
+
+    color: var(--clrHotPink);
+
+    flex-shrink: 0;
 
 }

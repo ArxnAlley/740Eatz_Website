@@ -131,6 +131,51 @@ button
 
 }
 
+*:focus-visible
+{
+
+    outline: 2px solid var(--clrHotPink);
+
+    outline-offset: 3px;
+
+}
+
+.skipToMain
+{
+
+    position: absolute;
+
+    top: -9999px;
+
+    left: 1rem;
+
+    z-index: 9999;
+
+    padding: 0.6rem 1.2rem;
+
+    background-color: var(--clrHotPink);
+
+    color: var(--clrWhite);
+
+    font-family: var(--fontSans);
+
+    font-size: 0.9rem;
+
+    font-weight: 700;
+
+    border-radius: var(--radiusPill);
+
+    text-decoration: none;
+
+}
+
+.skipToMain:focus
+{
+
+    top: 1rem;
+
+}
+
 
 /* ============================================================
    TYPOGRAPHY
@@ -1136,101 +1181,6 @@ h4
 }
 
 
-/* ============================================================
-   FEATURED SHOWCASE SECTION
-============================================================ */
-
-.showcaseSection
-{
-
-    background-color: var(--clrBlack);
-
-    border-top: 1px solid rgba(255, 20, 157, 0.1);
-
-}
-
-.showcaseLayout
-{
-
-    display: grid;
-
-    grid-template-columns: 1fr;
-
-    gap: 1.25rem;
-
-}
-
-/* ── Feature Card (large) ── */
-
-.showcaseFeatureCard
-{
-
-    position: relative;
-
-    background-color: var(--clrPanel);
-
-    border-radius: var(--radiusCard);
-
-    overflow: hidden;
-
-    border: 1px solid var(--clrBorderPink);
-
-    box-shadow: var(--glowBox);
-
-    display: flex;
-
-    flex-direction: column;
-
-    cursor: default;
-
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
-
-}
-
-.showcaseFeatureCard:hover
-{
-
-    border-color: var(--clrHotPink);
-
-    box-shadow: var(--glowBox), 0 8px 40px rgba(0, 0, 0, 0.7);
-
-}
-
-.showcaseFeatureImgWrap
-{
-
-    position: relative;
-
-    overflow: hidden;
-
-    aspect-ratio: 16 / 9;
-
-    background-color: #080508;
-
-}
-
-.showcaseFeatureImg
-{
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    object-position: center;
-
-    transition: transform 0.5s ease;
-
-}
-
-.showcaseFeatureCard:hover .showcaseFeatureImg
-{
-
-    transform: scale(1.04);
-
-}
-
 .showcaseCategoryBadge
 {
 
@@ -1264,246 +1214,6 @@ h4
 
 }
 
-.showcaseFeatureBody
-{
-
-    padding: 1.5rem 1.6rem 1.8rem;
-
-    flex: 1;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 0.6rem;
-
-}
-
-.showcaseFeatureName
-{
-
-    font-family: var(--fontCondensed);
-
-    font-size: clamp(1.4rem, 3vw, 2rem);
-
-    font-weight: 400;
-
-    color: var(--clrWhite);
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.03em;
-
-    line-height: 1.05;
-
-}
-
-.showcaseFeatureDesc
-{
-
-    font-size: 0.9rem;
-
-    color: var(--clrMuted);
-
-    line-height: 1.7;
-
-    max-width: 480px;
-
-}
-
-.showcaseFeatureFooter
-{
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    flex-wrap: wrap;
-
-    gap: 1rem;
-
-    margin-top: 0.5rem;
-
-}
-
-.showcaseFeaturePrice
-{
-
-    font-family: var(--fontSans);
-
-    font-size: 0.88rem;
-
-    font-weight: 700;
-
-    color: var(--clrHotPink);
-
-    text-shadow: 0 0 8px rgba(255, 20, 157, 0.4);
-
-}
-
-
-/* ── Side Cards (smaller) ── */
-
-.showcaseSideCards
-{
-
-    display: grid;
-
-    grid-template-columns: 1fr;
-
-    gap: 1.25rem;
-
-}
-
-.showcaseSideCard
-{
-
-    background-color: var(--clrPanel);
-
-    border-radius: var(--radiusCard);
-
-    overflow: hidden;
-
-    border: 1px solid rgba(255, 20, 157, 0.2);
-
-    display: flex;
-
-    flex-direction: column;
-
-    transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease,
-        transform 0.25s ease;
-
-}
-
-.showcaseSideCard:hover
-{
-
-    border-color: var(--clrHotPink);
-
-    box-shadow: var(--glowBox);
-
-    transform: translateY(-3px);
-
-}
-
-.showcaseSideImgWrap
-{
-
-    position: relative;
-
-    overflow: hidden;
-
-    aspect-ratio: 4 / 3;
-
-    background-color: #080508;
-
-}
-
-.showcaseSideImg
-{
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    object-position: center;
-
-    transition: transform 0.4s ease;
-
-}
-
-.showcaseSideCard:hover .showcaseSideImg
-{
-
-    transform: scale(1.06);
-
-}
-
-.showcaseSideBody
-{
-
-    padding: 1.1rem 1.2rem 1.3rem;
-
-    flex: 1;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 0.4rem;
-
-}
-
-.showcaseSideName
-{
-
-    font-family: var(--fontCondensed);
-
-    font-size: 1.2rem;
-
-    font-weight: 400;
-
-    color: var(--clrWhite);
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.03em;
-
-    line-height: 1.1;
-
-}
-
-.showcaseSideDesc
-{
-
-    font-size: 0.84rem;
-
-    color: var(--clrMuted);
-
-    line-height: 1.6;
-
-    flex: 1;
-
-}
-
-.showcaseSideFooter
-{
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 0.75rem;
-
-    margin-top: 0.6rem;
-
-    flex-wrap: wrap;
-
-}
-
-.showcaseSidePrice
-{
-
-    font-family: var(--fontSans);
-
-    font-size: 0.82rem;
-
-    font-weight: 700;
-
-    color: var(--clrHotPink);
-
-}
-
-/* ── Showcase Bottom CTA ── */
-
 .showcaseCta
 {
 
@@ -1512,238 +1222,6 @@ h4
     justify-content: center;
 
     margin-top: 2.5rem;
-
-}
-
-
-/* ============================================================
-   ORDERING STATUS SECTION
-============================================================ */
-
-.orderStatusSection
-{
-
-    background-color: var(--clrPanelAlt);
-
-    border-top: 1px solid rgba(255, 20, 157, 0.15);
-
-    border-bottom: 1px solid rgba(255, 20, 157, 0.1);
-
-}
-
-.orderStatusInner
-{
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 2rem;
-
-    text-align: center;
-
-    max-width: 640px;
-
-}
-
-.statusBadge
-{
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 0.5rem;
-
-    background-color: rgba(166, 255, 0, 0.08);
-
-    border: 1px solid rgba(166, 255, 0, 0.35);
-
-    border-radius: var(--radiusPill);
-
-    padding: 0.4rem 1rem;
-
-    font-family: var(--fontSans);
-
-    font-size: 0.7rem;
-
-    font-weight: 700;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.2em;
-
-    color: var(--clrNeonGreen);
-
-}
-
-.statusDot
-{
-
-    width: 7px;
-
-    height: 7px;
-
-    background-color: var(--clrNeonGreen);
-
-    border-radius: 50%;
-
-    box-shadow: 0 0 8px var(--clrNeonGreen);
-
-    flex-shrink: 0;
-
-    animation: statusPulse 2s ease-in-out infinite;
-
-}
-
-.statusHeadline
-{
-
-    font-family: var(--fontCondensed);
-
-    font-size: clamp(1.8rem, 6vw, 3rem);
-
-    font-weight: 400;
-
-    color: var(--clrWhite);
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.04em;
-
-    line-height: 1;
-
-}
-
-.statusDaysList
-{
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 0.7rem;
-
-    width: 100%;
-
-    max-width: 300px;
-
-}
-
-.statusDayRow
-{
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    width: 100%;
-
-    padding: 0.7rem 1.2rem;
-
-    background-color: rgba(255, 255, 255, 0.03);
-
-    border: 1px solid rgba(255, 255, 255, 0.06);
-
-    border-radius: 8px;
-
-    gap: 1rem;
-
-}
-
-.statusDayRow.statusDayActive
-{
-
-    background-color: rgba(166, 255, 0, 0.04);
-
-    border-color: rgba(166, 255, 0, 0.2);
-
-}
-
-.statusDayName
-{
-
-    font-family: var(--fontSans);
-
-    font-size: 0.9rem;
-
-    font-weight: 600;
-
-    color: var(--clrSoftText);
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.08em;
-
-}
-
-.statusDayRow.statusDayActive .statusDayName
-{
-
-    color: var(--clrWhite);
-
-}
-
-.statusDayCheck
-{
-
-    font-size: 0.9rem;
-
-    color: var(--clrNeonGreen);
-
-    text-shadow: 0 0 8px var(--clrNeonGreen);
-
-    line-height: 1;
-
-}
-
-.statusDayRow:not(.statusDayActive) .statusDayCheck
-{
-
-    color: rgba(255, 255, 255, 0.15);
-
-    text-shadow: none;
-
-}
-
-.statusNote
-{
-
-    font-size: 0.82rem;
-
-    color: var(--clrMuted);
-
-    line-height: 1.6;
-
-    max-width: 380px;
-
-}
-
-
-/* ── Pulse Animation ── */
-
-@keyframes statusPulse
-{
-
-    0%, 100%
-    {
-
-        opacity: 1;
-
-    }
-
-    50%
-    {
-
-        opacity: 0.4;
-
-    }
 
 }
 
@@ -3271,10 +2749,6 @@ h4
 
     padding-bottom: 2rem;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-
-    margin-bottom: 1.5rem;
-
 }
 
 /* ── Brand Column ── */
@@ -3437,6 +2911,8 @@ h4
 
     line-height: 1.75;
 
+    margin-top: 0.5rem;
+
     margin-bottom: 0.4rem;
 
 }
@@ -3477,6 +2953,122 @@ h4
     line-height: 1.65;
 
 }
+
+.footerNavList
+{
+
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.3rem;
+
+}
+
+/* ── Footer Legal Navigation ── */
+
+.footerLegal
+{
+
+    position: relative;
+
+    margin: 2rem 0 1.5rem;
+
+    text-align: center;
+
+}
+
+.footerLegal::before
+{
+
+    content: '';
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 0;
+
+    right: 0;
+
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    transform: translateY(-50%);
+
+}
+
+.footerLegalNav
+{
+
+    position: relative;
+
+    z-index: 1;
+
+    list-style: none;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 0;
+
+}
+
+.footerLegalLink
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.68rem;
+
+    font-weight: 500;
+
+    color: rgba(255, 255, 255, 0.22);
+
+    text-decoration: none;
+
+    letter-spacing: 0.05em;
+
+    text-transform: uppercase;
+
+    padding: 0.25rem 0.75rem;
+
+    background: var(--clrBlack);
+
+    white-space: nowrap;
+
+    transition: color 0.2s ease;
+
+}
+
+.footerLegalLink:hover
+{
+
+    color: var(--clrHotPink);
+
+}
+
+.footerLegalNav li:not(:last-child)::after
+{
+
+    content: '·';
+
+    color: rgba(255, 255, 255, 0.12);
+
+    font-size: 0.68rem;
+
+    align-self: center;
+
+}
+
 
 /* ── Footer Bottom ── */
 
@@ -4035,7 +3627,7 @@ h4
 .footerDevLogo
 {
 
-    height: 55px;
+    height: 50px;
 
     width: auto;
 
@@ -4114,15 +3706,6 @@ h4
         padding-left: 2rem;
 
         padding-right: 0;
-
-    }
-
-    /* ── Showcase side cards: 2 columns ── */
-
-    .showcaseSideCards
-    {
-
-        grid-template-columns: repeat(2, 1fr);
 
     }
 
@@ -4370,6 +3953,23 @@ h4
 
     }
 
+    .navSubList::before
+    {
+
+        content: '';
+
+        position: absolute;
+
+        top: -8px;
+
+        left: 0;
+
+        right: 0;
+
+        height: 8px;
+
+    }
+
     .navItem.dropdownOpen .navSubList,
     .navItem:hover .navSubList
     {
@@ -4486,26 +4086,6 @@ h4
 
     }
 
-    /* ── Showcase: feature left, side cards right ── */
-
-    .showcaseLayout
-    {
-
-        grid-template-columns: 1fr 1fr;
-
-        gap: 1.5rem;
-
-        align-items: start;
-
-    }
-
-    .showcaseSideCards
-    {
-
-        grid-template-columns: 1fr;
-
-    }
-
     /* ── How Order: all 4 in a row ── */
 
     .howOrderSteps
@@ -4551,34 +4131,6 @@ h4
     {
 
         border-right: none;
-
-    }
-
-    /* ── Order Status: horizontal layout ── */
-
-    .orderStatusInner
-    {
-
-        flex-direction: row;
-
-        text-align: left;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        max-width: none;
-
-        gap: 3rem;
-
-    }
-
-    .statusDaysList
-    {
-
-        align-items: flex-end;
-
-        min-width: 280px;
 
     }
 
@@ -5197,6 +4749,15 @@ h4
     max-width: 420px;
 
     margin: 0 auto 2rem;
+
+}
+
+.pickupCtaWrap
+{
+
+    margin-top: 2rem;
+
+    text-align: center;
 
 }
 

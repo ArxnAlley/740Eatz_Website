@@ -68,6 +68,8 @@ const menuDropdownItem = document.getElementById("menuDropdownItem");
 function onScroll ()
 {
 
+    if ( !siteHeader ) { return; }
+
     if ( window.scrollY > 20 )
     {
 
@@ -356,35 +358,7 @@ function animateCounter ( el, targetVal, formatter, duration )
 
 }
 
-const statFollowers   = document.getElementById("statFollowers");
-
 const statRecommended = document.getElementById("statRecommended");
-
-if ( statFollowers )
-{
-
-    animateCounter(
-
-        statFollowers,
-
-        9700,
-
-        function ( n )
-        {
-
-            if ( n >= 9700 ) { return "9.7K+"; }
-
-            const k = n / 1000;
-
-            return ( Math.floor(k * 10) / 10 ).toFixed(1) + "K+";
-
-        },
-
-        1800
-
-    );
-
-}
 
 if ( statRecommended )
 {
@@ -500,7 +474,7 @@ function getPriceDisplay ( product, size )
 
     }
 
-    if ( product === "chocoStrawberries" )        { return "$25 (dozen)"; }
+    if ( product === "chocoStrawberries" )        { return "$25 per dozen"; }
 
     if ( product === "cheesecakeStrawberries" )   { return "$27"; }
 
@@ -853,7 +827,7 @@ if ( builderWrap )
 
             opt.dataset.size = "perOrder";
 
-            opt.innerHTML    = "<span class='sizeOptionName'>Per Order</span><span class='sizeOptionPrice'>$27</span>";
+            opt.innerHTML    = "<span class='sizeOptionName'>Per Dozen</span><span class='sizeOptionPrice'>$27</span>";
 
             opt.addEventListener("click", function () {});
 
@@ -1111,7 +1085,7 @@ if ( builderWrap )
 
         if ( product === "chocoStrawberries" )        { return "Dozen"; }
 
-        if ( product === "cheesecakeStrawberries" )   { return "Per Order"; }
+        if ( product === "cheesecakeStrawberries" )   { return "Per Dozen"; }
 
         return "Custom";
 
