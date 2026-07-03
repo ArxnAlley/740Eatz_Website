@@ -2065,7 +2065,7 @@
 
     padding: 2rem 1.5rem;
 
-    padding-top: calc(var(--headerH) + 2rem);
+    padding-top: calc(var(--headerH) + var(--bannerH) + 2rem);
 
 }
 
@@ -2273,7 +2273,7 @@
 
     padding: 2rem 1.5rem;
 
-    padding-top: calc(var(--headerH) + 2rem);
+    padding-top: calc(var(--headerH) + var(--bannerH) + 2rem);
 
 }
 
@@ -2902,7 +2902,7 @@
 
     padding: 2rem 1.5rem;
 
-    padding-top: calc(var(--headerH) + 3rem);
+    padding-top: calc(var(--headerH) + var(--bannerH) + 3rem);
 
     padding-bottom: 6rem;
 

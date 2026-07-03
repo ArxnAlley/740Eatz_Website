@@ -24,6 +24,8 @@
 
 const ORDER_ENDPOINT = "https://YOUR_ENDPOINT_HERE/order-request";
 
+let validPickupDayNumbers = [ 1, 2, 5 ];
+
 /*
     [V2 PAYMENT HOOK]
     When payment is integrated:
@@ -650,7 +652,7 @@ function validateStep ( step )
 
         const day = selected.getDay();
 
-        return day === 1 || day === 2 || day === 5;
+        return validPickupDayNumbers.includes( day );
 
     }
 
@@ -928,7 +930,7 @@ if ( builderWrap )
 
             const day = selected.getDay();
 
-            const validDays = [1, 2, 5];
+            const validDays = validPickupDayNumbers;
 
             if ( !validDays.includes(day) )
             {
@@ -937,7 +939,9 @@ if ( builderWrap )
 
                 if ( errorEl )
                 {
-                    errorEl.textContent = "Please select a Monday, Tuesday, or Friday.";
+                    const allNames    = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+                    const available   = validDays.map(function ( n ) { return allNames[ n ]; });
+                    errorEl.textContent = 'Please select a ' + formatDaysList( available, 'or' ) + '.';
                 }
 
             }
@@ -1393,3 +1397,406 @@ if ( builderWrap )
     initFromUrlParams();
 
 }
+
+
+/* ============================================================
+   PUBLIC SETTINGS
+============================================================ */
+
+const SETTINGS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwy-rI7WNwFmBqVzJGpdqqKsswJdSCIyWhXb0_Ztua0As62BIEL7l_N2AHWwspd0LEF/exec';
+
+
+/* ── Data Helpers ── */
+
+function normalizeDays ( raw )
+{
+
+    if ( !raw ) { return []; }
+
+    if ( Array.isArray(raw) ) { return raw.map(String); }
+
+    try
+    {
+
+        const parsed = JSON.parse(raw);
+
+        if ( Array.isArray(parsed) ) { return parsed.map(String); }
+
+    }
+    catch (e) {}
+
+    return String(raw).split(',').map(function ( s ) { return s.trim(); }).filter(Boolean);
+
+}
+
+
+function dayNameToNumber ( name )
+{
+
+    const map =
+    {
+        Sunday: 0, Monday: 1, Tuesday: 2,
+        Wednesday: 3, Thursday: 4, Friday: 5, Saturday: 6
+    };
+
+    return map[ name ] !== undefined ? map[ name ] : -1;
+
+}
+
+
+function parsePickupConfig ( raw )
+{
+
+    if ( !raw ) { return null; }
+
+    if ( typeof raw === 'object' ) { return raw; }
+
+    try { return JSON.parse(raw); }
+    catch (e) { return null; }
+
+}
+
+
+function formatDaysList ( days, conjunction )
+{
+
+    if ( !days || days.length === 0 ) { return ''; }
+
+    if ( days.length === 1 ) { return days[0]; }
+
+    if ( days.length === 2 ) { return days[0] + ' & ' + days[1]; }
+
+    return days.slice(0, -1).join(', ') + ', ' + ( conjunction || 'and' ) + ' ' + days[ days.length - 1 ];
+
+}
+
+
+/* ── Fetch ── */
+
+async function loadPublicSettings ()
+{
+
+    try
+    {
+
+        const response = await fetch( SETTINGS_ENDPOINT + '?action=public.settings' );
+
+        if ( !response.ok ) { return; }
+
+        const json = await response.json();
+
+        if ( !json.success || !json.data ) { return; }
+
+        applyPublicSettings( json.data );
+
+    }
+    catch ( err )
+    {
+
+        /* Network error — dynamic sections suppressed, static content remains */
+
+    }
+
+}
+
+
+/* ── Apply All Settings ── */
+
+function applyPublicSettings ( settings )
+{
+
+    applyOrderAvailability( settings.orderAvailability );
+
+    applyPickupSchedule( settings.pickupDays, settings.pickupConfiguration, settings.updatedAt );
+
+    applyBusinessName( settings.businessName );
+
+}
+
+
+/* ── Order Availability Banner ── */
+
+function applyOrderAvailability ( value )
+{
+
+    if ( value !== 'closed' ) { return; }
+
+    const banner = document.getElementById('siteBanner');
+
+    if ( !banner ) { return; }
+
+    const bannerHeight = banner.offsetHeight;
+
+    document.documentElement.style.setProperty( '--bannerH', bannerHeight + 'px' );
+
+    banner.classList.add('isVisible');
+
+    banner.removeAttribute('aria-hidden');
+
+}
+
+
+/* ── Pickup Schedule ── */
+
+function applyPickupSchedule ( pickupDays, pickupConfiguration, updatedAt )
+{
+
+    const days   = normalizeDays( pickupDays );
+    const config = parsePickupConfig( pickupConfiguration );
+
+    renderPickupDayCards( days );
+
+    renderPickupHours( config ? config.windows : null );
+
+    renderPickupMessage( config ? config.message : null );
+
+    renderLastUpdated( updatedAt );
+
+    applyContactPickupDays( days );
+
+    applyPickupDaysInlineLists( days );
+
+    if ( days.length > 0 )
+    {
+
+        validPickupDayNumbers = days.map(dayNameToNumber).filter(function ( n ) { return n !== -1; });
+
+    }
+
+}
+
+
+function renderPickupDayCards ( days )
+{
+
+    const grid = document.getElementById('pickupDaysGrid');
+
+    if ( !grid ) { return; }
+
+    grid.innerHTML = '';
+
+    if ( !days || days.length === 0 ) { return; }
+
+    days.forEach(function ( day )
+    {
+
+        const abbr = day.substring(0, 3).toUpperCase();
+
+        const card = document.createElement('div');
+
+        card.className = 'pickupDayCard';
+
+        card.innerHTML =
+            '<span class="pickupDayAbbr" aria-hidden="true">' + abbr + '</span>' +
+            '<span class="pickupDayFull">' + day + '</span>';
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+function renderPickupHours ( windows )
+{
+
+    const wrap = document.getElementById('pickupHoursWrap');
+
+    if ( !wrap ) { return; }
+
+    if ( !windows || !Array.isArray(windows) )
+    {
+
+        wrap.hidden = true;
+
+        return;
+
+    }
+
+    const valid = windows.filter(function ( w )
+    {
+
+        return w.days && w.days.length > 0 && w.start && w.end;
+
+    });
+
+    if ( valid.length === 0 )
+    {
+
+        wrap.hidden = true;
+
+        return;
+
+    }
+
+    const grid = wrap.querySelector('.pickupHoursGrid');
+
+    if ( !grid ) { return; }
+
+    grid.innerHTML = '';
+
+    valid.forEach(function ( w )
+    {
+
+        const dayNames = Array.isArray(w.days) ? w.days.join(' & ') : String(w.days);
+
+        const block = document.createElement('div');
+
+        block.className = 'pickupWindowBlock';
+
+        block.innerHTML =
+            '<p class="pickupWindowDays">' + dayNames + '</p>' +
+            '<p class="pickupWindowTimes">' + w.start + ' – ' + w.end + '</p>';
+
+        grid.appendChild(block);
+
+    });
+
+    wrap.hidden = false;
+
+}
+
+
+function renderPickupMessage ( message )
+{
+
+    const wrap = document.getElementById('pickupMessageWrap');
+
+    if ( !wrap ) { return; }
+
+    if ( !message || !String(message).trim() )
+    {
+
+        wrap.hidden = true;
+
+        return;
+
+    }
+
+    const textEl = wrap.querySelector('.pickupMessageText');
+
+    if ( textEl ) { textEl.textContent = message; }
+
+    wrap.hidden = false;
+
+}
+
+
+function renderLastUpdated ( updatedAt )
+{
+
+    const el = document.getElementById('pickupLastUpdated');
+
+    if ( !el ) { return; }
+
+    if ( !updatedAt )
+    {
+
+        el.hidden = true;
+
+        return;
+
+    }
+
+    el.innerHTML = 'Last updated: <span class="pickupLastUpdatedValue">' + updatedAt + '</span>';
+
+    el.hidden = false;
+
+}
+
+
+/* ── Contact Strip & Footer Pickup Days ── */
+
+function applyContactPickupDays ( days )
+{
+
+    if ( !days || days.length === 0 ) { return; }
+
+    const contactDays = document.getElementById('homeContactDays');
+
+    if ( contactDays )
+    {
+
+        contactDays.innerHTML = '';
+
+        days.forEach(function ( day )
+        {
+
+            const span = document.createElement('span');
+
+            span.className = 'homeContactDay';
+
+            span.textContent = day;
+
+            contactDays.appendChild(span);
+
+        });
+
+    }
+
+    const footerList = document.getElementById('footerPickupDays');
+
+    if ( footerList )
+    {
+
+        footerList.innerHTML = '';
+
+        days.forEach(function ( day )
+        {
+
+            const li = document.createElement('li');
+
+            li.textContent = day;
+
+            footerList.appendChild(li);
+
+        });
+
+    }
+
+}
+
+
+function applyPickupDaysInlineLists ( days )
+{
+
+    if ( !days || days.length === 0 ) { return; }
+
+    const prose   = formatDaysList( days, 'and' );
+    const proseOr = formatDaysList( days, 'or' );
+
+    document.querySelectorAll('.pickupDaysListAnd').forEach(function ( el )
+    {
+
+        el.textContent = prose;
+
+    });
+
+    document.querySelectorAll('.pickupDaysListOr').forEach(function ( el )
+    {
+
+        el.textContent = proseOr;
+
+    });
+
+}
+
+
+/* ── Business Name ── */
+
+function applyBusinessName ( name )
+{
+
+    if ( !name ) { return; }
+
+    document.querySelectorAll('.businessName').forEach(function ( el )
+    {
+
+        el.textContent = name;
+
+    });
+
+}
+
+
+loadPublicSettings();

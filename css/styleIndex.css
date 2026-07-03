@@ -43,6 +43,8 @@
 
     --headerH:       64px;
 
+    --bannerH:       0px;
+
     --radiusCard:    12px;
 
     --radiusPill:    50px;
@@ -72,7 +74,7 @@ html
 
     scroll-behavior: smooth;
 
-    scroll-padding-top: var(--headerH);
+    scroll-padding-top: calc(var(--headerH) + var(--bannerH));
 
     -webkit-text-size-adjust: 100%;
 
@@ -453,7 +455,7 @@ h4
 
     position: fixed;
 
-    top: 0;
+    top: var(--bannerH);
 
     left: 0;
 
@@ -572,7 +574,7 @@ h4
 
     justify-content: flex-start;
 
-    padding: calc(var(--headerH) + 2rem) 2rem 2rem;
+    padding: calc(var(--bannerH) + var(--headerH) + 2rem) 2rem 2rem;
 
     transition:
         opacity 0.28s ease,
@@ -869,6 +871,94 @@ h4
 
 
 /* ============================================================
+   AVAILABILITY BANNER
+============================================================ */
+
+.siteBanner
+{
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    z-index: 101;
+
+    background-color: #ffffff;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    text-align: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+
+}
+
+.siteBanner.isVisible
+{
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+.siteBannerInner
+{
+
+    max-width: var(--maxWidth);
+
+    margin: 0 auto;
+
+    padding: 0.65rem 1.5rem;
+
+}
+
+.siteBannerHeading
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.88rem;
+
+    font-weight: 700;
+
+    color: #c0000c;
+
+    margin: 0 0 0.2rem;
+
+    letter-spacing: 0.01em;
+
+}
+
+.siteBannerBody
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.82rem;
+
+    font-weight: 400;
+
+    color: #111111;
+
+    margin: 0;
+
+    line-height: 1.45;
+
+}
+
+
+/* ============================================================
    HERO SECTION
 ============================================================ */
 
@@ -887,7 +977,7 @@ h4
 
     align-items: center;
 
-    padding-top: var(--headerH);
+    padding-top: calc(var(--headerH) + var(--bannerH));
 
     overflow: hidden;
 
@@ -1680,7 +1770,7 @@ h4
 
     background-color: var(--clrBlack);
 
-    padding-top: calc(var(--headerH) + 3rem);
+    padding-top: calc(var(--headerH) + var(--bannerH) + 3rem);
 
     padding-bottom: 3rem;
 
@@ -1802,7 +1892,7 @@ h4
 
     background-color: var(--clrBlack);
 
-    padding-top: calc(var(--headerH) + 3rem);
+    padding-top: calc(var(--headerH) + var(--bannerH) + 3rem);
 
     padding-bottom: 3rem;
 
@@ -4671,13 +4761,13 @@ h4
 
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(120px, 140px));
+
+    justify-content: center;
 
     gap: 1rem;
 
     margin: 2rem auto;
-
-    max-width: 480px;
 
 }
 
@@ -4773,8 +4863,137 @@ h4
 
 }
 
-/* [DASHBOARD HOOK] — pickupDayCard will receive data-capacity-remaining attribute
-   when the order management system is connected. JS can then display capacity here. */
+/* ── Pickup Hours ── */
+
+.pickupHoursWrap
+{
+
+    margin-top: 2.5rem;
+
+    text-align: center;
+
+}
+
+.pickupHoursHeading
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.72rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    color: var(--clrMuted);
+
+    margin-bottom: 1.25rem;
+
+}
+
+.pickupHoursGrid
+{
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 1.25rem;
+
+}
+
+.pickupWindowBlock
+{
+
+    text-align: center;
+
+}
+
+.pickupWindowDays
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    color: var(--clrWhite);
+
+    margin-bottom: 0.2rem;
+
+}
+
+.pickupWindowTimes
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.86rem;
+
+    font-weight: 400;
+
+    color: var(--clrSoftText);
+
+}
+
+
+/* ── Pickup Message ── */
+
+.pickupMessageWrap
+{
+
+    margin-top: 2rem;
+
+    text-align: center;
+
+}
+
+.pickupMessageText
+{
+
+    font-family: var(--fontSans);
+
+    font-size: 0.86rem;
+
+    color: var(--clrMuted);
+
+    line-height: 1.65;
+
+    max-width: 520px;
+
+    margin: 0 auto;
+
+}
+
+
+/* ── Last Updated ── */
+
+.pickupLastUpdated
+{
+
+    margin-top: 1.75rem;
+
+    font-family: var(--fontSans);
+
+    font-size: 0.76rem;
+
+    color: var(--clrMuted);
+
+    text-align: center;
+
+}
+
+.pickupLastUpdatedValue
+{
+
+    color: var(--clrSoftText);
+
+}
 
 
 /* ============================================================
@@ -5050,7 +5269,7 @@ h4
 
         height: 340px;
 
-        padding: var(--headerH) 1.5rem 2rem;
+        padding: calc(var(--headerH) + var(--bannerH)) 1.5rem 2rem;
 
         overflow: hidden;
 

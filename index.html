@@ -161,6 +161,23 @@
 
 
         <!-- ============================================================
+             AVAILABILITY BANNER
+        ============================================================ -->
+
+        <div class="siteBanner" id="siteBanner" role="alert" aria-live="polite" aria-atomic="true" aria-hidden="true">
+
+            <div class="siteBannerInner">
+
+                <p class="siteBannerHeading">Orders Closed This Week</p>
+
+                <p class="siteBannerBody">We&rsquo;re taking a short break and aren&rsquo;t accepting new orders right now. Thank you for your patience.</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================================================
              HEADER
         ============================================================ -->
 
@@ -432,7 +449,7 @@
 
                 </div>
 
-                <h2 class="sectionHeadline">See What&rsquo;s Cooking at 740Eatz</h2>
+                <h2 class="sectionHeadline">See What&rsquo;s Cooking at <span class="businessName">740Eatz</span></h2>
 
             </div>
 
@@ -831,7 +848,7 @@
 
                             <p class="howOrderDesc">
 
-                                Swing by 429 2nd St, Portsmouth, OH on your scheduled Monday, Tuesday, or Friday. Look for the green awning.
+                                Swing by 429 2nd St, Portsmouth, OH on your scheduled <span class="pickupDaysListOr">Monday, Tuesday, or Friday</span>. Look for the green awning.
 
                             </p>
 
@@ -850,9 +867,6 @@
              WEEKLY PICKUP SCHEDULE
         ============================================================ -->
 
-        <!-- [DASHBOARD HOOK] data-pickup-days: source of truth for pickup day display -->
-        <!-- [DASHBOARD HOOK] pickupCapacityNote: update text via dashboard to reflect current capacity -->
-
         <section class="pickupScheduleSection revealOnScroll" id="pickupSchedule">
 
             <div class="sectionInner">
@@ -867,52 +881,37 @@
 
                 <p class="sectionSub">
 
-                    Customers may submit an order request at any time. Pickup days are Monday, Tuesday, and Friday.
+                    Customers may submit an order request at any time. Pickup days are <span class="pickupDaysListAnd">Monday, Tuesday, and Friday</span>.
 
                 </p>
 
-                <div
-                    class="pickupScheduleInner"
-                    data-pickup-days="Monday,Tuesday,Friday"
-                >
+                <div class="pickupScheduleInner">
 
-                    <!-- [DASHBOARD HOOK] pickupDaysGrid: render day cards dynamically from data-pickup-days -->
+                    <!-- Day cards — populated from API pickupDays field -->
 
-                    <div class="pickupDaysGrid">
+                    <div class="pickupDaysGrid" id="pickupDaysGrid"></div>
 
-                        <div class="pickupDayCard">
+                    <!-- Last updated timestamp — shown when API returns updatedAt -->
 
-                            <span class="pickupDayAbbr" aria-hidden="true">MON</span>
+                    <p class="pickupLastUpdated" id="pickupLastUpdated" hidden></p>
 
-                            <span class="pickupDayFull">Monday</span>
+                    <!-- Pickup Hours — shown when API returns pickupConfiguration.windows -->
 
-                        </div>
+                    <div class="pickupHoursWrap" id="pickupHoursWrap" hidden>
 
-                        <div class="pickupDayCard">
+                        <h3 class="pickupHoursHeading">Pickup Hours</h3>
 
-                            <span class="pickupDayAbbr" aria-hidden="true">TUE</span>
-
-                            <span class="pickupDayFull">Tuesday</span>
-
-                        </div>
-
-                        <div class="pickupDayCard">
-
-                            <span class="pickupDayAbbr" aria-hidden="true">FRI</span>
-
-                            <span class="pickupDayFull">Friday</span>
-
-                        </div>
+                        <div class="pickupHoursGrid"></div>
 
                     </div>
 
-                    <!-- [DASHBOARD HOOK] pickupCapacityNote: capacity per day can be surfaced here -->
+                    <!-- Pickup Instructions — shown when API returns pickupConfiguration.message -->
 
-                    <p class="pickupCapacityNote">
+                    <div class="pickupMessageWrap" id="pickupMessageWrap" hidden>
 
-                        We typically prepare 10&ndash;15 orders per pickup day. Submit your request anytime and we&rsquo;ll confirm your pickup date.
+                        <p class="pickupMessageText"></p>
 
-                    </p>
+                    </div>
 
                 </div>
 
@@ -1035,7 +1034,7 @@
 
                         <p class="homeFaqA">
 
-                            Pickup is available Monday, Tuesday, and Friday at 429 2nd St, Portsmouth, OH. Look for the green awning. Submit your request anytime and we&rsquo;ll confirm your pickup date.
+                            Pickup is available <span class="pickupDaysListAnd">Monday, Tuesday, and Friday</span> at 429 2nd St, Portsmouth, OH. Look for the green awning. Submit your request anytime and we&rsquo;ll confirm your pickup date.
 
                         </p>
 
@@ -1147,7 +1146,7 @@
 
                         <span class="homeContactLabel">Pickup Days</span>
 
-                        <div class="homeContactDays">
+                        <div class="homeContactDays" id="homeContactDays">
 
                             <span class="homeContactDay">Monday</span>
 
@@ -1411,7 +1410,7 @@
 
                         <h4 class="footerHeading">Pickup Days</h4>
 
-                        <ul class="footerPickupDays">
+                        <ul class="footerPickupDays" id="footerPickupDays">
 
                             <li>Monday</li>
 
@@ -1451,7 +1450,7 @@
 
                 <div class="footerBottom">
 
-                    <p class="footerCopyright">&copy; <span id="copyrightYear"></span> 740Eatz. All rights reserved.</p>
+                    <p class="footerCopyright">&copy; <span id="copyrightYear"></span> <span class="businessName">740Eatz</span>. All rights reserved.</p>
 
                     <a
                         class="footerDevCredit"

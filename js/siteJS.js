@@ -899,3 +899,85 @@ if ( funnelFeedbackForm )
     });
 
 }
+
+
+/* ============================================================
+   PUBLIC SETTINGS
+============================================================ */
+
+const SETTINGS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwy-rI7WNwFmBqVzJGpdqqKsswJdSCIyWhXb0_Ztua0As62BIEL7l_N2AHWwspd0LEF/exec';
+
+
+async function loadPublicSettings ()
+{
+
+    try
+    {
+
+        const response = await fetch( SETTINGS_ENDPOINT + '?action=public.settings' );
+
+        if ( !response.ok ) { return; }
+
+        const json = await response.json();
+
+        if ( !json.success || !json.data ) { return; }
+
+        applyPublicSettings( json.data );
+
+    }
+    catch ( err )
+    {
+
+        /* Network error — dynamic features suppressed */
+
+    }
+
+}
+
+
+function applyPublicSettings ( settings )
+{
+
+    applyOrderAvailability( settings.orderAvailability );
+
+    applyBusinessName( settings.businessName );
+
+}
+
+
+function applyOrderAvailability ( value )
+{
+
+    if ( value !== 'closed' ) { return; }
+
+    const banner = document.getElementById('siteBanner');
+
+    if ( !banner ) { return; }
+
+    const bannerHeight = banner.offsetHeight;
+
+    document.documentElement.style.setProperty( '--bannerH', bannerHeight + 'px' );
+
+    banner.classList.add('isVisible');
+
+    banner.removeAttribute('aria-hidden');
+
+}
+
+
+function applyBusinessName ( name )
+{
+
+    if ( !name ) { return; }
+
+    document.querySelectorAll('.businessName').forEach(function ( el )
+    {
+
+        el.textContent = name;
+
+    });
+
+}
+
+
+loadPublicSettings();
