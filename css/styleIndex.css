@@ -550,7 +550,15 @@ h4
 
     position: fixed;
 
-    inset: 0;
+    top: 0;
+
+    left: 0;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    height: 100dvh;
 
     background-color: rgba(3, 3, 3, 0.97);
 
@@ -562,7 +570,7 @@ h4
 
     align-items: center;
 
-    justify-content: center;
+    justify-content: flex-start;
 
     padding: calc(var(--headerH) + 2rem) 2rem 2rem;
 

@@ -451,9 +451,23 @@ const builderState =
 
 };
 
-const TOTAL_STEPS = 6;
-
 let autoAdvanceLocked = false;
+
+function noFlavorProduct ()
+{
+
+    return builderState.product === "chocoStrawberries"      ||
+           builderState.product === "cheesecakeStrawberries" ||
+           builderState.product === "customTray";
+
+}
+
+function getActiveSteps ()
+{
+
+    return noFlavorProduct() ? [ 1, 2, 4, 5, 6 ] : [ 1, 2, 3, 4, 5, 6 ];
+
+}
 
 
 /* ============================================================
@@ -508,7 +522,14 @@ function updateProgress ()
 
     if ( !progressFill || !stepLabel ) { return; }
 
-    const pct = ( ( builderState.step - 1 ) / ( TOTAL_STEPS - 1 ) ) * 100;
+    const active   = getActiveSteps();
+    const idx      = active.indexOf( builderState.step );
+
+    if ( idx === -1 ) { return; }
+
+    const dispStep = idx + 1;
+    const total    = active.length;
+    const pct      = ( ( dispStep - 1 ) / ( total - 1 ) ) * 100;
 
     progressFill.style.width = pct + "%";
 
@@ -523,14 +544,14 @@ function updateProgress ()
         "Review Order"
     ];
 
-    stepLabel.textContent = "Step " + builderState.step + " of " + TOTAL_STEPS + " — " + stepNames[ builderState.step ];
+    stepLabel.textContent = "Step " + dispStep + " of " + total + " — " + stepNames[ builderState.step ];
 
 }
 
 function showPanel ( step )
 {
 
-    for ( let i = 1; i <= TOTAL_STEPS; i++ )
+    for ( let i = 1; i <= 6; i++ )
     {
 
         const panel = document.getElementById("builderPanel" + i);
@@ -563,7 +584,7 @@ function showPanel ( step )
     if ( navRow )
     {
 
-        navRow.style.display = step === TOTAL_STEPS ? "none" : "flex";
+        navRow.style.display = step === 6 ? "none" : "flex";
 
     }
 
@@ -969,7 +990,7 @@ if ( builderWrap )
 
                 const targetStep = parseInt( row.getAttribute("data-step"), 10 );
 
-                if ( targetStep && targetStep >= 1 && targetStep < TOTAL_STEPS )
+                if ( targetStep && targetStep >= 1 && targetStep < 6 )
                 {
 
                     builderState.step = targetStep;
@@ -1016,7 +1037,11 @@ if ( builderWrap )
 
             }
 
-            builderState.step++;
+            const fwdActive = getActiveSteps();
+            const fwdIdx    = fwdActive.indexOf( builderState.step );
+            builderState.step = ( fwdIdx !== -1 && fwdIdx < fwdActive.length - 1 )
+                ? fwdActive[ fwdIdx + 1 ]
+                : builderState.step + 1;
 
             showPanel( builderState.step );
 
@@ -1033,10 +1058,13 @@ if ( builderWrap )
         backBtn.addEventListener("click", function ()
         {
 
-            if ( builderState.step > 1 )
+            const bckActive = getActiveSteps();
+            const bckIdx    = bckActive.indexOf( builderState.step );
+
+            if ( bckIdx > 0 )
             {
 
-                builderState.step--;
+                builderState.step = bckActive[ bckIdx - 1 ];
 
                 showPanel( builderState.step );
 
@@ -1139,6 +1167,9 @@ if ( builderWrap )
 
         setVal( "sumNotes",   builderState.notes || "None" );
 
+        const flavorRow = document.querySelector( '.summaryRow[data-step="3"]' );
+        if ( flavorRow ) { flavorRow.style.display = noFlavorProduct() ? "none" : ""; }
+
         initSummaryNavigation();
 
     }
@@ -1198,9 +1229,22 @@ if ( builderWrap )
 
                 }
 
-                /* Jump to flavor step if size was selected, else size step */
+                /* Jump past size step; for no-flavor products skip directly to panel 4 */
 
-                builderState.step = ( sizeParam && builderState.size ) ? 3 : 2;
+                if ( sizeParam && builderState.size )
+                {
+
+                    const dlActive    = getActiveSteps();
+                    const afterSize   = dlActive[ dlActive.indexOf(2) + 1 ] || 3;
+                    builderState.step = afterSize;
+
+                }
+                else
+                {
+
+                    builderState.step = 2;
+
+                }
 
                 showPanel( builderState.step );
 
