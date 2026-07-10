@@ -942,6 +942,17 @@ function applyPublicSettings ( settings )
 
     applyBusinessName( settings.businessName );
 
+    const days = normalizeDays( settings.pickupDays );
+
+    if ( days.length > 0 )
+    {
+
+        applyFooterPickupDays( days );
+
+        applyPickupDaysInlineLists( days );
+
+    }
+
 }
 
 
@@ -974,6 +985,97 @@ function applyBusinessName ( name )
     {
 
         el.textContent = name;
+
+    });
+
+}
+
+
+function normalizeDays ( raw )
+{
+
+    if ( Array.isArray( raw ) ) { return raw.filter( Boolean ); }
+
+    if ( typeof raw === 'string' )
+    {
+
+        try
+        {
+
+            const parsed = JSON.parse( raw );
+
+            if ( Array.isArray( parsed ) ) { return parsed.filter( Boolean ); }
+
+        }
+        catch ( e ) {}
+
+        return raw.split(',').map(function ( d ) { return d.trim(); }).filter( Boolean );
+
+    }
+
+    return [];
+
+}
+
+
+function formatDaysList ( days, conjunction )
+{
+
+    if ( !days || days.length === 0 ) { return ''; }
+
+    if ( days.length === 1 ) { return days[0]; }
+
+    if ( days.length === 2 ) { return days[0] + ' ' + ( conjunction || 'and' ) + ' ' + days[1]; }
+
+    return days.slice(0, -1).join(', ') + ', ' + ( conjunction || 'and' ) + ' ' + days[ days.length - 1 ];
+
+}
+
+
+function applyFooterPickupDays ( days )
+{
+
+    if ( !days || days.length === 0 ) { return; }
+
+    const list = document.getElementById('footerPickupDays');
+
+    if ( !list ) { return; }
+
+    list.innerHTML = '';
+
+    days.forEach(function ( day )
+    {
+
+        const li = document.createElement('li');
+
+        li.textContent = day;
+
+        list.appendChild( li );
+
+    });
+
+}
+
+
+function applyPickupDaysInlineLists ( days )
+{
+
+    if ( !days || days.length === 0 ) { return; }
+
+    const prose   = formatDaysList( days, 'and' );
+    const proseOr = formatDaysList( days, 'or' );
+
+    document.querySelectorAll('.pickupDaysListAnd').forEach(function ( el )
+    {
+
+        el.textContent = prose;
+
+    });
+
+    document.querySelectorAll('.pickupDaysListOr').forEach(function ( el )
+    {
+
+        el.textContent = proseOr;
 
     });
 

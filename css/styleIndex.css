@@ -2219,6 +2219,13 @@ h4
 
 }
 
+.customTrayDetailsGroup
+{
+
+    grid-column: 1 / -1;
+
+}
+
 .sizeOption
 {
 
@@ -4839,21 +4846,6 @@ h4
 
 }
 
-.pickupCapacityNote
-{
-
-    font-size: 0.86rem;
-
-    color: var(--clrMuted);
-
-    line-height: 1.72;
-
-    max-width: 420px;
-
-    margin: 0 auto 2rem;
-
-}
-
 .pickupCtaWrap
 {
 
@@ -5354,8 +5346,8 @@ h4
 
 
 /* ============================================================
-   GALLERY INTRO — MOBILE BRIDGE SECTION
-   Hidden on desktop. No border, no supporting copy.
+   GALLERY INTRO — SECTION HEADING
+   Shown at every breakpoint. No border, no supporting copy.
 ============================================================ */
 
 .galleryIntroSection
@@ -5372,35 +5364,18 @@ h4
 
 }
 
-@media (min-width: 1024px)
+/* ── Remove mini gallery separator — the intro heading above it is the divider ── */
+
+.miniGallerySection
 {
 
-    .galleryIntroSection
-    {
-
-        display: none;
-
-    }
+    border-top: none;
 
 }
 
-/* ── Remove mini gallery separator on mobile ── */
-
-@media (max-width: 1023px)
+.miniGallerySection .sectionInner
 {
 
-    .miniGallerySection
-    {
-
-        border-top: none;
-
-    }
-
-    .miniGallerySection .sectionInner
-    {
-
-        padding-top: 0;
-
-    }
+    padding-top: 0;
 
 }

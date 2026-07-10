@@ -22,7 +22,15 @@
    CONFIGURATION
 ============================================================ */
 
-const ORDER_ENDPOINT = "https://YOUR_ENDPOINT_HERE/order-request";
+/*
+    Single 740Eatz API endpoint (Google Apps Script Web App).
+    All actions are selected via the ?action= query parameter:
+        GET  ?action=public.settings
+        POST ?action=orders.create
+    SETTINGS_ENDPOINT (Public Settings section) reuses this value.
+*/
+
+const EATZ_API_ENDPOINT = "https://script.google.com/macros/s/AKfycbwy-rI7WNwFmBqVzJGpdqqKsswJdSCIyWhXb0_Ztua0As62BIEL7l_N2AHWwspd0LEF/exec";
 
 let validPickupDayNumbers = [ 1, 2, 5 ];
 
@@ -316,6 +324,100 @@ function clearFeedback ( el )
 
 }
 
+function normalizePhoneDigits ( value )
+{
+
+    let digits = value.replace(/\D/g, "");
+
+    /* Strip a leading US country code (e.g. autofill's "17402068885") */
+
+    if ( digits.length === 11 && digits.charAt(0) === "1" )
+    {
+
+        digits = digits.slice(1);
+
+    }
+
+    return digits;
+
+}
+
+function formatPhoneForDisplay ( value )
+{
+
+    const digits = normalizePhoneDigits( value ).slice(0, 10);
+
+    if ( digits.length < 4 ) { return digits; }
+
+    if ( digits.length < 7 ) { return "(" + digits.slice(0, 3) + ") " + digits.slice(3); }
+
+    return "(" + digits.slice(0, 3) + ") " + digits.slice(3, 6) + "-" + digits.slice(6);
+
+}
+
+function showOrderSuccessPanel ( el, referenceId )
+{
+
+    if ( !el ) { return; }
+
+    el.className = "formFeedback";
+
+    el.classList.add("feedbackSuccess");
+
+    el.textContent = "";
+
+    function addLine ( text, bold )
+    {
+
+        if ( bold )
+        {
+            const strong = document.createElement("strong");
+            strong.textContent = text;
+            el.appendChild(strong);
+        }
+        else
+        {
+            el.appendChild( document.createTextNode(text) );
+        }
+
+        el.appendChild( document.createElement("br") );
+
+    }
+
+    addLine( "Your order request has been received!", false );
+
+    el.appendChild( document.createElement("br") );
+
+    if ( referenceId )
+    {
+
+        addLine( "Reference #: " + referenceId, true );
+
+        addLine( "Please save this number — you may need it if you contact us about your order.", false );
+
+        el.appendChild( document.createElement("br") );
+
+    }
+
+    addLine( "What happens next?", true );
+
+    addLine( "1. We'll review your request.", false );
+
+    addLine( "2. We'll contact you to confirm availability.", false );
+
+    addLine( "3. We'll confirm pickup details and payment.", false );
+
+    addLine( "4. Once confirmed, we'll begin preparing your order.", false );
+
+    if ( el.lastChild && el.lastChild.nodeName === "BR" )
+    {
+        el.removeChild( el.lastChild );
+    }
+
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+
+}
+
 
 /* ============================================================
    STATS COUNTER — HERO
@@ -449,7 +551,9 @@ const builderState =
 
     email:     "",
 
-    notes:     ""
+    notes:     "",
+
+    customTrayDetails: ""
 
 };
 
@@ -464,8 +568,18 @@ function noFlavorProduct ()
 
 }
 
+function noSizeStepProduct ()
+{
+
+    return builderState.product === "chocoStrawberries" ||
+           builderState.product === "cheesecakeStrawberries";
+
+}
+
 function getActiveSteps ()
 {
+
+    if ( noSizeStepProduct() ) { return [ 1, 4, 5, 6 ]; }
 
     return noFlavorProduct() ? [ 1, 2, 4, 5, 6 ] : [ 1, 2, 3, 4, 5, 6 ];
 
@@ -539,7 +653,7 @@ function updateProgress ()
     [
         "",
         "Choose Product",
-        "Choose Size",
+        builderState.product === "customTray" ? "Tray Details" : "Choose Size",
         "Choose Flavor",
         "Pick Pickup Date",
         "Your Info",
@@ -612,6 +726,8 @@ function showPanel ( step )
 
                 showPanel( builderState.step );
 
+                updateNextBtn();
+
             }
 
         }, 320);
@@ -625,7 +741,17 @@ function validateStep ( step )
 
     if ( step === 1 ) { return builderState.product !== null; }
 
-    if ( step === 2 ) { return builderState.size !== null; }
+    if ( step === 2 )
+    {
+
+        if ( builderState.product === "customTray" )
+        {
+            return builderState.customTrayDetails.trim().length > 0;
+        }
+
+        return builderState.size !== null;
+
+    }
 
     if ( step === 3 )
     {
@@ -729,9 +855,15 @@ if ( builderWrap )
                     if ( validateStep(1) && builderState.step === 1 )
                     {
 
-                        builderState.step++;
+                        const fwdActive = getActiveSteps();
+                        const fwdIdx    = fwdActive.indexOf(1);
+                        builderState.step = ( fwdIdx !== -1 && fwdIdx < fwdActive.length - 1 )
+                            ? fwdActive[ fwdIdx + 1 ]
+                            : builderState.step + 1;
 
                         showPanel( builderState.step );
+
+                        updateNextBtn();
 
                     }
 
@@ -804,6 +936,8 @@ if ( builderWrap )
 
                                 showPanel( builderState.step );
 
+                                updateNextBtn();
+
                             }
 
                         }, 350);
@@ -850,7 +984,7 @@ if ( builderWrap )
 
             opt.dataset.size = "perOrder";
 
-            opt.innerHTML    = "<span class='sizeOptionName'>Per Dozen</span><span class='sizeOptionPrice'>$27</span>";
+            opt.innerHTML    = "<span class='sizeOptionName'>Dozen</span><span class='sizeOptionPrice'>$27</span>";
 
             opt.addEventListener("click", function () {});
 
@@ -864,21 +998,56 @@ if ( builderWrap )
         else if ( builderState.product === "customTray" )
         {
 
-            const opt = document.createElement("button");
-
-            opt.type         = "button";
-
-            opt.className    = "sizeOption isSelected";
-
-            opt.dataset.size = "custom";
-
-            opt.innerHTML    = "<span class='sizeOptionName'>Custom</span><span class='sizeOptionPrice'>Quote Required</span>";
-
-            opt.addEventListener("click", function () {});
-
-            grid.appendChild(opt);
-
             builderState.size = "custom";
+
+            const wrap = document.createElement("div");
+
+            wrap.className = "formGroup customTrayDetailsGroup";
+
+            const label = document.createElement("label");
+
+            label.className = "formLabel";
+
+            label.setAttribute("for", "customTrayDetails");
+
+            label.textContent = "What would you like included in your custom tray?";
+
+            const textarea = document.createElement("textarea");
+
+            textarea.className   = "formTextarea";
+
+            textarea.id          = "customTrayDetails";
+
+            textarea.name        = "customTrayDetails";
+
+            textarea.rows        = 4;
+
+            textarea.placeholder = "Tell us what you'd like…";
+
+            textarea.value       = builderState.customTrayDetails;
+
+            textarea.addEventListener("input", function ()
+            {
+
+                builderState.customTrayDetails = textarea.value;
+
+                updateNextBtn();
+
+            });
+
+            const helper = document.createElement("p");
+
+            helper.className = "builderDateNote";
+
+            helper.textContent = "Let us know what to include — candy, fruit, chocolate, theme, colors, and any special requests.";
+
+            wrap.appendChild(label);
+
+            wrap.appendChild(textarea);
+
+            wrap.appendChild(helper);
+
+            grid.appendChild(wrap);
 
             updateNextBtn();
 
@@ -920,6 +1089,20 @@ if ( builderWrap )
         tomorrow.setDate( tomorrow.getDate() + 1 );
 
         dateInput.min = tomorrow.toISOString().split("T")[0];
+
+        /* Open the native picker immediately on tap/click — no manual typing */
+
+        if ( typeof dateInput.showPicker === "function" )
+        {
+
+            dateInput.addEventListener("click", function ()
+            {
+
+                try { dateInput.showPicker(); } catch ( err ) {}
+
+            });
+
+        }
 
         dateInput.addEventListener("change", function ()
         {
@@ -980,6 +1163,20 @@ if ( builderWrap )
 
     });
 
+    const phoneInput = document.getElementById("bPhone");
+
+    if ( phoneInput )
+    {
+
+        phoneInput.addEventListener("blur", function ()
+        {
+
+            phoneInput.value = formatPhoneForDisplay( phoneInput.value );
+
+        });
+
+    }
+
 
     /* ── Clickable Summary Row Navigation ── */
 
@@ -994,7 +1191,7 @@ if ( builderWrap )
 
                 const targetStep = parseInt( row.getAttribute("data-step"), 10 );
 
-                if ( targetStep && targetStep >= 1 && targetStep < 6 )
+                if ( targetStep && targetStep >= 1 && targetStep < 6 && getActiveSteps().includes(targetStep) )
                 {
 
                     builderState.step = targetStep;
@@ -1031,7 +1228,7 @@ if ( builderWrap )
 
                 builderState.lastName  = getVal("bLastName");
 
-                builderState.phone     = getVal("bPhone");
+                builderState.phone     = normalizePhoneDigits( getVal("bPhone") );
 
                 builderState.email     = getVal("bEmail");
 
@@ -1048,6 +1245,8 @@ if ( builderWrap )
                 : builderState.step + 1;
 
             showPanel( builderState.step );
+
+            updateNextBtn();
 
         });
 
@@ -1117,7 +1316,7 @@ if ( builderWrap )
 
         if ( product === "chocoStrawberries" )        { return "Dozen"; }
 
-        if ( product === "cheesecakeStrawberries" )   { return "Per Dozen"; }
+        if ( product === "cheesecakeStrawberries" )   { return "Dozen"; }
 
         return "Custom";
 
@@ -1144,6 +1343,43 @@ if ( builderWrap )
 
     }
 
+    function buildOrderNotes ()
+    {
+
+        if ( builderState.product === "customTray" && builderState.customTrayDetails.trim() )
+        {
+
+            const details = "Custom Tray Details: " + builderState.customTrayDetails.trim();
+
+            return builderState.notes
+                ? details + " | Additional notes: " + builderState.notes
+                : details;
+
+        }
+
+        return builderState.notes;
+
+    }
+
+    function formatPickupDateDisplay ( isoDate )
+    {
+
+        if ( !isoDate ) { return ""; }
+
+        const parsed = new Date( isoDate + "T00:00:00" );
+
+        if ( isNaN( parsed.getTime() ) ) { return ""; }
+
+        return parsed.toLocaleDateString( "en-US",
+        {
+            weekday: "long",
+            year:    "numeric",
+            month:   "long",
+            day:     "numeric"
+        });
+
+    }
+
 
     /* ── Populate Summary ── */
 
@@ -1161,18 +1397,69 @@ if ( builderWrap )
 
         setVal( "sumProduct", getProductLabel( builderState.product ) );
 
-        setVal( "sumSize",    getSizeLabel( builderState.product, builderState.size ) );
+        if ( builderState.product === "customTray" )
+        {
+
+            const details = builderState.customTrayDetails.trim();
+
+            setVal( "sumSize", details
+                ? ( details.length > 60 ? details.slice(0, 60) + "…" : details )
+                : "Not provided" );
+
+        }
+        else
+        {
+
+            setVal( "sumSize", getSizeLabel( builderState.product, builderState.size ) );
+
+        }
 
         setVal( "sumFlavor",  getFlavorLabel( builderState.flavor ) );
 
-        setVal( "sumDate",    builderState.date || "Not selected" );
+        setVal( "sumDate",    formatPickupDateDisplay( builderState.date ) || "Not selected" );
 
         setVal( "sumPrice",   getPriceDisplay( builderState.product, builderState.size ) );
+
+        /* Tray details already have their own row above — avoid repeating them here */
 
         setVal( "sumNotes",   builderState.notes || "None" );
 
         const flavorRow = document.querySelector( '.summaryRow[data-step="3"]' );
         if ( flavorRow ) { flavorRow.style.display = noFlavorProduct() ? "none" : ""; }
+
+        const sizeRow = document.querySelector( '.summaryRow[data-step="2"]' );
+
+        if ( sizeRow )
+        {
+
+            const sizeLabel = sizeRow.querySelector(".summaryLabel");
+
+            const isCustomTray = builderState.product === "customTray";
+
+            const isFixedSize  = noSizeStepProduct();
+
+            if ( sizeLabel ) { sizeLabel.textContent = isCustomTray ? "Tray Details" : "Size"; }
+
+            if ( isFixedSize )
+            {
+
+                /* Only one size exists for this product — nothing to go back and change */
+
+                sizeRow.classList.remove("summaryRowClickable");
+
+                sizeRow.removeAttribute("title");
+
+            }
+            else
+            {
+
+                sizeRow.classList.add("summaryRowClickable");
+
+                sizeRow.title = isCustomTray ? "Click to change tray details" : "Click to change size";
+
+            }
+
+        }
 
         initSummaryNavigation();
 
@@ -1211,6 +1498,24 @@ if ( builderWrap )
         builderState.flavor  = null;
 
         populateSizeGrid();
+
+        if ( noSizeStepProduct() )
+        {
+
+            /* Fixed-size products always skip straight to the pickup date step */
+
+            const dlActive    = getActiveSteps();
+            builderState.step = dlActive[ dlActive.indexOf(1) + 1 ];
+
+            showPanel( builderState.step );
+
+            updateNextBtn();
+
+            autoAdvanceLocked = false;
+
+            return;
+
+        }
 
         if ( sizeParam )
         {
@@ -1292,78 +1597,98 @@ if ( builderWrap )
 
             builderSubmitBtn.textContent = "Sending…";
 
+            /*
+                submittedAt is stamped by the API server-side.
+                The API assigns the order id, status (NEW_REQUEST),
+                and paymentStatus (unpaid) — the website never sets workflow state.
+
+                [V2 PAYMENT HOOK]
+                Stripe payment integration point.
+
+                [V2 EMAIL HOOK]
+                Trigger confirmation email to customer and owner.
+            */
+
             const payload =
             {
 
-                action:      "orderRequest",
+                source:     "740Eatz Website V2",
 
-                source:      "740Eatz Website V2",
+                product:    getProductLabel( builderState.product ),
 
-                product:     getProductLabel( builderState.product ),
+                size:       getSizeLabel( builderState.product, builderState.size ),
 
-                size:        getSizeLabel( builderState.product, builderState.size ),
+                flavor:     noFlavorProduct() ? "" : getFlavorLabel( builderState.flavor ),
 
-                flavor:      getFlavorLabel( builderState.flavor ),
+                pickupDate: builderState.date,
 
-                pickupDate:  builderState.date,
+                firstName:  builderState.firstName,
 
-                firstName:   builderState.firstName,
+                lastName:   builderState.lastName,
 
-                lastName:    builderState.lastName,
+                phone:      builderState.phone,
 
-                phone:       builderState.phone,
+                email:      builderState.email,
 
-                email:       builderState.email,
+                notes:      buildOrderNotes(),
 
-                notes:       builderState.notes,
-
-                price:       getPriceDisplay( builderState.product, builderState.size ),
-
-                submittedAt: new Date().toISOString()
-
-                /*
-                    [V2 PAYMENT HOOK]
-                    Add: paymentStatus: "pending"
-
-                    [V2 DASHBOARD HOOK]
-                    POST this payload to the order management system.
-
-                    [V2 EMAIL HOOK]
-                    Trigger confirmation email to customer and owner.
-                */
+                price:      getPriceDisplay( builderState.product, builderState.size )
 
             };
 
             try
             {
 
-                const response = await fetch( ORDER_ENDPOINT,
+                /*
+                    Content-Type is text/plain to avoid a CORS preflight —
+                    Apps Script Web Apps do not answer OPTIONS requests.
+                    The body is still JSON and is parsed by the API's doPost().
+                */
+
+                const response = await fetch( EATZ_API_ENDPOINT + "?action=orders.create",
                 {
 
                     method:  "POST",
 
-                    headers: { "Content-Type": "application/json" },
+                    headers: { "Content-Type": "text/plain;charset=utf-8" },
 
                     body:    JSON.stringify( payload )
 
                 });
 
-                if ( response.ok )
+                if ( !response.ok )
                 {
 
-                    showFeedback(
-                        builderFeedback,
-                        "success",
-                        "Your order request has been sent! We will contact you to confirm your order and pickup details."
-                    );
+                    throw new Error("Server error");
 
-                    builderSubmitBtn.textContent = "Request Sent!";
+                }
+
+                /* Apps Script returns HTTP 200 even on logical errors — check json.success */
+
+                const json = await response.json();
+
+                if ( json.success )
+                {
+
+                    const referenceId = json.data && json.data.id ? json.data.id : "";
+
+                    showOrderSuccessPanel( builderFeedback, referenceId );
+
+                    builderSubmitBtn.textContent = "✓ Order Request Submitted";
 
                 }
                 else
                 {
 
-                    throw new Error("Server error");
+                    const apiMessage = json.error && json.error.message
+                        ? json.error.message
+                        : "Something went wrong. Please try again or contact us at (220) 240-8435.";
+
+                    showFeedback( builderFeedback, "error", apiMessage );
+
+                    builderSubmitBtn.disabled    = false;
+
+                    builderSubmitBtn.textContent = "Send Order Request";
 
                 }
 
@@ -1403,7 +1728,9 @@ if ( builderWrap )
    PUBLIC SETTINGS
 ============================================================ */
 
-const SETTINGS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwy-rI7WNwFmBqVzJGpdqqKsswJdSCIyWhXb0_Ztua0As62BIEL7l_N2AHWwspd0LEF/exec';
+/* Same Apps Script Web App as order submission — defined once in CONFIGURATION */
+
+const SETTINGS_ENDPOINT = EATZ_API_ENDPOINT;
 
 
 /* ── Data Helpers ── */
@@ -1464,7 +1791,7 @@ function formatDaysList ( days, conjunction )
 
     if ( days.length === 1 ) { return days[0]; }
 
-    if ( days.length === 2 ) { return days[0] + ' & ' + days[1]; }
+    if ( days.length === 2 ) { return days[0] + ' ' + ( conjunction || 'and' ) + ' ' + days[1]; }
 
     return days.slice(0, -1).join(', ') + ', ' + ( conjunction || 'and' ) + ' ' + days[ days.length - 1 ];
 
@@ -1544,6 +1871,8 @@ function applyPickupSchedule ( pickupDays, pickupConfiguration, updatedAt )
     const days   = normalizeDays( pickupDays );
     const config = parsePickupConfig( pickupConfiguration );
 
+    if ( days.length === 0 ) { return; }
+
     renderPickupDayCards( days );
 
     renderPickupHours( config ? config.windows : null );
@@ -1556,12 +1885,11 @@ function applyPickupSchedule ( pickupDays, pickupConfiguration, updatedAt )
 
     applyPickupDaysInlineLists( days );
 
-    if ( days.length > 0 )
-    {
+    validPickupDayNumbers = days.map(dayNameToNumber).filter(function ( n ) { return n !== -1; });
 
-        validPickupDayNumbers = days.map(dayNameToNumber).filter(function ( n ) { return n !== -1; });
+    const section = document.getElementById('pickupSchedule');
 
-    }
+    if ( section ) { section.hidden = false; }
 
 }
 
@@ -1689,8 +2017,12 @@ function renderLastUpdated ( updatedAt )
 
     if ( !el ) { return; }
 
-    if ( !updatedAt )
+    const parsed = updatedAt ? new Date(updatedAt) : null;
+
+    if ( !parsed || isNaN( parsed.getTime() ) )
     {
+
+        /* Never show a raw/invalid value (e.g. a broken sheet formula) — hide instead */
 
         el.hidden = true;
 
@@ -1698,7 +2030,24 @@ function renderLastUpdated ( updatedAt )
 
     }
 
-    el.innerHTML = 'Last updated: <span class="pickupLastUpdatedValue">' + updatedAt + '</span>';
+    const formatted = parsed.toLocaleDateString( 'en-US',
+    {
+        month: 'long',
+        day:   'numeric',
+        year:  'numeric'
+    });
+
+    el.textContent = '';
+
+    el.appendChild( document.createTextNode('Last updated: ') );
+
+    const valueSpan = document.createElement('span');
+
+    valueSpan.className = 'pickupLastUpdatedValue';
+
+    valueSpan.textContent = formatted;
+
+    el.appendChild(valueSpan);
 
     el.hidden = false;
 
